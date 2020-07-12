@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:showIn="@layout/fragment_updates">
+
+    <TextView
+        android:id="@+id/tvLatestUpdateTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Today's fight"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/pbTodaysFight"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:progress="60"
+        android:scaleY="2"
+        android:minHeight="6dp"
+        android:progressBackgroundTint="@color/greyCcc"
+        android:progressTint="@color/yellow"
+        app:layout_constraintBottom_toTopOf="@id/todays_fight_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvLatestUpdateTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvLatestUpdateTitle" />
+
+    <include
+        android:id="@+id/todays_fight_card"
+        layout="@layout/todays_fight_figures"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tvLatestUpdateTitle"
+        app:layout_constraintTop_toBottomOf="@id/pbTodaysFight" />
+
+</merge>

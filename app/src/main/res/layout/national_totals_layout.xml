@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<com.google.android.material.card.MaterialCardView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:theme="@style/Theme.MaterialComponents.Light"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="5dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:strokeColor="#ccc"
+    app:strokeWidth="1dp"
+    tools:showIn="@layout/fragment_updates">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/ivCases"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/my_avatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvTotalCases"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="25,611"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ivCases"
+            app:layout_constraintStart_toEndOf="@+id/ivCases"
+            app:layout_constraintTop_toTopOf="@+id/ivCases"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tvTotalCasesDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Total confirmed cases"
+            app:layout_constraintBottom_toBottomOf="@+id/ivCases"
+            app:layout_constraintStart_toStartOf="@+id/tvTotalCases"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalCases" />
+
+
+        <ImageView
+            android:id="@+id/ivDeaths"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/my_avatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivCases"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvTotalDeaths"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="1,746"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ivDeaths"
+            app:layout_constraintStart_toEndOf="@+id/ivDeaths"
+            app:layout_constraintTop_toTopOf="@+id/ivDeaths"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tvTotalDeathsDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Total deaths"
+            app:layout_constraintBottom_toBottomOf="@+id/ivDeaths"
+            app:layout_constraintStart_toStartOf="@+id/tvTotalDeaths"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalDeaths" />
+
+        <ImageView
+            android:id="@+id/ivHospitalised"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/my_avatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivDeaths"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvTotalHospitalised"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="1,746"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ivHospitalised"
+            app:layout_constraintStart_toEndOf="@+id/ivHospitalised"
+            app:layout_constraintTop_toTopOf="@+id/ivHospitalised"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tvTotalHospitalisedDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Total deaths"
+            app:layout_constraintBottom_toBottomOf="@+id/ivHospitalised"
+            app:layout_constraintStart_toStartOf="@+id/tvTotalHospitalised"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalHospitalised" />
+
+
+        <ImageView
+            android:id="@+id/ivRequiredIcu"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/my_avatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivHospitalised"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvTotalRequiredIcu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="436"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ivRequiredIcu"
+            app:layout_constraintStart_toEndOf="@+id/ivRequiredIcu"
+            app:layout_constraintTop_toTopOf="@+id/ivRequiredIcu"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tvTotalRequiredIcuDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Required ICU"
+            app:layout_constraintBottom_toBottomOf="@+id/ivRequiredIcu"
+            app:layout_constraintStart_toStartOf="@+id/tvTotalRequiredIcu"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalRequiredIcu" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
