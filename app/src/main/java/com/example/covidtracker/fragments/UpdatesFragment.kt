@@ -29,12 +29,31 @@ class UpdatesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getConfirmedCases()
+        getTotals(
+            "confirmed_cases",
+            "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19StatisticsProfileHPSCIrelandView/FeatureServer/0/query?f=json&outStatistics=%5B%7B%22onStatisticField%22%3A%22TotalConfirmedCovidCases%22%2C%22outStatisticFieldName%22%3A%22TotalConfirmedCovidCases_max%22%2C%22statisticType%22%3A%22max%22%7D%5D"
+        )
+
+        getTotals(
+            "total_deaths",
+            "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19StatisticsProfileHPSCIrelandView/FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returnGeometry=false&outStatistics=%5B%7B%22onStatisticField%22%3A%22TotalCovidDeaths%22%2C%22outStatisticFieldName%22%3A%22TotalCovidDeaths_max%22%2C%22statisticType%22%3A%22max%22%7D%5D"
+        )
+
+        getTotals(
+            "total_hospitalised",
+            "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19StatisticsProfileHPSCIrelandView/FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returnGeometry=false&outStatistics=%5B%7B%22onStatisticField%22%3A%22HospitalisedCovidCases%22%2C%22outStatisticFieldName%22%3A%22HospitalisedCovidCases_max%22%2C%22statisticType%22%3A%22max%22%7D%5D"
+        )
+
+        getTotals(
+            "total_required_cpu",
+            "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19StatisticsProfileHPSCIrelandView/FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returnGeometry=false&outStatistics=%5B%7B%22onStatisticField%22%3A%22RequiringICUCovidCases%22%2C%22outStatisticFieldName%22%3A%22RequiringICUCovidCases_max%22%2C%22statisticType%22%3A%22max%22%7D%5D"
+        )
+
 
     }
 
 
-    private fun getConfirmedCases() {
+    private fun getTotals(section: String, fullUrl: String) {
 
         GetTotalsAPI.postData(
             object : GetTotalsAPI.ThisCallback {
@@ -48,8 +67,27 @@ class UpdatesFragment : Fragment() {
                     val totals: Totals =
                         gson.fromJson(jo, Totals::class.java)
 
-                    tvTotalCases.text =
-                        totals.features?.get(0)?.attributes?.totalConfirmedCovidCasesMax.toString()
+                    when (section) {
+                        "confirmed_cases" -> {
+                            tvTotalCases.text =
+                                totals.features?.get(0)?.attributes?.totalConfirmedCovidCasesMax.toString()
+                        }
+                        "total_deaths" -> {
+                            tvTotalDeaths.text =
+                                totals.features?.get(0)?.attributes?.totalCovidDeathsMax.toString()
+                        }
+                        "total_hospitalised" -> {
+                            tvTotalHospitalised.text =
+                                totals.features?.get(0)?.attributes?.totalHospitalisedCovidCasesMax.toString()
+                        }
+                        "total_required_cpu" -> {
+                            tvTotalRequiredIcu.text =
+                                totals.features?.get(0)?.attributes?.totalRequiringICUCovidCasesMax.toString()
+                        }
+
+                    }
+
+
                 }
 
                 override fun onFailure(message: String?) {
@@ -61,7 +99,7 @@ class UpdatesFragment : Fragment() {
                 }
 
             },
-            "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19StatisticsProfileHPSCIrelandView/FeatureServer/0/query?f=json&outStatistics=%5B%7B%22onStatisticField%22%3A%22TotalConfirmedCovidCases%22%2C%22outStatisticFieldName%22%3A%22TotalConfirmedCovidCases_max%22%2C%22statisticType%22%3A%22max%22%7D%5D"
+            fullUrl
         )
 
     }
