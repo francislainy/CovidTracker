@@ -3,7 +3,7 @@ package com.example.covidtracker.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.covidtracker.R
-import com.example.covidtracker.activities.fragments.UpdatesFragment
+import com.example.covidtracker.fragments.UpdatesFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
