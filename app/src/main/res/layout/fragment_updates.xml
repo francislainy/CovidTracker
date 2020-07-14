@@ -14,7 +14,7 @@
         android:id="@+id/todaysFightLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/tvSettings"
+        app:layout_constraintBottom_toTopOf="@+id/tvContactTracing"
         app:layout_constraintStart_toStartOf="parent">
 
         <include layout="@layout/todays_fight_layout" />

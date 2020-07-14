@@ -106,7 +106,6 @@ class UpdatesFragment : Fragment() {
 
 
     companion object {
-
         fun newInstance() =
             UpdatesFragment()
     }
