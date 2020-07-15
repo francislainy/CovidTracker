@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.example.covidtracker.R
 import com.example.covidtracker.api.GetTotalsAPI
 import com.example.covidtracker.model.APIError
@@ -13,10 +15,13 @@ import com.example.covidtracker.model.Totals
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.national_totals_layout.*
+import kotlinx.android.synthetic.main.todays_fight_layout.*
 
 private val LOG_TAG = UpdatesFragment::class.java.canonicalName
 
 class UpdatesFragment : Fragment() {
+
+    var navController: NavController? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +33,15 @@ class UpdatesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        navController = Navigation.findNavController(view)
+
+        tvTotalsFightTitle.setOnClickListener {
+            navController!!.navigate(R.id.action_updatesFragment_to_settingsFragment)
+        }
+
+
+
 
         getTotals(
             "confirmed_cases",
@@ -48,7 +62,6 @@ class UpdatesFragment : Fragment() {
             "total_required_cpu",
             "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19StatisticsProfileHPSCIrelandView/FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returnGeometry=false&outStatistics=%5B%7B%22onStatisticField%22%3A%22RequiringICUCovidCases%22%2C%22outStatisticFieldName%22%3A%22RequiringICUCovidCases_max%22%2C%22statisticType%22%3A%22max%22%7D%5D"
         )
-
 
     }
 

@@ -5,7 +5,7 @@
     tools:showIn="@layout/fragment_updates">
 
     <TextView
-        android:id="@+id/tvLatestUpdateTitle"
+        android:id="@+id/tvTotalsFightTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -33,15 +33,15 @@
         app:layout_constraintBottom_toTopOf="@id/todays_fight_card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tvLatestUpdateTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvLatestUpdateTitle" />
+        app:layout_constraintStart_toStartOf="@+id/tvTotalsFightTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalsFightTitle" />
 
     <include
         android:id="@+id/todays_fight_card"
         layout="@layout/todays_fight_figures"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/tvLatestUpdateTitle"
+        app:layout_constraintStart_toStartOf="@id/tvTotalsFightTitle"
         app:layout_constraintTop_toBottomOf="@id/pbTodaysFight" />
 
 </merge>

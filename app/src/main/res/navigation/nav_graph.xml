@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/updatesFragment">
+
+    <fragment
+        android:id="@+id/updatesFragment"
+        android:name="com.example.covidtracker.fragments.UpdatesFragment"
+        android:label="todays_fight_figures"
+        tools:layout="@layout/todays_fight_figures">
+        <action
+            android:id="@+id/action_updatesFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.covidtracker.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settingsFragment_to_contactTracingFragment"
+            app:destination="@id/contactTracingFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/contactTracingFragment"
+        android:name="com.example.covidtracker.fragments.ContactTracingFragment"
+        android:label="ContactTracingFragment">
+        <action
+            android:id="@+id/action_contactTracingFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+
+</navigation>

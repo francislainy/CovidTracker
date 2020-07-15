@@ -7,6 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.covidtracker.R
@@ -15,6 +19,7 @@ import com.example.covidtracker.adapter_holders.RecyclerSettingsItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_settings.*
+import kotlinx.android.synthetic.main.snippet_toolbar_plain.*
 
 
 class SettingsFragment : Fragment() {

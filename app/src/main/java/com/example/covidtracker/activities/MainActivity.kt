@@ -2,9 +2,8 @@ package com.example.covidtracker.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation.findNavController
 import com.example.covidtracker.R
-import com.example.covidtracker.fragments.SettingsFragment
-import com.example.covidtracker.fragments.UpdatesFragment
 import kotlinx.android.synthetic.main.snippet_toolbar_plain.*
 
 
@@ -15,23 +14,19 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        val currentFragment =
-            supportFragmentManager.findFragmentById(R.id.fragment_container)
-
-        if (currentFragment == null) {
-            val fragment = UpdatesFragment.newInstance()
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.fragment_container, fragment)
-                .commit()
-        }
+        val navController = findNavController(this, R.id.nav_host_fragment)
 
         ivSettingsCog.setOnClickListener {
-            val fragment = SettingsFragment.newInstance()
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .commit()
+
+            when (navController.currentDestination?.id) {
+                R.id.updatesFragment -> {
+                    navController.navigate(R.id.action_updatesFragment_to_settingsFragment)
+                }
+                R.id.contactTracingFragment -> {
+                    navController.navigate(R.id.action_contactTracingFragment_to_settingsFragment)
+                }
+            }
+
         }
 
     }
