@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_contactTracingFragment"
             app:destination="@id/contactTracingFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_covidCheckInFragment"
+            app:destination="@id/covidCheckInFragment" />
     </fragment>
 
     <fragment
@@ -31,6 +34,15 @@
         android:label="ContactTracingFragment">
         <action
             android:id="@+id/action_contactTracingFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/covidCheckInFragment"
+        android:name="com.example.covidtracker.fragments.CovidCheckInFragment"
+        android:label="fragment_covid_check_in"
+        tools:layout="@layout/fragment_covid_check_in" >
+        <action
+            android:id="@+id/action_covidCheckInFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
     </fragment>
 

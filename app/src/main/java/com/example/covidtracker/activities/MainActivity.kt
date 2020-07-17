@@ -25,6 +25,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.contactTracingFragment -> {
                     navController.navigate(R.id.action_contactTracingFragment_to_settingsFragment)
                 }
+                R.id.covidCheckInFragment -> {
+                    navController.navigate(R.id.action_covidCheckInFragment_to_settingsFragment)
+                }
             }
 
         }

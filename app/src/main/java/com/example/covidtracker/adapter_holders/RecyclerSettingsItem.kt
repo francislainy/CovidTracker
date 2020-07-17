@@ -28,7 +28,11 @@ class RecyclerSettingsItem(
                 itemView.setOnClickListener {
 
                     navController = Navigation.findNavController(itemView)
-                    navController!!.navigate(R.id.action_settingsFragment_to_contactTracingFragment)
+
+                    when (settingItem) {
+                        "Contact Tracing" -> navController!!.navigate(R.id.action_settingsFragment_to_contactTracingFragment)
+                        "COVID Check-In" -> navController!!.navigate(R.id.action_settingsFragment_to_covidCheckInFragment)
+                    }
 
                 }
 

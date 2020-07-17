@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/headerHolder"
+        layout="@layout/title_and_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvYouHaveSharedInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="You have shared the following information\nwith us."
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/headerHolder"
+        app:layout_constraintTop_toBottomOf="@id/headerHolder" />
+
+    <TextView
+        android:id="@+id/tvYourSex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Your sex (optional)"
+        app:layout_constraintEnd_toEndOf="@+id/tvYouHaveSharedInfo"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvYouHaveSharedInfo"
+        app:layout_constraintTop_toBottomOf="@+id/tvYouHaveSharedInfo" />
+
+    <RadioGroup
+        android:id="@+id/rbGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvYouHaveSharedInfo"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvYouHaveSharedInfo"
+        app:layout_constraintTop_toBottomOf="@+id/tvYourSex">
+
+        <RadioButton
+            android:id="@+id/rbFemale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Female" />
+
+        <RadioButton
+            android:id="@+id/rbMale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/rbPreferNotToSay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prefer not to say" />
+    </RadioGroup>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height=".5dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/greyCcc"
+        app:layout_constraintEnd_toEndOf="@id/tvYouHaveSharedInfo"
+        app:layout_constraintStart_toStartOf="@id/tvYouHaveSharedInfo"
+        app:layout_constraintTop_toBottomOf="@id/rbGroup" />
+
+    <TextView
+        android:id="@+id/tvYourAge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Your age range (optional)"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvYourSex"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <EditText
+        android:id="@+id/etYourAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="16-39"
+        app:layout_constraintEnd_toEndOf="@+id/tvYourAge"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvYourAge"
+        app:layout_constraintTop_toBottomOf="@+id/tvYourAge" />
+
+    <TextView
+        android:id="@+id/ivArrowNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=">"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/etYourAge"
+        app:layout_constraintEnd_toEndOf="@+id/tvYourAge"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/etYourAge"
+        app:layout_constraintTop_toTopOf="@+id/etYourAge" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="0dp"
+        android:layout_height=".5dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/greyCcc"
+        app:layout_constraintEnd_toEndOf="@id/tvYouHaveSharedInfo"
+        app:layout_constraintStart_toStartOf="@id/tvYouHaveSharedInfo"
+        app:layout_constraintTop_toBottomOf="@id/ivArrowNext" />
+
+
+    <TextView
+        android:id="@+id/tvYourCounty"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Your county (optional)"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvYourAge"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+    <EditText
+        android:id="@+id/etYourCounty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Dublin"
+        app:layout_constraintEnd_toEndOf="@+id/tvYourCounty"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvYourCounty"
+        app:layout_constraintTop_toBottomOf="@+id/tvYourCounty" />
+
+    <TextView
+        android:id="@+id/ivArrowNext2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=">"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/etYourCounty"
+        app:layout_constraintEnd_toEndOf="@+id/tvYourCounty"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/etYourCounty"
+        app:layout_constraintTop_toTopOf="@+id/etYourCounty" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="0dp"
+        android:layout_height=".5dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/greyCcc"
+        app:layout_constraintEnd_toEndOf="@id/tvYouHaveSharedInfo"
+        app:layout_constraintStart_toStartOf="@id/tvYouHaveSharedInfo"
+        app:layout_constraintTop_toBottomOf="@id/ivArrowNext2" />
+
+
+    <TextView
+        android:id="@+id/tvYourLocality"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Your county (optional)"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvYourCounty"
+        app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+    <EditText
+        android:id="@+id/etYourLocality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Dublin 6"
+        app:layout_constraintEnd_toEndOf="@+id/tvYourLocality"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvYourLocality"
+        app:layout_constraintTop_toBottomOf="@+id/tvYourLocality" />
+
+    <TextView
+        android:id="@+id/ivArrowNext3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=">"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/etYourLocality"
+        app:layout_constraintEnd_toEndOf="@+id/tvYourLocality"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/etYourLocality"
+        app:layout_constraintTop_toTopOf="@+id/etYourLocality" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="0dp"
+        android:layout_height=".5dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/greyCcc"
+        app:layout_constraintEnd_toEndOf="@id/tvYouHaveSharedInfo"
+        app:layout_constraintStart_toStartOf="@id/tvYouHaveSharedInfo"
+        app:layout_constraintTop_toBottomOf="@id/ivArrowNext3" />
+
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rectangle_button"
+        android:backgroundTint="@color/colorAccent"
+        android:text="Confirm changes"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ivArrowNext3"
+        app:layout_constraintStart_toStartOf="@+id/etYourLocality"
+        app:layout_constraintTop_toBottomOf="@+id/view4"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,9 +17,9 @@ import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.national_totals_layout.*
 import kotlinx.android.synthetic.main.todays_fight_layout.*
 
-private val LOG_TAG = UpdatesFragment::class.java.canonicalName
 
 class UpdatesFragment : Fragment() {
+
 
     var navController: NavController? = null
 
@@ -73,8 +73,7 @@ class UpdatesFragment : Fragment() {
 
                 override fun onSuccess(jo: JsonObject) {
 
-                    Log.i(LOG_TAG, "onSuccess $LOG_TAG")
-
+                    Log.i(Companion.LOG_TAG, "onSuccess ${Companion.LOG_TAG}")
 
                     val gson = GsonBuilder().setPrettyPrinting().create()
                     val totals: Totals =
@@ -100,7 +99,6 @@ class UpdatesFragment : Fragment() {
 
                     }
 
-
                 }
 
                 override fun onFailure(message: String?) {
@@ -121,5 +119,7 @@ class UpdatesFragment : Fragment() {
     companion object {
         fun newInstance() =
             UpdatesFragment()
+
+        private val LOG_TAG = UpdatesFragment::class.java.canonicalName
     }
 }
