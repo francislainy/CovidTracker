@@ -49,21 +49,21 @@
 
         <RadioButton
             android:id="@+id/rbFemale"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/radio_gender_selection"
             android:text="Female" />
 
         <RadioButton
             android:id="@+id/rbMale"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/radio_gender_selection"
+            android:backgroundTint="@color/greyCcc"
             android:text="Male" />
 
         <RadioButton
             android:id="@+id/rbPreferNotToSay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/radio_gender_selection"
+            android:backgroundTint="@color/greyCcc"
             android:text="Prefer not to say" />
+
     </RadioGroup>
 
     <View
