@@ -42,7 +42,6 @@ class SettingsFragment : Fragment() {
 
         adapter = GroupAdapter()
 
-
         adapter.add(RecyclerSettingsItem(activity as MainActivity, "Contact Tracing"))
         adapter.add(RecyclerSettingsItem(activity as MainActivity, "COVID Check-In"))
         adapter.add(RecyclerSettingsItem(activity as MainActivity, "Data Protection Information Notice"))

@@ -40,10 +40,21 @@
         android:id="@+id/covidCheckInFragment"
         android:name="com.example.covidtracker.fragments.CovidCheckInFragment"
         android:label="fragment_covid_check_in"
-        tools:layout="@layout/fragment_covid_check_in" >
+        tools:layout="@layout/fragment_covid_check_in">
         <action
             android:id="@+id/action_covidCheckInFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_covidCheckInFragment_to_my_dialog_fragment"
+            app:destination="@id/my_dialog_fragment" />
     </fragment>
+
+    <dialog
+        android:id="@+id/my_dialog_fragment"
+        android:name="com.example.covidtracker.fragments.MyDialogFragment">
+        <action
+            android:id="@+id/action_my_dialog_fragment_to_covidCheckInFragment"
+            app:destination="@id/covidCheckInFragment" />
+    </dialog>
 
 </navigation>
