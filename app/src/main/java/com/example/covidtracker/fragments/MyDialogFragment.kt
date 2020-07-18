@@ -18,6 +18,11 @@ class MyDialogFragment : DialogFragment() {
 
     private lateinit var adapter: GroupAdapter<GroupieViewHolder>
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(DialogFragment.STYLE_NO_TITLE, R.style.AppTheme_Dialog_Custom)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -130,7 +135,10 @@ class MyDialogFragment : DialogFragment() {
             }
         }
 
-
         rvOptions.adapter = adapter
+
+        tvClose.setOnClickListener {
+            this.dismiss()
+        }
     }
 }

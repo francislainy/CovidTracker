@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:minWidth="250dp"
     android:layout_height="wrap_content">
 
     <TextView
@@ -23,12 +22,11 @@
         android:id="@+id/tvChoose"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
         android:text="Choose your option"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tvClose"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,13 +34,11 @@
         android:id="@+id/rvOptions"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        tools:listitem="@layout/rv_settings_item_row"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvChoose" />
+        app:layout_constraintTop_toBottomOf="@id/tvChoose"
+        tools:listitem="@layout/rv_options_item_row" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
