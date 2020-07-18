@@ -10,7 +10,6 @@
         android:orientation="vertical">
 
         <include
-            android:id="@+id/toolbarHolder"
             layout="@layout/snippet_toolbar_plain" />
 
         <androidx.core.widget.NestedScrollView

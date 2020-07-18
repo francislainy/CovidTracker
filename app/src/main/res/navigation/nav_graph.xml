@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/updatesFragment"
         android:name="com.example.covidtracker.fragments.UpdatesFragment"
-        android:label="todays_fight_figures"
         tools:layout="@layout/todays_fight_figures">
         <action
             android:id="@+id/action_updatesFragment_to_settingsFragment"
@@ -18,7 +17,6 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.covidtracker.fragments.SettingsFragment"
-        android:label="fragment_settings"
         tools:layout="@layout/fragment_settings">
         <action
             android:id="@+id/action_settingsFragment_to_contactTracingFragment"
@@ -30,8 +28,8 @@
 
     <fragment
         android:id="@+id/contactTracingFragment"
-        android:name="com.example.covidtracker.fragments.ContactTracingFragment"
-        android:label="ContactTracingFragment">
+        tools:layout="@layout/fragment_contact_tracing"
+        android:name="com.example.covidtracker.fragments.ContactTracingFragment">
         <action
             android:id="@+id/action_contactTracingFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
@@ -39,7 +37,6 @@
     <fragment
         android:id="@+id/covidCheckInFragment"
         android:name="com.example.covidtracker.fragments.CovidCheckInFragment"
-        android:label="fragment_covid_check_in"
         tools:layout="@layout/fragment_covid_check_in">
         <action
             android:id="@+id/action_covidCheckInFragment_to_settingsFragment"
@@ -51,6 +48,7 @@
 
     <dialog
         android:id="@+id/my_dialog_fragment"
+        tools:layout="@layout/fragment_dialog"
         android:name="com.example.covidtracker.fragments.MyDialogFragment">
         <action
             android:id="@+id/action_my_dialog_fragment_to_covidCheckInFragment"

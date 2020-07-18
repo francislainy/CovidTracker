@@ -3,7 +3,10 @@ package com.example.covidtracker.activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.example.covidtracker.R
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.snippet_toolbar_plain.*
 
 
@@ -13,8 +16,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         setSupportActionBar(findViewById(R.id.toolbar))
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
 
         val navController = findNavController(this, R.id.nav_host_fragment)
+
+        NavigationUI.setupActionBarWithNavController(this, navController)
+        NavigationUI.setupWithNavController(toolbar, NavHostFragment.findNavController(nav_host_fragment))
+
 
         ivSettingsCog.setOnClickListener {
 

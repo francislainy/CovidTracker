@@ -20,7 +20,7 @@ class MyDialogFragment : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(DialogFragment.STYLE_NO_TITLE, R.style.AppTheme_Dialog_Custom)
+        setStyle(STYLE_NO_TITLE, R.style.AppTheme_Dialog_Custom)
     }
 
     override fun onCreateView(
