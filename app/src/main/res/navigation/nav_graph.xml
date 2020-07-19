@@ -28,8 +28,8 @@
 
     <fragment
         android:id="@+id/contactTracingFragment"
-        tools:layout="@layout/fragment_contact_tracing"
-        android:name="com.example.covidtracker.fragments.ContactTracingFragment">
+        android:name="com.example.covidtracker.fragments.ContactTracingFragment"
+        tools:layout="@layout/fragment_contact_tracing">
         <action
             android:id="@+id/action_contactTracingFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
@@ -39,31 +39,43 @@
     </fragment>
     <fragment
         android:id="@+id/covidCheckInFragment"
-        android:name="com.example.covidtracker.fragments.CovidCheckInFragment"
+        android:name="com.example.covidtracker.fragments.CovidCheckInBottomFragment"
         tools:layout="@layout/fragment_covid_check_in">
         <action
             android:id="@+id/action_covidCheckInFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
         <action
             android:id="@+id/action_covidCheckInFragment_to_my_dialog_fragment"
-            app:destination="@id/my_dialog_fragment" />
+            app:destination="@id/myDialogFragment" />
     </fragment>
 
     <dialog
-        android:id="@+id/my_dialog_fragment"
-        tools:layout="@layout/fragment_dialog"
-        android:name="com.example.covidtracker.fragments.MyDialogFragment">
+        android:id="@+id/myDialogFragment"
+        android:name="com.example.covidtracker.fragments.MyDialogFragment"
+        tools:layout="@layout/fragment_dialog">
         <action
             android:id="@+id/action_my_dialog_fragment_to_covidCheckInFragment"
             app:destination="@id/covidCheckInFragment" />
     </dialog>
     <fragment
         android:id="@+id/receiveFragment"
-        tools:layout="@layout/fragment_receive"
-        android:name="com.example.covidtracker.fragments.ReceiveFragment">
+        android:name="com.example.covidtracker.fragments.ReceiveFragment"
+        tools:layout="@layout/fragment_receive">
         <action
             android:id="@+id/action_receiveFragment_to_contactTracingFragment"
             app:destination="@id/contactTracingFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/checkInBottomFragment"
+        android:name="com.example.covidtracker.fragments.CheckInFragment"
+        tools:layout="@layout/fragment_check_in_bottom" />
+    <fragment
+        android:id="@+id/contactTracingBottomFragment"
+        android:name="com.example.covidtracker.fragments.ContactTracingBottomFragment"
+        tools:layout="@layout/fragment_contact_tracing_bottom" />
+    <fragment
+        android:id="@+id/shareAppBottomFragment"
+        android:name="com.example.covidtracker.fragments.ShareAppBottomFragment"
+        tools:layout="@layout/fragment_share_app_bottom" />
 
 </navigation>

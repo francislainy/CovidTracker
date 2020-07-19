@@ -21,7 +21,6 @@ import kotlinx.android.synthetic.main.fragment_dialog.*
 
 class MyDialogFragment : DialogFragment() {
 
-    private var list: Array<String>? = null
     private lateinit var adapter: GroupAdapter<GroupieViewHolder>
     private var viewModel: HomeViewModel? = null
 
@@ -63,14 +62,10 @@ class MyDialogFragment : DialogFragment() {
     }
 
 
-    public val userListUpdateObserver: Observer<Array<String>?> =
-        object : Observer<Array<String>?> {
-            override fun onChanged(userArrayList: Array<String>?) {
-
-                for (s in userArrayList!!) {
-                    adapter!!.add(RecyclerSettingsItem(activity as MainActivity, s))
-                }
-
+     private val userListUpdateObserver: Observer<Array<String>?> =
+        Observer { userArrayList ->
+            for (s in userArrayList!!) {
+                adapter.add(RecyclerSettingsItem(activity as MainActivity, s))
             }
         }
 

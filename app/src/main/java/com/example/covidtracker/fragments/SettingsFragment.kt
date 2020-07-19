@@ -40,6 +40,14 @@ class SettingsFragment : Fragment() {
         val linearLayoutManager = LinearLayoutManager(activity)
         rvSettings.layoutManager = linearLayoutManager
         adapter = GroupAdapter()
+        rvSettings.adapter = adapter
+
+        val decoration = DividerItemDecoration(
+            activity as MainActivity,
+            HORIZONTAL
+        )
+        rvSettings.addItemDecoration(decoration)
+
 
         viewModel = ViewModelProviders.of(activity as MainActivity).get(HomeViewModel::class.java)
 
@@ -49,25 +57,13 @@ class SettingsFragment : Fragment() {
 
         myViewModel.userMutableLiveData.observe(viewLifecycleOwner, userListUpdateObserver)
 
-        rvSettings.adapter = adapter
-
-
-        val decoration = DividerItemDecoration(
-            activity as MainActivity,
-            HORIZONTAL
-        )
-        rvSettings.addItemDecoration(decoration)
     }
 
 
-    public val userListUpdateObserver: Observer<Array<String>?> =
-        object : Observer<Array<String>?> {
-            override fun onChanged(userArrayList: Array<String>?) {
-
-                for (s in userArrayList!!) {
-                    adapter!!.add(RecyclerSettingsItem(activity as MainActivity, s))
-                }
-
+    val userListUpdateObserver: Observer<Array<String>?> =
+        Observer { userArrayList ->
+            for (s in userArrayList!!) {
+                adapter!!.add(RecyclerSettingsItem(activity as MainActivity, s))
             }
         }
 

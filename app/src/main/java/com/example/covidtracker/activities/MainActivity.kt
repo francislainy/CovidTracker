@@ -2,6 +2,7 @@ package com.example.covidtracker.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -22,7 +23,9 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(this, R.id.nav_host_fragment)
 
         NavigationUI.setupActionBarWithNavController(this, navController)
-        NavigationUI.setupWithNavController(toolbar, NavHostFragment.findNavController(nav_host_fragment))
+        NavigationUI.setupWithNavController(toolbar, navController)
+        NavigationUI.setupWithNavController(bottomNav, navController)
+        bottomNav.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
 
 
         ivSettingsCog.setOnClickListener {
@@ -37,6 +40,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.covidCheckInFragment -> {
                     navController.navigate(R.id.action_covidCheckInFragment_to_settingsFragment)
                 }
+
             }
 
         }

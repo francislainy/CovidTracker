@@ -10,10 +10,9 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.covidtracker.R
 import kotlinx.android.synthetic.main.fragment_covid_check_in.*
-import kotlinx.android.synthetic.main.todays_fight_layout.*
 
 
-class CovidCheckInFragment : Fragment() {
+class CovidCheckInBottomFragment : Fragment() {
 
 
     var navController: NavController? = null
@@ -65,6 +64,6 @@ class CovidCheckInFragment : Fragment() {
     companion object {
 
         fun newInstance() =
-            CovidCheckInFragment()
+            CovidCheckInBottomFragment()
     }
 }

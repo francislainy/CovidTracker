@@ -7,4 +7,7 @@
     <color name="greyCcc">#ccc</color>
     <color name="yellow">#FFFF00</color>
     <color name="white">#FFFFFF</color>
+    <color name="greyBBB">#BBB</color>
+    <color name="greyAAA">#AAA</color>
+    <color name="black">#000</color>
 </resources>
