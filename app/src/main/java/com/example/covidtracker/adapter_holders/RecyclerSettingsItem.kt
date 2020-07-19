@@ -26,7 +26,7 @@ class RecyclerSettingsItem(
 
                 tvTitle.text = settingItem
 
-                itemView.setOnClickListener {
+                setOnClickListener {
 
                     navController = Navigation.findNavController(activity, R.id.nav_host_fragment)
 

@@ -56,7 +56,7 @@ class CovidCheckInFragment : Fragment() {
         navController = Navigation.findNavController(it)
 
         navController!!.navigate(
-            destination!!,
+            destination,
             bundle
         )
 

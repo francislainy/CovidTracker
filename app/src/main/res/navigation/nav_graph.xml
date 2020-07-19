@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_contactTracingFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_contactTracingFragment_to_receiveFragment"
+            app:destination="@id/receiveFragment" />
     </fragment>
     <fragment
         android:id="@+id/covidCheckInFragment"
@@ -54,5 +57,13 @@
             android:id="@+id/action_my_dialog_fragment_to_covidCheckInFragment"
             app:destination="@id/covidCheckInFragment" />
     </dialog>
+    <fragment
+        android:id="@+id/receiveFragment"
+        tools:layout="@layout/fragment_receive"
+        android:name="com.example.covidtracker.fragments.ReceiveFragment">
+        <action
+            android:id="@+id/action_receiveFragment_to_contactTracingFragment"
+            app:destination="@id/contactTracingFragment" />
+    </fragment>
 
 </navigation>
