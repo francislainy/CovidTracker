@@ -5,10 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.covidtracker.R
 import com.example.covidtracker.activities.MainActivity
 import com.example.covidtracker.adapter_holders.RecyclerSettingsItem
+import com.example.covidtracker.view_models.HomeViewModel
+import com.example.covidtracker.view_models.MyViewModelFactory
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_dialog.*
@@ -18,6 +23,8 @@ class MyDialogFragment : DialogFragment() {
 
     private var list: Array<String>? = null
     private lateinit var adapter: GroupAdapter<GroupieViewHolder>
+    private var viewModel: HomeViewModel? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,140 +40,38 @@ class MyDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         tvChoose.text = arguments?.getString("headerText")
+
 
         val linearLayoutManager = LinearLayoutManager(activity)
         rvOptions.layoutManager = linearLayoutManager
-
         adapter = GroupAdapter()
-
-
-
-
-
-
-        when (arguments?.getString("headerText")) {
-
-            "Choose your age range" -> {
-
-                list = arrayOf(
-                    "Prefer not to say",
-                    "16-39",
-                    "40-59",
-                    "60+"
-                )
-
-            }
-
-            "Choose your county" -> {
-
-                list = arrayOf(
-                    "Prefer not to say",
-                    "Carlow",
-                    "Cavan",
-                    "Clare",
-                    "Cork",
-                    "Donegal",
-                    "Dublin",
-                    "Galway",
-                    "Kerry",
-                    "Kildare",
-                    "Kilkenny",
-                    "Laois",
-                    "Leitrim",
-                    "Limerick",
-                    "Longford",
-                    "Mayo",
-                    "Meath",
-                    "Monaghan",
-                    "Offaly",
-                    "Roscommon",
-                    "Sligo",
-                    "Tipperary",
-                    "Waterford",
-                    "Westmeath",
-                    "Wexford",
-                    "Wicklow"
-                )
-
-            }
-
-            "Choose your locality" -> {
-
-                list = arrayOf(
-                    "Prefer not to say",
-                    "Ashbourne",
-                    "Balbriggan",
-                    "Ballyboghil",
-                    "Ballyouster",
-                    "Balrothery",
-                    "Brittas",
-                    "Clonee Village",
-                    "Donabate",
-                    "Dublin 1",
-                    "Dublin 2",
-                    "Dublin 3",
-                    "Dublin 4",
-                    "Dublin 5",
-                    "Dublin 6",
-                    "Dublin 6W",
-                    "Dublin 7",
-                    "Dublin 8",
-                    "Dublin 9",
-                    "Dublin 10",
-                    "Dublin 11",
-                    "Dublin 12",
-                    "Dublin 13",
-                    "Dublin 14",
-                    "Dublin 15",
-                    "Dublin 16",
-                    "Dublin 17",
-                    "Dublin 18",
-                    "Dublin 19",
-                    "Dublin 20",
-                    "Dublin 21",
-                    "Dublin 22",
-                    "Dublin 23",
-                    "Dublin 24",
-                    "Garristown",
-                    "Glencullen",
-                    "Gormanston",
-                    "Kinsaley",
-                    "Kinsealy-Drinan",
-                    "Leixlip",
-                    "Loughshinny",
-                    "Malahide",
-                    "Naul",
-                    "Newcastle",
-                    "North Country Dublin",
-                    "Oldtown",
-                    "Portmarnock",
-                    "Portrane",
-                    "Rathcole",
-                    "Rivermeade",
-                    "Rush",
-                    "Saggart",
-                    "Skerries",
-                    "South Country Dublin",
-                    "Stamullen",
-                    "Swords"
-                )
-
-            }
-
-        }
-
-
-        for (s in list!!) {
-            adapter.add(RecyclerSettingsItem(activity as MainActivity, s))
-        }
-
         rvOptions.adapter = adapter
+
+
+        viewModel = ViewModelProviders.of(activity as MainActivity).get(HomeViewModel::class.java)
+        val myViewModel = ViewModelProvider(
+            this, MyViewModelFactory(arguments?.getString("headerText"))
+        ).get(HomeViewModel::class.java)
+
+        myViewModel.userMutableLiveData.observe(viewLifecycleOwner, userListUpdateObserver)
 
 
         tvClose.setOnClickListener {
             this.dismiss()
         }
     }
+
+
+    public val userListUpdateObserver: Observer<Array<String>?> =
+        object : Observer<Array<String>?> {
+            override fun onChanged(userArrayList: Array<String>?) {
+
+                for (s in userArrayList!!) {
+                    adapter!!.add(RecyclerSettingsItem(activity as MainActivity, s))
+                }
+
+            }
+        }
+
 }

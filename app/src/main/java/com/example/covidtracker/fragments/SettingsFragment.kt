@@ -47,7 +47,7 @@ class SettingsFragment : Fragment() {
             this, MyViewModelFactory("settings")
         ).get(HomeViewModel::class.java)
 
-        myViewModel?.userMutableLiveData?.observe(viewLifecycleOwner, userListUpdateObserver)
+        myViewModel.userMutableLiveData.observe(viewLifecycleOwner, userListUpdateObserver)
 
         rvSettings.adapter = adapter
 
@@ -60,7 +60,7 @@ class SettingsFragment : Fragment() {
     }
 
 
-    private val userListUpdateObserver: Observer<Array<String>?> =
+    public val userListUpdateObserver: Observer<Array<String>?> =
         object : Observer<Array<String>?> {
             override fun onChanged(userArrayList: Array<String>?) {
 
