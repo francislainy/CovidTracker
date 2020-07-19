@@ -42,12 +42,20 @@ class SettingsFragment : Fragment() {
 
         adapter = GroupAdapter()
 
-        adapter.add(RecyclerSettingsItem(activity as MainActivity, "Contact Tracing"))
-        adapter.add(RecyclerSettingsItem(activity as MainActivity, "COVID Check-In"))
-        adapter.add(RecyclerSettingsItem(activity as MainActivity, "Data Protection Information Notice"))
-        adapter.add(RecyclerSettingsItem(activity as MainActivity, "Terms & Conditions"))
-        adapter.add(RecyclerSettingsItem(activity as MainActivity, "App Metrics"))
-        adapter.add(RecyclerSettingsItem(activity as MainActivity, "Leave"))
+
+        val list = arrayOf(
+            "Contact Tracing",
+            "COVID Check-In",
+            "Data Protection Information Notice",
+            "Terms & Conditions",
+            "App Metrics",
+            "Leave"
+        )
+
+        for (s in list) {
+            adapter.add(RecyclerSettingsItem(activity as MainActivity, s))
+        }
+
 
         rvSettings.adapter = adapter
 

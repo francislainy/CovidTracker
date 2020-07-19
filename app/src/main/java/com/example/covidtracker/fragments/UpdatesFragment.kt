@@ -20,8 +20,7 @@ import kotlinx.android.synthetic.main.todays_fight_layout.*
 
 class UpdatesFragment : Fragment() {
 
-
-    var navController: NavController? = null
+    private var navController: NavController? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,8 +38,6 @@ class UpdatesFragment : Fragment() {
         tvTotalsFightTitle.setOnClickListener {
             navController!!.navigate(R.id.action_updatesFragment_to_settingsFragment)
         }
-
-
 
 
         getTotals(
