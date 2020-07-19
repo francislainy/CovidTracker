@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.todays_fight_layout.*
 
 class CovidCheckInFragment : Fragment() {
 
+
     var navController: NavController? = null
 
     override fun onCreateView(
@@ -29,20 +30,49 @@ class CovidCheckInFragment : Fragment() {
 
         navController = Navigation.findNavController(view)
 
-        etYourAge.setOnClickListener {
-            val bundle = bundleOf("headerText" to "Choose your age range")
-            navController!!.navigate(R.id.action_covidCheckInFragment_to_my_dialog_fragment, bundle)
+
+        // Listeners
+        etYourAge.setOnClickListener(onClick)
+        etYourCounty.setOnClickListener(onClick)
+        etYourLocality.setOnClickListener(onClick)
+
+    }
+
+    private val onClick = View.OnClickListener {
+
+        val message: String?
+        val destination: Int?
+        when (it.id) {
+            R.id.etYourAge -> {
+
+                message = "Choose your age range"
+                destination = R.id.action_covidCheckInFragment_to_my_dialog_fragment
+            }
+
+            R.id.etYourCounty -> {
+
+                message = "Choose your county"
+                destination = R.id.action_covidCheckInFragment_to_my_dialog_fragment
+            }
+
+            R.id.etYourLocality -> {
+
+                message = "Choose your locality"
+                destination = R.id.action_covidCheckInFragment_to_my_dialog_fragment
+            }
+
+            else -> {
+                message = null
+                destination = null
+            }
         }
 
-        etYourCounty.setOnClickListener {
-            val bundle = bundleOf("headerText" to "Choose your county")
-            navController!!.navigate(R.id.action_covidCheckInFragment_to_my_dialog_fragment, bundle)
-        }
 
-        etYourLocality.setOnClickListener {
-            val bundle = bundleOf("headerText" to "Choose your locality")
-            navController!!.navigate(R.id.action_covidCheckInFragment_to_my_dialog_fragment, bundle)
-        }
+        val bundle = bundleOf("headerText" to message)
+        navController!!.navigate(
+            destination!!,
+            bundle
+        )
 
     }
 
