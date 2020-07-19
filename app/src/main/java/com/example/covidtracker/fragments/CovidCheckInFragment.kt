@@ -12,8 +12,7 @@ import com.example.covidtracker.R
 import kotlinx.android.synthetic.main.fragment_covid_check_in.*
 
 
-class CovidCheckInBottomFragment : Fragment() {
-
+class CovidCheckInFragment : Fragment() {
 
     var navController: NavController? = null
 
@@ -64,6 +63,6 @@ class CovidCheckInBottomFragment : Fragment() {
     companion object {
 
         fun newInstance() =
-            CovidCheckInBottomFragment()
+            CovidCheckInFragment()
     }
 }

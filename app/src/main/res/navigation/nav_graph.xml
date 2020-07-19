@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/covidCheckInFragment"
-        android:name="com.example.covidtracker.fragments.CovidCheckInBottomFragment"
+        android:name="com.example.covidtracker.fragments.CovidCheckInFragment"
         tools:layout="@layout/fragment_covid_check_in">
         <action
             android:id="@+id/action_covidCheckInFragment_to_settingsFragment"
