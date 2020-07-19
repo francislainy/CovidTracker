@@ -40,35 +40,21 @@ class CovidCheckInFragment : Fragment() {
 
     private val onClick = View.OnClickListener {
 
-        val message: String?
-        val destination: Int?
-        when (it.id) {
-            R.id.etYourAge -> {
+        val destination: Int = R.id.action_covidCheckInFragment_to_my_dialog_fragment
 
-                message = "Choose your age range"
-                destination = R.id.action_covidCheckInFragment_to_my_dialog_fragment
-            }
-
-            R.id.etYourCounty -> {
-
-                message = "Choose your county"
-                destination = R.id.action_covidCheckInFragment_to_my_dialog_fragment
-            }
-
-            R.id.etYourLocality -> {
-
-                message = "Choose your locality"
-                destination = R.id.action_covidCheckInFragment_to_my_dialog_fragment
-            }
-
+        val message: String? = when (it.id) {
+            R.id.etYourAge -> "Choose your age range"
+            R.id.etYourCounty -> "Choose your county"
+            R.id.etYourLocality -> "Choose your locality"
             else -> {
-                message = null
-                destination = null
+                ""
             }
         }
 
 
         val bundle = bundleOf("headerText" to message)
+        navController = Navigation.findNavController(it)
+
         navController!!.navigate(
             destination!!,
             bundle

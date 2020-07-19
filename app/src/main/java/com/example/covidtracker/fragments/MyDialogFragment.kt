@@ -8,7 +8,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.covidtracker.R
 import com.example.covidtracker.activities.MainActivity
-import com.example.covidtracker.adapter_holders.RecyclerDialogOptionsItem
 import com.example.covidtracker.adapter_holders.RecyclerSettingsItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder

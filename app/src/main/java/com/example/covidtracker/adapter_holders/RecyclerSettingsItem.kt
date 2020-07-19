@@ -6,6 +6,7 @@ import com.example.covidtracker.R
 import com.example.covidtracker.activities.MainActivity
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
+import kotlinx.android.synthetic.main.fragment_covid_check_in.view.*
 import kotlinx.android.synthetic.main.rv_settings_item_row.view.*
 
 private val LOG_TAG = RecyclerSettingsItem::class.java.canonicalName
@@ -27,7 +28,7 @@ class RecyclerSettingsItem(
 
                 itemView.setOnClickListener {
 
-                    navController = Navigation.findNavController(itemView)
+                    navController = Navigation.findNavController(activity, R.id.nav_host_fragment)
 
                     when (settingItem) {
                         "Contact Tracing" -> navController!!.navigate(R.id.action_settingsFragment_to_contactTracingFragment)
