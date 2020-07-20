@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.covidtracker.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.snippet_toolbar_plain.*
@@ -27,6 +29,9 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(bottomNav, navController)
         bottomNav.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
 
+
+        val appBarConfiguration = AppBarConfiguration(bottomNav.menu)
+        setupActionBarWithNavController(navController, appBarConfiguration)
 
         ivSettingsCog.setOnClickListener {
 
