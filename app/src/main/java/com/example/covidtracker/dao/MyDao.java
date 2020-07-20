@@ -1,0 +1,28 @@
+package com.example.covidtracker.dao;
+
+import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
+import androidx.room.Update;
+
+import com.example.covidtracker.model.MyDataList;
+
+import java.util.List;
+
+@Dao
+public interface MyDao {
+    @Insert
+    void addData(MyDataList mydatalist);
+
+    @Query("select * from mydatalist")
+    LiveData<List<MyDataList>> getMyData();
+
+    @Delete
+    void delete(MyDataList mydatalist);
+
+    @Update
+    void update(MyDataList mydatalist);
+
+}
