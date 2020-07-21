@@ -11,7 +11,8 @@ private val LOG_TAG = RecyclerHistoryItem::class.java.canonicalName
 
 class RecyclerHistoryItem(
     private val activity: MainActivity,
-    private val historyItem: String
+    private val status: String,
+    private val date: String
 ) : Item<GroupieViewHolder>() {
 
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
@@ -20,7 +21,8 @@ class RecyclerHistoryItem(
 
             with(viewHolder.itemView) {
 
-                tvDate.text = historyItem
+                tvSymptoms.text = status
+                tvDate.text = date
 
             }
 

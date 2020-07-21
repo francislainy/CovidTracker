@@ -8,12 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.example.covidtracker.DataRoomDbase
 import com.example.covidtracker.R
+import com.example.covidtracker.activities.MainActivity
 import com.example.covidtracker.api.GetTotalsAPI
 import com.example.covidtracker.model.APIError
+import com.example.covidtracker.model.MyDataList
 import com.example.covidtracker.model.Totals
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
+import kotlinx.android.synthetic.main.fragment_updates.*
 import kotlinx.android.synthetic.main.national_totals_layout.*
 import kotlinx.android.synthetic.main.todays_fight_layout.*
 
@@ -21,6 +25,7 @@ import kotlinx.android.synthetic.main.todays_fight_layout.*
 class UpdatesFragment : Fragment() {
 
     private var navController: NavController? = null
+    private var myDatabase: DataRoomDbase? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,6 +65,28 @@ class UpdatesFragment : Fragment() {
             "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19StatisticsProfileHPSCIrelandView/FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returnGeometry=false&outStatistics=%5B%7B%22onStatisticField%22%3A%22RequiringICUCovidCases%22%2C%22outStatisticFieldName%22%3A%22RequiringICUCovidCases_max%22%2C%22statisticType%22%3A%22max%22%7D%5D"
         )
 
+
+        btnImGood.setOnClickListener(onClickButtonHistory)
+        btnImNotWell.setOnClickListener(onClickButtonHistory)
+
+    }
+
+
+    private val onClickButtonHistory = View.OnClickListener {
+
+        val myDataList = MyDataList()
+        when (it) {
+            btnImGood -> myDataList.status = "Good"
+            btnImNotWell -> myDataList.status = "Bad"
+        }
+
+        myDataList.date = "today"
+        myDataList.hasRepliedToday = true
+        it?.isEnabled = false
+        howAreYouFeelingLayout.visibility = View.GONE
+
+        myDatabase = DataRoomDbase.getDatabase(activity as MainActivity)
+        myDatabase?.dataDAO()?.addData(myDataList)
     }
 
 

@@ -6,16 +6,17 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "mydatalist")
 data class MyDataList(
-    @PrimaryKey
+
+    @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
 
-    @ColumnInfo(name = "name")
-    var name: String? = null,
+    @ColumnInfo(name = "status")
+    var status: String? = null,
 
-    @ColumnInfo(name = "email")
-    var email: String? = null,
+    @ColumnInfo(name = "date")
+    var date: String? = null,
 
-    @ColumnInfo(name = "city")
-    var city: String? = null
+    @ColumnInfo(name = "has_replied_today")
+    var hasRepliedToday: Boolean? = null
 
 )

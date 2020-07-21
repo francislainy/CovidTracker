@@ -46,21 +46,13 @@ class CheckInFragment : Fragment(R.layout.fragment_check_in_bottom) {
                     adapter!!.add(
                         RecyclerHistoryItem(
                             activity as MainActivity,
-                            p?.name.toString()
+                            p?.status.toString(),
+                            p?.date.toString()
                         )
                     )
                 }
             }
         )
-
-//        val myDataList = MyDataList()
-//        myDataList.id = 21
-//        myDataList.name = "fran"
-//        myDataList.email = "email"
-//        myDataList.city = "city"
-
-//        myDatabase = DataRoomDbase.getDatabase(activity as MainActivity)
-//        myDatabase?.dataDAO()?.addData(myDataList)
 
     }
 

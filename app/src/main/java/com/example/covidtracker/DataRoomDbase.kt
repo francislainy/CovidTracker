@@ -8,7 +8,7 @@ import com.example.covidtracker.dao.MyDao
 import com.example.covidtracker.model.MyDataList
 
 
-@Database(entities = [MyDataList::class], version = 1, exportSchema = false)
+@Database(entities = [MyDataList::class], version = 3, exportSchema = false)
 abstract class DataRoomDbase : RoomDatabase() {
 
     abstract fun dataDAO(): MyDao?
@@ -24,6 +24,7 @@ abstract class DataRoomDbase : RoomDatabase() {
                     //Room.inMemoryDatabaseBuilder
                     //(context.getApplicationContext(), DataRoomDbase.class)
                     .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
                     .build()
             }
             return INSTANCE
