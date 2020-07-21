@@ -1,11 +1,13 @@
 package com.example.covidtracker.fragments
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.covidtracker.DataRoomDbase
@@ -20,6 +22,8 @@ import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_updates.*
 import kotlinx.android.synthetic.main.national_totals_layout.*
 import kotlinx.android.synthetic.main.todays_fight_layout.*
+import java.sql.Date
+import java.time.LocalDate
 
 
 class UpdatesFragment : Fragment() {
@@ -35,6 +39,7 @@ class UpdatesFragment : Fragment() {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -61,7 +66,7 @@ class UpdatesFragment : Fragment() {
         )
 
         getTotals(
-            "total_required_cpu",
+            "total_required_icu",
             "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19StatisticsProfileHPSCIrelandView/FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returnGeometry=false&outStatistics=%5B%7B%22onStatisticField%22%3A%22RequiringICUCovidCases%22%2C%22outStatisticFieldName%22%3A%22RequiringICUCovidCases_max%22%2C%22statisticType%22%3A%22max%22%7D%5D"
         )
 
@@ -72,6 +77,7 @@ class UpdatesFragment : Fragment() {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private val onClickButtonHistory = View.OnClickListener {
 
         val myDataList = MyDataList()
@@ -80,7 +86,7 @@ class UpdatesFragment : Fragment() {
             btnImNotWell -> myDataList.status = "Bad"
         }
 
-        myDataList.date = "today"
+        myDataList.date = LocalDate.now().toString()
         myDataList.hasRepliedToday = true
         it?.isEnabled = false
         howAreYouFeelingLayout.visibility = View.GONE
@@ -116,7 +122,7 @@ class UpdatesFragment : Fragment() {
                             tvTotalHospitalised.text =
                                 totals.features?.get(0)?.attributes?.totalHospitalisedCovidCasesMax.toString()
                         }
-                        "total_required_cpu" -> {
+                        "total_required_icu" -> {
                             tvTotalRequiredIcu.text =
                                 totals.features?.get(0)?.attributes?.totalRequiringICUCovidCasesMax.toString()
                         }
