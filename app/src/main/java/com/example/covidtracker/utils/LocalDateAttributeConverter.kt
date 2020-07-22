@@ -1,4 +1,4 @@
-package com.example.covidtracker
+package com.example.covidtracker.utils
 
 import android.os.Build
 import androidx.annotation.RequiresApi

@@ -1,4 +1,4 @@
-package com.example.covidtracker.dao;
+package com.example.covidtracker.db;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

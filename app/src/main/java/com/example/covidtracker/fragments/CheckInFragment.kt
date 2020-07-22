@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.covidtracker.DataRoomDbase
+import com.example.covidtracker.db.DataRoomDbase
 import com.example.covidtracker.R
-import com.example.covidtracker.Utils
+import com.example.covidtracker.utils.Utils
 import com.example.covidtracker.activities.MainActivity
 import com.example.covidtracker.adapter_holders.RecyclerHistoryItem
 import com.example.covidtracker.model.MyDataList

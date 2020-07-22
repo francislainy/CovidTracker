@@ -3,9 +3,6 @@ package com.example.covidtracker.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
-import com.example.covidtracker.Converters
-import java.time.LocalDate
 
 @Entity(tableName = "mydatalist")
 data class MyDataList(

@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.covidtracker.DataRoomDbase;
-import com.example.covidtracker.dao.MyDao;
+import com.example.covidtracker.db.DataRoomDbase;
+import com.example.covidtracker.db.MyDao;
 import com.example.covidtracker.model.MyDataList;
 
 import java.util.List;

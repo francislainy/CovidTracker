@@ -8,22 +8,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.example.covidtracker.DataRoomDbase
+import com.example.covidtracker.db.DataRoomDbase
 import com.example.covidtracker.R
 import com.example.covidtracker.activities.MainActivity
 import com.example.covidtracker.api.GetTotalsAPI
 import com.example.covidtracker.model.APIError
 import com.example.covidtracker.model.MyDataList
 import com.example.covidtracker.model.Totals
+import com.example.covidtracker.utils.gone
+import com.example.covidtracker.utils.visible
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_updates.*
 import kotlinx.android.synthetic.main.national_totals_layout.*
 import kotlinx.android.synthetic.main.todays_fight_layout.*
-import java.sql.Date
-import java.time.LocalDate
 
 
 class UpdatesFragment : Fragment() {
@@ -75,17 +76,23 @@ class UpdatesFragment : Fragment() {
         )
 
 
-        btnImGood.setOnClickListener(onClickButtonHistory)
-        btnImNotWell.setOnClickListener(onClickButtonHistory)
+        btnImGood.setOnClickListener(onClickStatusItemOnCard)
+        btnImNotWell.setOnClickListener(onClickStatusItemOnCard)
 
+        ivClose.setOnClickListener(onClickStatusItemOnCard)
     }
 
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private val onClickButtonHistory = View.OnClickListener {
+    private val onClickStatusItemOnCard = View.OnClickListener run@{
 
         val myDataList = MyDataList()
+
         when (it) {
+            ivClose -> {
+                howAreYouFeelingLayout.gone()
+                return@run
+            }
             btnImGood -> myDataList.status = "Good"
             btnImNotWell -> myDataList.status = "Bad"
         }
@@ -93,7 +100,7 @@ class UpdatesFragment : Fragment() {
         myDataList.date = java.util.Date().toString()
         myDataList.hasRepliedToday = true
         it?.isEnabled = false
-        howAreYouFeelingLayout.visibility = View.GONE
+        howAreYouFeelingLayout.gone()
 
         myDatabase = DataRoomDbase.getDatabase(activity as MainActivity)
         myDatabase?.dataDAO()?.addData(myDataList)
@@ -107,28 +114,29 @@ class UpdatesFragment : Fragment() {
 
                 override fun onSuccess(jo: JsonObject) {
 
-                    Log.i(Companion.LOG_TAG, "onSuccess ${Companion.LOG_TAG}")
+                    Log.i(LOG_TAG, "onSuccess $LOG_TAG")
 
                     val gson = GsonBuilder().setPrettyPrinting().create()
                     val totals: Totals =
                         gson.fromJson(jo, Totals::class.java)
+                    val attributes = totals.features?.get(0)?.attributes
 
                     when (section) {
                         "confirmed_cases" -> {
                             tvTotalCases.text =
-                                totals.features?.get(0)?.attributes?.totalConfirmedCovidCasesMax.toString()
+                                attributes?.totalConfirmedCovidCasesMax.toString()
                         }
                         "total_deaths" -> {
                             tvTotalDeaths.text =
-                                totals.features?.get(0)?.attributes?.totalCovidDeathsMax.toString()
+                                attributes?.totalCovidDeathsMax.toString()
                         }
                         "total_hospitalised" -> {
                             tvTotalHospitalised.text =
-                                totals.features?.get(0)?.attributes?.totalHospitalisedCovidCasesMax.toString()
+                                attributes?.totalHospitalisedCovidCasesMax.toString()
                         }
                         "total_required_icu" -> {
                             tvTotalRequiredIcu.text =
-                                totals.features?.get(0)?.attributes?.totalRequiringICUCovidCasesMax.toString()
+                                attributes?.totalRequiringICUCovidCasesMax.toString()
                         }
 
                     }

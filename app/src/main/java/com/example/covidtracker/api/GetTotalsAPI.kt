@@ -1,7 +1,7 @@
 package com.example.covidtracker.api
 
 import android.util.Log
-import com.example.covidtracker.ErrorUtils
+import com.example.covidtracker.utils.ErrorUtils
 import com.example.covidtracker.model.APIError
 import com.example.covidtracker.network.ApiInterface
 import com.example.covidtracker.network.ServiceBuilder
