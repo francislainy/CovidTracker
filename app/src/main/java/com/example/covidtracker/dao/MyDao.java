@@ -19,6 +19,9 @@ public interface MyDao {
     @Query("select * from mydatalist")
     LiveData<List<MyDataList>> getMyData();
 
+    @Query("delete from mydatalist")
+    void deleteAll();
+
     @Delete
     void delete(MyDataList mydatalist);
 
