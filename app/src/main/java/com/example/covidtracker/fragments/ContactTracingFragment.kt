@@ -1,9 +1,7 @@
 package com.example.covidtracker.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.covidtracker.R
 import com.example.covidtracker.view_models.Communicator
@@ -13,19 +11,10 @@ import androidx.navigation.Navigation
 import com.example.covidtracker.activities.MainActivity
 import kotlinx.android.synthetic.main.fragment_sender.*
 
-class ContactTracingFragment : Fragment() {
+class ContactTracingFragment : Fragment(R.layout.fragment_sender) {
 
     private var model: Communicator? = null
     private var navController: NavController? = null
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-//        return inflater.inflate(R.layout.fragment_contact_tracing, container, false)
-        return inflater.inflate(R.layout.fragment_sender, container, false)
-    }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,7 +24,7 @@ class ContactTracingFragment : Fragment() {
         navController = Navigation.findNavController(view)
 
 
-        //listener onClick
+        // Listener onClick
         btnSend.setOnClickListener {view ->
             //set the message to share to another fragment
             model!!.setMsgCommunicator(txSendToFgm.text.toString())
@@ -46,9 +35,5 @@ class ContactTracingFragment : Fragment() {
 
         }
     }
-
-
-
-
 
 }

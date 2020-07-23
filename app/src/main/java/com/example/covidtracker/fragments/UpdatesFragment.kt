@@ -4,11 +4,8 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.covidtracker.db.DataRoomDbase
@@ -19,26 +16,16 @@ import com.example.covidtracker.model.APIError
 import com.example.covidtracker.model.MyDataList
 import com.example.covidtracker.model.Totals
 import com.example.covidtracker.utils.gone
-import com.example.covidtracker.utils.visible
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_updates.*
 import kotlinx.android.synthetic.main.national_totals_layout.*
 import kotlinx.android.synthetic.main.todays_fight_layout.*
 
-
-class UpdatesFragment : Fragment() {
+class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
     private var navController: NavController? = null
     private var myDatabase: DataRoomDbase? = null
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_updates, container, false)
-    }
-
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -159,8 +146,6 @@ class UpdatesFragment : Fragment() {
 
 
     companion object {
-        fun newInstance() =
-            UpdatesFragment()
 
         private val LOG_TAG = UpdatesFragment::class.java.canonicalName
     }
