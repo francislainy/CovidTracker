@@ -2,16 +2,17 @@ package com.example.covidtracker.fragments
 
 import android.os.Build
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.example.covidtracker.db.DataRoomDbase
 import com.example.covidtracker.R
 import com.example.covidtracker.activities.MainActivity
 import com.example.covidtracker.api.GetTotalsAPI
+import com.example.covidtracker.db.DataRoomDbase
 import com.example.covidtracker.model.APIError
 import com.example.covidtracker.model.MyDataList
 import com.example.covidtracker.model.Totals
@@ -21,6 +22,7 @@ import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_updates.*
 import kotlinx.android.synthetic.main.national_totals_layout.*
 import kotlinx.android.synthetic.main.todays_fight_layout.*
+
 
 class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
@@ -110,29 +112,44 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
                     when (section) {
                         "confirmed_cases" -> {
-                            tvTotalCases.text =
-                                attributes?.totalConfirmedCovidCasesMax.toString()
+                            val s = String.format(
+                                "%,d",
+                                attributes?.totalConfirmedCovidCasesMax.toString().toLong()
+                            )
+                            tvTotalCases.text = s
                         }
                         "total_deaths" -> {
-                            tvTotalDeaths.text =
-                                attributes?.totalCovidDeathsMax.toString()
+                            val s = String.format(
+                                "%,d",
+                                attributes?.totalCovidDeathsMax.toString().toLong()
+                            )
+                            tvTotalDeaths.text = s
+
                         }
                         "total_hospitalised" -> {
-                            tvTotalHospitalised.text =
-                                attributes?.totalHospitalisedCovidCasesMax.toString()
+                            val s = String.format(
+                                "%,d",
+                                attributes?.totalHospitalisedCovidCasesMax.toString().toLong()
+                            )
+                            tvTotalHospitalised.text = s
                         }
                         "total_required_icu" -> {
-                            tvTotalRequiredIcu.text =
-                                attributes?.totalRequiringICUCovidCasesMax.toString()
+                            val s = String.format(
+                                "%,d",
+                                attributes?.totalRequiringICUCovidCasesMax.toString().toLong()
+                            )
+                            tvTotalRequiredIcu.text = s
                         }
 
                     }
 
                 }
 
+
                 override fun onFailure(message: String?) {
                     Log.e(LOG_TAG, "onFailure $message $LOG_TAG")
                 }
+
 
                 override fun onError(apiError: APIError) {
                     Log.e(LOG_TAG, "onError $apiError $LOG_TAG")
