@@ -2,7 +2,6 @@ package com.example.covidtracker.fragments
 
 import android.os.Build
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
