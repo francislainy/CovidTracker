@@ -17,6 +17,7 @@ import com.example.covidtracker.view_models.MyViewModelFactory
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_settings.*
+import kotlinx.android.synthetic.main.title_and_progress_bar.*
 
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
@@ -26,6 +27,8 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        tvHeader.text = "Settings"
 
         val linearLayoutManager = LinearLayoutManager(activity)
         rvSettings.layoutManager = linearLayoutManager

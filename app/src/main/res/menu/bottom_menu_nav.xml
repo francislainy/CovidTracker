@@ -4,28 +4,28 @@
 
     <item
         android:id="@+id/updatesFragment"
-        android:icon="@drawable/ic_radio_unchecked"
+        android:icon="@drawable/bar_chart_active"
         android:orderInCategory="1"
         android:title="Updates"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/checkInBottomFragment"
-        android:icon="@drawable/ic_radio_unchecked"
+        android:icon="@drawable/covid_gray"
         android:orderInCategory="1"
         android:title="COVID\nCheck-in"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/contactTracingBottomFragment"
-        android:icon="@drawable/ic_radio_unchecked"
+        android:icon="@drawable/contact_tracing_spin"
         android:orderInCategory="2"
         android:title="Contact\nTracing"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/shareAppBottomFragment"
-        android:icon="@drawable/ic_radio_unchecked"
+        android:icon="@drawable/share"
         android:orderInCategory="2"
         android:title="Share app"
         app:showAsAction="always" />

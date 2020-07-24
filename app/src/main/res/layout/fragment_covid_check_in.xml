@@ -167,7 +167,6 @@
         app:layout_constraintStart_toStartOf="@id/tvYouHaveSharedInfo"
         app:layout_constraintTop_toBottomOf="@id/ivArrowNext2" />
 
-
     <TextView
         android:id="@+id/tvYourLocality"
         android:layout_width="0dp"

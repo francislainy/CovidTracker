@@ -12,20 +12,20 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/howAreYouFeelingLayout"
             android:layout_width="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
             android:theme="@style/Theme.MaterialComponents.Light"
             app:cardCornerRadius="6dp"
             app:cardElevation="5dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:strokeColor="#ccc"
-            app:strokeWidth="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/todaysFightLayout"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="#ccc"
+            app:strokeWidth="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -108,51 +108,34 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <include
             android:id="@+id/todaysFightLayout"
+            layout="@layout/todays_fight_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible"
             app:layout_constraintBottom_toTopOf="@id/nationalPictureLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/howAreYouFeelingLayout">
+            app:layout_constraintTop_toBottomOf="@id/howAreYouFeelingLayout" />
 
-            <include layout="@layout/todays_fight_layout" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <include
             android:id="@+id/nationalPictureLayout"
+            layout="@layout/national_picture_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/todaysFightLayout">
+            app:layout_constraintTop_toBottomOf="@+id/todaysFightLayout" />
 
-            <include layout="@layout/national_picture_layout" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <include
+            layout="@layout/national_totals_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nationalPictureLayout"
-            tools:context=".fragments.UpdatesFragment"
-            tools:showIn="@layout/fragment_updates">
-
-            <include
-                layout="@layout/national_totals_layout"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="29dp" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nationalPictureLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

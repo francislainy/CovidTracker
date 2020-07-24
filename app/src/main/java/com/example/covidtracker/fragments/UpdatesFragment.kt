@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -20,7 +21,9 @@ import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_updates.*
 import kotlinx.android.synthetic.main.national_totals_layout.*
-import kotlinx.android.synthetic.main.todays_fight_layout.*
+import kotlinx.android.synthetic.main.title_and_progress_bar.*
+import kotlinx.android.synthetic.main.title_and_progress_bar.view.*
+import kotlinx.android.synthetic.main.todays_fight_layout.view.*
 
 
 class UpdatesFragment : Fragment(R.layout.fragment_updates) {
@@ -30,11 +33,24 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
+
+        val ll = todaysFightLayout as ConstraintLayout
+        val ll2 = ll.titleAndProgressBar
+        val tv = ll2.tvHeader
+        tv.text = "Today's fight"
+
+
+        val lla = nationalPictureLayout as ConstraintLayout
+        val ll2a = lla.titleAndProgressBar
+        val tv2 = ll2a.tvHeader
+        tv2.text = "Latest Update"
+
 
         navController = Navigation.findNavController(view)
 
-        tvTotalsFightTitle.setOnClickListener {
+        tvHeader.setOnClickListener {
             navController!!.navigate(R.id.action_updatesFragment_to_settingsFragment)
         }
 

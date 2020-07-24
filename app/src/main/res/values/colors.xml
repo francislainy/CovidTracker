@@ -5,9 +5,22 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="red">#FF0000</color>
     <color name="greyCcc">#ccc</color>
-    <color name="yellow">#FFFF00</color>
     <color name="white">#FFFFFF</color>
     <color name="greyBBB">#BBB</color>
     <color name="greyAAA">#AAA</color>
     <color name="black">#000</color>
+    <color name="yellow">#FFEA0C</color>
+    <color name="lightYellow">#fff37a</color>
+    <color name="mildYellow">#fff16f</color>
+    <color name="darkerYellow">#FFDA1A</color>
+    <color name="orange">#FF8248</color>
+    <color name="gray">#F5F5F5</color>
+    <color name="darkGray">#96989B</color>
+    <color name="dot">#B2B2B2</color>
+    <color name="selectedDot">#2E2E2E</color>
+    <color name="success">#00CF68</color>
+    <color name="text">#2E2E2E</color>
+    <color name="shadow">#255E62</color>
+    <color name="danger">#8B042A</color>
+    <color name="empty">#D3D0D0</color>
 </resources>

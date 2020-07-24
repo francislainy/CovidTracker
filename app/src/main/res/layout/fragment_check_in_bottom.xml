@@ -5,11 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardLetUsKnowSymptoms"
@@ -25,7 +23,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:strokeColor="@color/greyCcc"
             app:strokeWidth="1dp">
-
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -49,8 +46,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="COVID Check-In"
-                    android:textStyle="bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/tvLetUsKnowSymptoms"
                     app:layout_constraintStart_toEndOf="@+id/ivSymptoms"
                     app:layout_constraintTop_toTopOf="@+id/ivSymptoms" />
@@ -79,23 +76,19 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </com.google.android.material.card.MaterialCardView>
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/headerHolder"
+        <include
+            android:id="@+id/titleAndProgressBarLayout"
+            layout="@layout/title_and_progress_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/rvHistory"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardLetUsKnowSymptoms">
-
-            <include layout="@layout/title_and_progress_bar" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toBottomOf="@id/cardLetUsKnowSymptoms" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvHistory"
@@ -104,9 +97,9 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/headerHolder"
-            app:layout_constraintStart_toStartOf="@id/headerHolder"
-            app:layout_constraintTop_toBottomOf="@id/headerHolder"
+            app:layout_constraintEnd_toEndOf="@id/titleAndProgressBarLayout"
+            app:layout_constraintStart_toStartOf="@id/titleAndProgressBarLayout"
+            app:layout_constraintTop_toBottomOf="@id/titleAndProgressBarLayout"
             tools:listitem="@layout/rv_history_item_row" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

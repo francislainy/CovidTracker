@@ -8,6 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.covidtracker.R
 import kotlinx.android.synthetic.main.fragment_covid_check_in.*
+import kotlinx.android.synthetic.main.title_and_progress_bar.*
 
 
 class CovidCheckInFragment : Fragment(R.layout.fragment_covid_check_in) {
@@ -16,6 +17,8 @@ class CovidCheckInFragment : Fragment(R.layout.fragment_covid_check_in) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        tvHeader.text = "COVID Check-in"
 
         navController = Navigation.findNavController(view)
 

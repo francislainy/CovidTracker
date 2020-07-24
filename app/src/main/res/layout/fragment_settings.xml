@@ -6,35 +6,13 @@
     android:layout_height="wrap_content"
     tools:context=".fragments.SettingsFragment">
 
-    <TextView
-        android:id="@+id/tvHeader"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Settings"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/pb"
+    <include
+        android:id="@+id/titleAndProgressBar"
+        layout="@layout/title_and_progress_bar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ProgressBar
-        android:id="@+id/pb"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:progress="60"
-        android:progressBackgroundTint="@color/greyCcc"
-        android:progressTint="@color/yellow"
-        android:scaleY="2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/tvHeader"
-        app:layout_constraintTop_toBottomOf="@+id/tvHeader" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
@@ -49,7 +27,7 @@
         app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pb"
+        app:layout_constraintTop_toBottomOf="@id/titleAndProgressBar"
         app:strokeColor="@color/greyCcc"
         app:strokeWidth="1dp">
 
