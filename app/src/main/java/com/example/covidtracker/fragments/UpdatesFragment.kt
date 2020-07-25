@@ -54,6 +54,11 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
             navController!!.navigate(R.id.action_updatesFragment_to_settingsFragment)
         }
 
+        nationalPictureLayout.setOnClickListener {
+            navController!!.navigate(R.id.action_updatesFragment_to_casesByCountyFragment)
+        }
+
+
         val baseUrl =
             "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19StatisticsProfileHPSCIrelandView/FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returnGeometry=false&outStatistics=%5B%7B%22onStatisticField%22%3A%22"
         val appended = "%22%2C%22statisticType%22%3A%22max%22%7D%5D"

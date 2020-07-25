@@ -21,4 +21,12 @@ class Attributes {
     @Expose
     var totalRequiringICUCovidCasesMax: Int? = null
 
+    @SerializedName("value")
+    @Expose
+    var value: Int? = null
+
+    @SerializedName("CountyName")
+    @Expose
+    var countyName: String? = null
+
 }

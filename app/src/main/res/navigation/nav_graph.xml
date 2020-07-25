@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_updatesFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_updatesFragment_to_casesByCountyFragment"
+            app:destination="@id/casesByCountyFragment" />
     </fragment>
 
     <fragment
@@ -77,5 +80,13 @@
         android:id="@+id/shareAppBottomFragment"
         android:name="com.example.covidtracker.fragments.ShareAppBottomFragment"
         tools:layout="@layout/fragment_share_app_bottom" />
+    <fragment
+        android:id="@+id/casesByCountyFragment"
+        android:name="com.example.covidtracker.fragments.CasesByCountyFragment"
+        tools:layout="@layout/fragment_cases_by_county" >
+        <action
+            android:id="@+id/action_casesByCountyFragment_to_updatesFragment"
+            app:destination="@id/updatesFragment" />
+    </fragment>
 
 </navigation>

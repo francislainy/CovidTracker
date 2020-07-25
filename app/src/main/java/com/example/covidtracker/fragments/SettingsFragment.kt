@@ -53,7 +53,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     }
 
 
-    val userListUpdateObserver: Observer<Array<String>?> =
+    private val userListUpdateObserver: Observer<Array<String>?> =
         Observer { userArrayList ->
             for (s in userArrayList!!) {
                 adapter!!.add(RecyclerSettingsItem(activity as MainActivity, s))
