@@ -1,17 +1,16 @@
 package com.example.covidtracker.fragments
 
-import android.graphics.drawable.ClipDrawable.HORIZONTAL
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.covidtracker.R
 import com.example.covidtracker.activities.MainActivity
 import com.example.covidtracker.adapter_holders.RecyclerSettingsItem
+import com.example.covidtracker.utils.addDecoration
 import com.example.covidtracker.view_models.HomeViewModel
 import com.example.covidtracker.view_models.MyViewModelFactory
 import com.xwray.groupie.GroupAdapter
@@ -22,7 +21,7 @@ import kotlinx.android.synthetic.main.title_and_progress_bar.*
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
-    private var adapter: GroupAdapter<GroupieViewHolder>? = null
+    private var gAdapter: GroupAdapter<GroupieViewHolder>? = null
     private var viewModel: HomeViewModel? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,15 +30,12 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         tvHeader.text = "Settings"
 
         val linearLayoutManager = LinearLayoutManager(activity)
-        rvSettings.layoutManager = linearLayoutManager
-        adapter = GroupAdapter()
-        rvSettings.adapter = adapter
-
-        val decoration = DividerItemDecoration(
-            activity as MainActivity,
-            HORIZONTAL
-        )
-        rvSettings.addItemDecoration(decoration)
+        gAdapter = GroupAdapter()
+        rvSettings.apply {
+            layoutManager = linearLayoutManager
+            addDecoration(activity as MainActivity)
+            adapter = gAdapter
+        }
 
 
         viewModel = ViewModelProviders.of(activity as MainActivity).get(HomeViewModel::class.java)
@@ -56,7 +52,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     private val userListUpdateObserver: Observer<Array<String>?> =
         Observer { userArrayList ->
             for (s in userArrayList!!) {
-                adapter!!.add(RecyclerSettingsItem(activity as MainActivity, s))
+                gAdapter!!.add(RecyclerSettingsItem(activity as MainActivity, s))
             }
         }
 

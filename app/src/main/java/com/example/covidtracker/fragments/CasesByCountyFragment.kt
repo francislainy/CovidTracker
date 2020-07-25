@@ -15,6 +15,7 @@ import com.example.covidtracker.adapter_holders.RecyclerCountyItem
 import com.example.covidtracker.api.GetTotalsAPI
 import com.example.covidtracker.model.APIError
 import com.example.covidtracker.model.Totals
+import com.example.covidtracker.utils.addDecoration
 import com.example.covidtracker.view_models.HomeViewModel
 import com.example.covidtracker.view_models.MyViewModelFactory
 import com.google.gson.GsonBuilder
@@ -26,7 +27,7 @@ import kotlinx.android.synthetic.main.title_and_progress_bar.*
 
 class CasesByCountyFragment : Fragment(R.layout.fragment_cases_by_county) {
 
-    private var adapter: GroupAdapter<GroupieViewHolder>? = null
+    private var gAdapter: GroupAdapter<GroupieViewHolder>? = null
     private var viewModel: HomeViewModel? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,9 +36,13 @@ class CasesByCountyFragment : Fragment(R.layout.fragment_cases_by_county) {
         tvHeader.text = "Cases by county"
 
         val linearLayoutManager = LinearLayoutManager(activity)
-        rvCounty.layoutManager = linearLayoutManager
-        adapter = GroupAdapter()
-        rvCounty.adapter = adapter
+        gAdapter = GroupAdapter()
+        rvCounty.apply {
+            layoutManager = linearLayoutManager
+            addDecoration(activity as MainActivity)
+            adapter = gAdapter
+        }
+
 
 
         val url =
@@ -45,12 +50,6 @@ class CasesByCountyFragment : Fragment(R.layout.fragment_cases_by_county) {
 
         getTotals(url)
 
-
-        val decoration = DividerItemDecoration(
-            activity as MainActivity,
-            ClipDrawable.HORIZONTAL
-        )
-        rvCounty.addItemDecoration(decoration)
 
 //        viewModel = ViewModelProviders.of(activity as MainActivity).get(HomeViewModel::class.java)
 //
@@ -83,7 +82,7 @@ class CasesByCountyFragment : Fragment(R.layout.fragment_cases_by_county) {
                         val countyName = attributes?.countyName
                         val value = attributes?.value.toString()
 
-                        adapter?.add(
+                        gAdapter?.add(
                             RecyclerCountyItem(
                                 activity as MainActivity,
                                 countyName,
