@@ -1,30 +1,31 @@
 package com.example.covidtracker.fragments
 
 import android.content.Context
-import android.graphics.drawable.ClipDrawable
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.covidtracker.R
 import com.example.covidtracker.activities.MainActivity
 import com.example.covidtracker.adapter_holders.RecyclerCountyItem
 import com.example.covidtracker.api.GetTotalsAPI
 import com.example.covidtracker.model.APIError
+import com.example.covidtracker.model.Feature
 import com.example.covidtracker.model.Totals
 import com.example.covidtracker.utils.addDecoration
 import com.example.covidtracker.view_models.HomeViewModel
-import com.example.covidtracker.view_models.MyViewModelFactory
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_cases_by_county.*
 import kotlinx.android.synthetic.main.title_and_progress_bar.*
+import java.util.*
+import kotlin.Comparator
+
 
 class CasesByCountyFragment : Fragment(R.layout.fragment_cases_by_county) {
 
@@ -43,7 +44,6 @@ class CasesByCountyFragment : Fragment(R.layout.fragment_cases_by_county) {
             addDecoration(activity as MainActivity)
             adapter = gAdapter
         }
-
 
 
         val url =
@@ -68,6 +68,7 @@ class CasesByCountyFragment : Fragment(R.layout.fragment_cases_by_county) {
         GetTotalsAPI.postData(
             object : GetTotalsAPI.ThisCallback {
 
+                @RequiresApi(Build.VERSION_CODES.N)
                 override fun onSuccess(jo: JsonObject) {
 
                     Log.i(LOG_TAG, "onSuccess $LOG_TAG")
@@ -76,8 +77,21 @@ class CasesByCountyFragment : Fragment(R.layout.fragment_cases_by_county) {
                     val totals: Totals =
                         gson.fromJson(jo, Totals::class.java)
 
-                    val preference=(activity as MainActivity).getSharedPreferences(resources.getString(R.string.app_name), Context.MODE_PRIVATE)
-                    val total= preference.getInt("total",0)
+                    val preference = (activity as MainActivity).getSharedPreferences(
+                        resources.getString(R.string.app_name),
+                        Context.MODE_PRIVATE
+                    )
+                    val total = preference.getInt("total", 0)
+
+
+                    if (totals.features!!.isNotEmpty()) {
+                        Collections.sort(
+                            totals.features,
+                            Comparator { c1, c2 -> //You should ensure that list doesn't contain null values!
+                                c1.attributes!!.countyName!!.compareTo(c2.attributes?.countyName!!)
+                            })
+                    }
+
 
                     for (f in totals.features!!) {
 
