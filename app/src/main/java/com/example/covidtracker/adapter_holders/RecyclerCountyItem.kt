@@ -28,6 +28,7 @@ class RecyclerCountyItem(
                 val percentage = ((value!! / total?.toDouble()!!)*100).toInt()
 
                 tvPercentage.text = "$percentage %"
+                pb.progress = percentage
 
             }
 
