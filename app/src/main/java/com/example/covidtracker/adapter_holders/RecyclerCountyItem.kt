@@ -12,7 +12,8 @@ private val LOG_TAG = RecyclerCountyItem::class.java.canonicalName
 class RecyclerCountyItem(
     private val activity: MainActivity,
     private val title: String?,
-    private val value: String?
+    private val value: Int?,
+    private val total: Int?
 ) : Item<GroupieViewHolder>() {
 
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
@@ -22,7 +23,11 @@ class RecyclerCountyItem(
             with(viewHolder.itemView) {
 
                 tvCountyName.text = title
-                tvValue.text = value
+                tvValue.text = value.toString()
+
+                val percentage = ((value!! / total?.toDouble()!!)*100).toInt()
+
+                tvPercentage.text = "$percentage %"
 
             }
 

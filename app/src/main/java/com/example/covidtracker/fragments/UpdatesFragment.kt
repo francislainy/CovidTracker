@@ -1,5 +1,7 @@
 package com.example.covidtracker.fragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -30,6 +32,8 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
     private var navController: NavController? = null
     private var myDatabase: DataRoomDbase? = null
+    private var PRIVATE_MODE = 0
+    private val PREF_NAME = "mindorks-welcome"
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,6 +63,16 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
         }
 
 
+        retrieveTotals()
+
+
+        btnImGood.setOnClickListener(onClickStatusItemOnCard)
+        btnImNotWell.setOnClickListener(onClickStatusItemOnCard)
+
+        ivClose.setOnClickListener(onClickStatusItemOnCard)
+    }
+
+    private fun retrieveTotals() {
         val baseUrl =
             "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19StatisticsProfileHPSCIrelandView/FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returnGeometry=false&outStatistics=%5B%7B%22onStatisticField%22%3A%22"
         val appended = "%22%2C%22statisticType%22%3A%22max%22%7D%5D"
@@ -83,12 +97,6 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
             "total_required_icu",
             baseUrl + "RequiringICUCovidCases%22%2C%22outStatisticFieldName%22%3A%22RequiringICUCovidCases_max" + appended
         )
-
-
-        btnImGood.setOnClickListener(onClickStatusItemOnCard)
-        btnImNotWell.setOnClickListener(onClickStatusItemOnCard)
-
-        ivClose.setOnClickListener(onClickStatusItemOnCard)
     }
 
 
@@ -137,6 +145,13 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
                                 attributes?.totalConfirmedCovidCasesMax.toString().toLong()
                             )
                             tvTotalCases.text = s
+
+                            val preference=(activity as MainActivity).getSharedPreferences(resources.getString(R.string.app_name), Context.MODE_PRIVATE)
+                            val editor=preference.edit()
+                            editor.putInt("total", attributes?.totalConfirmedCovidCasesMax!!)
+                            editor.apply()
+
+
                         }
                         "total_deaths" -> {
                             val s = String.format(

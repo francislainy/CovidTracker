@@ -1,5 +1,6 @@
 package com.example.covidtracker.fragments
 
+import android.content.Context
 import android.graphics.drawable.ClipDrawable
 import android.os.Bundle
 import android.util.Log
@@ -75,18 +76,21 @@ class CasesByCountyFragment : Fragment(R.layout.fragment_cases_by_county) {
                     val totals: Totals =
                         gson.fromJson(jo, Totals::class.java)
 
+                    val preference=(activity as MainActivity).getSharedPreferences(resources.getString(R.string.app_name), Context.MODE_PRIVATE)
+                    val total= preference.getInt("total",0)
 
                     for (f in totals.features!!) {
 
                         val attributes = f.attributes
                         val countyName = attributes?.countyName
-                        val value = attributes?.value.toString()
+                        val value = attributes?.value
 
                         gAdapter?.add(
                             RecyclerCountyItem(
                                 activity as MainActivity,
                                 countyName,
-                                value
+                                value,
+                                total
                             )
                         )
 
