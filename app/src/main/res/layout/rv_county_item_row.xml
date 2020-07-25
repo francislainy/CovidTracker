@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:paddingTop="16dp"
-    android:paddingBottom="8dp"
-    android:layout_height="wrap_content">
+    android:layout_height="40dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp">
 
     <TextView
         android:id="@+id/tvCountyName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tvValue"
         app:layout_constraintHorizontal_weight="2"
@@ -23,38 +24,45 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
+        android:gravity="end"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tvCountyName"
         app:layout_constraintEnd_toStartOf="@+id/pb"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/tvCountyName"
         app:layout_constraintTop_toTopOf="@+id/tvCountyName"
-        android:gravity="end"
         tools:text="1500" />
 
     <ProgressBar
         android:id="@+id/pb"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginStart="4dp"
         android:layoutDirection="rtl"
+        android:progressBackgroundTint="@color/white"
+        android:progressTint="@color/darkerYellow"
+        android:scaleY="7"
         app:layout_constraintBottom_toBottomOf="@+id/tvValue"
         app:layout_constraintEnd_toStartOf="@+id/tvPercentage"
         app:layout_constraintHorizontal_weight="2"
         app:layout_constraintStart_toEndOf="@+id/tvValue"
-        app:layout_constraintTop_toTopOf="@+id/tvValue" />
+        app:layout_constraintTop_toTopOf="@+id/tvValue"
+        tools:progress="20" />
 
     <TextView
         android:id="@+id/tvPercentage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="1%"
+        android:layout_marginStart="4dp"
         android:gravity="center"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/pb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight=".5"
         app:layout_constraintStart_toEndOf="@+id/pb"
-        app:layout_constraintTop_toTopOf="@+id/pb" />
+        app:layout_constraintTop_toTopOf="@+id/pb"
+        tools:text="1%" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

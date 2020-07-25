@@ -6,6 +6,8 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.rv_county_item_row.view.*
 import kotlinx.android.synthetic.main.rv_history_item_row.view.*
+import kotlin.math.ceil
+import kotlin.math.round
 
 private val LOG_TAG = RecyclerCountyItem::class.java.canonicalName
 
@@ -25,9 +27,13 @@ class RecyclerCountyItem(
                 tvCountyName.text = title
                 tvValue.text = value.toString()
 
-                val percentage = ((value!! / total?.toDouble()!!)*100).toInt()
+                val percentage = round((value!! / total!!.toDouble()) * 100).toInt()
 
-                tvPercentage.text = "$percentage %"
+                if (percentage < 1) {
+                    tvPercentage.text = "<1%"
+                } else {
+                    tvPercentage.text = "$percentage %"
+                }
                 pb.progress = percentage
 
             }

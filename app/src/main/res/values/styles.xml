@@ -31,13 +31,12 @@
         <item name="android:padding">2dp</item>
     </style>
 
-
     <style name="pbStyle" parent="android:Widget.ProgressBar.Horizontal">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:progress">60</item>
-        <item name="android:progressBackgroundTint">@color/yellow</item>
-        <item name="android:progressTint">@color/darkerYellow</item>
+        <item name="android:secondaryProgress">20</item>
+        <item name="android:progressDrawable">@drawable/gradient_progress</item>
         <item name="android:scaleY">.5</item>
     </style>
 
