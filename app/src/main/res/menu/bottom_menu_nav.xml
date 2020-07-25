@@ -24,7 +24,7 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/shareAppBottomFragment"
+        android:id="@+id/share"
         android:icon="@drawable/share"
         android:orderInCategory="2"
         android:title="Share app"

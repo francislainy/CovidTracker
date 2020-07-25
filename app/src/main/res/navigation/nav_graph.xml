@@ -77,10 +77,6 @@
         android:name="com.example.covidtracker.fragments.ContactTracingBottomFragment"
         tools:layout="@layout/fragment_contact_tracing_bottom" />
     <fragment
-        android:id="@+id/shareAppBottomFragment"
-        android:name="com.example.covidtracker.fragments.ShareAppBottomFragment"
-        tools:layout="@layout/fragment_share_app_bottom" />
-    <fragment
         android:id="@+id/casesByCountyFragment"
         android:name="com.example.covidtracker.fragments.CasesByCountyFragment"
         tools:layout="@layout/fragment_cases_by_county" >
