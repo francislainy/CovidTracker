@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_covidCheckInFragment"
             app:destination="@id/covidCheckInFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_dataProtectionFragment"
+            app:destination="@id/dataProtectionFragment" />
     </fragment>
 
     <fragment
@@ -83,6 +86,14 @@
         <action
             android:id="@+id/action_casesByCountyFragment_to_updatesFragment"
             app:destination="@id/updatesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dataProtectionFragment"
+        android:name="com.example.covidtracker.fragments.DataProtectionFragment"
+        tools:layout="@layout/fragment_data_protection" >
+        <action
+            android:id="@+id/action_dataProtectionFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 
 </navigation>

@@ -33,6 +33,7 @@ class RecyclerSettingsItem(
                     when (settingItem) {
                         "Contact Tracing" -> navController!!.navigate(R.id.action_settingsFragment_to_contactTracingFragment)
                         "COVID Check-In" -> navController!!.navigate(R.id.action_settingsFragment_to_covidCheckInFragment)
+                        "Data Protection Information Notice" -> navController!!.navigate(R.id.action_settingsFragment_to_dataProtectionFragment)
                     }
 
                 }
