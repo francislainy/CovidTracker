@@ -32,8 +32,6 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
     private var navController: NavController? = null
     private var myDatabase: DataRoomDbase? = null
-    private var PRIVATE_MODE = 0
-    private val PREF_NAME = "mindorks-welcome"
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

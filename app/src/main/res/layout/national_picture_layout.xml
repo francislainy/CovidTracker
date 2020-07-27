@@ -40,21 +40,29 @@
         app:strokeColor="#ccc"
         app:strokeWidth="1dp">
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="16dp">
 
-            <ImageView
-                android:id="@+id/ivMap"
+            <FrameLayout
+                android:id="@+id/flMap"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/ireland"
+                android:background="@drawable/circle"
+                android:backgroundTint="@color/blue_green"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/ivMap"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ireland" />
+
+            </FrameLayout>
 
             <TextView
                 android:id="@+id/tvNationalPicture"
@@ -63,23 +71,24 @@
                 android:layout_marginStart="16dp"
                 android:text="The national picture"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/ivMap"
-                app:layout_constraintStart_toEndOf="@+id/ivMap"
-                app:layout_constraintTop_toTopOf="@+id/ivMap"
+                app:layout_constraintBottom_toTopOf="@+id/tvCountyBreakdown"
+                app:layout_constraintStart_toEndOf="@+id/flMap"
+                app:layout_constraintTop_toTopOf="@id/flMap"
                 app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintVertical_chainStyle="packed" />
+                app:layout_constraintVertical_chainStyle="spread" />
 
             <TextView
                 android:id="@+id/tvCountyBreakdown"
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
-                android:layout_marginTop="2dp"
+                android:layout_height="wrap_content"
                 android:text="Tap for county breakdown"
-                app:layout_constraintBottom_toBottomOf="@+id/ivMap"
+                android:textColor="@color/shadow"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/flMap"
                 app:layout_constraintStart_toStartOf="@+id/tvNationalPicture"
                 app:layout_constraintTop_toBottomOf="@+id/tvNationalPicture" />
-
 
             <TextView
                 android:id="@+id/ivArrowNext"
@@ -87,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:text=">"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/greyCcc"
+                android:textColor="@color/shadow"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/tvCountyBreakdown"
                 app:layout_constraintEnd_toEndOf="parent"

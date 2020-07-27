@@ -40,8 +40,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     android:text="Welcome back :)"
+                    android:textColor="@color/text"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,9 +51,11 @@
                     android:id="@+id/tvHowAreYouFeeling"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginBottom="8dp"
                     android:text="How are you feeling today?"
+                    android:textColor="@color/text"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -59,19 +63,19 @@
                     app:layout_constraintTop_toBottomOf="@id/tvWelcomeBack"
                     app:layout_constraintVertical_bias="0.0" />
 
-                <TextView
+                <ImageView
                     android:id="@+id/ivClose"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="16dp"
+                    android:src="@drawable/dismiss"
                     android:text="X"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvHowAreYouFeeling"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvWelcomeBack"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/tvHowAreYouFeeling"
                     app:layout_constraintTop_toTopOf="@+id/tvWelcomeBack" />
-
 
                 <Button
                     android:id="@+id/btnImGood"
@@ -83,7 +87,10 @@
                     android:background="@drawable/rectangle_button"
                     android:text="I'm good, no symptoms"
                     android:textAllCaps="false"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/shadow"
+                    android:textScaleX="1.2"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvHowAreYouFeeling" />
@@ -97,7 +104,10 @@
                     android:background="@drawable/rectangle_button"
                     android:text="I'm not feeling well today"
                     android:textAllCaps="false"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/shadow"
+                    android:textScaleX="1.2"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@id/btnImGood"
                     app:layout_constraintStart_toStartOf="@id/btnImGood"

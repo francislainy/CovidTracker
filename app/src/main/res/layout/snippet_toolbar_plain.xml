@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.appcompat.widget.Toolbar
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
@@ -12,24 +11,49 @@
     app:contentInsetStart="0dp"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-    <TextView
-        android:id="@+id/tvToolbarTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Covid\nTracker"
-        android:textAllCaps="true"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/ivSettingsCog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_settings"
-        android:text="Covid\nTracker"
-        android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/ivToolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/logo"
+            android:textAllCaps="true"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivSettingsCog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/settings"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/tvSettings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivToolbarTitle"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tvSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ivToolbarTitle"
+            app:layout_constraintEnd_toEndOf="@+id/ivSettingsCog"
+            app:layout_constraintStart_toStartOf="@+id/ivSettingsCog"
+            app:layout_constraintTop_toBottomOf="@id/ivSettingsCog" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.appcompat.widget.Toolbar>

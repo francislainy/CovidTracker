@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="red">#FF0000</color>
-    <color name="greyCcc">#ccc</color>
+    <color name="greyCcc">#CCC</color>
     <color name="white">#FFFFFF</color>
     <color name="greyBBB">#BBB</color>
     <color name="greyAAA">#AAA</color>
@@ -23,4 +23,9 @@
     <color name="shadow">#255E62</color>
     <color name="danger">#8B042A</color>
     <color name="empty">#D3D0D0</color>
+    <color name="light_purple">#D3DBFF</color>
+    <color name="light_pink">#F6CED6</color>
+    <color name="grey">#838383</color>
+    <color name="light_blue">#BBE1FA</color>
+    <color name="blue_green">#cbeaed</color>
 </resources>
