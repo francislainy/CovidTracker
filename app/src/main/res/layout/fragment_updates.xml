@@ -11,21 +11,11 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/howAreYouFeelingLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:theme="@style/Theme.MaterialComponents.Light"
-            app:cardCornerRadius="6dp"
-            app:cardElevation="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/todaysFightLayout"
             app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="#ccc"
-            app:strokeWidth="1dp">
+            style="@style/materialCardStyle">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -56,7 +46,7 @@
                     android:text="How are you feeling today?"
                     android:textColor="@color/text"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/btnImGood"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@id/tvWelcomeBack"
@@ -70,7 +60,6 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="16dp"
                     android:src="@drawable/dismiss"
-                    android:text="X"
                     app:layout_constraintBottom_toBottomOf="@+id/tvWelcomeBack"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -79,35 +68,19 @@
 
                 <Button
                     android:id="@+id/btnImGood"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/buttonStatus"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/rectangle_button"
                     android:text="I'm good, no symptoms"
-                    android:textAllCaps="false"
-                    android:textColor="@color/shadow"
-                    android:textScaleX="1.2"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvHowAreYouFeeling" />
 
                 <Button
                     android:id="@+id/btnImNotWell"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/rectangle_button"
+                    style="@style/buttonStatus"
                     android:text="I'm not feeling well today"
-                    android:textAllCaps="false"
-                    android:textColor="@color/shadow"
-                    android:textScaleX="1.2"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@id/btnImGood"
                     app:layout_constraintStart_toStartOf="@id/btnImGood"

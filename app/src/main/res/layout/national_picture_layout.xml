@@ -28,17 +28,11 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        style="@style/materialCardStyle"
         android:layout_margin="16dp"
-        android:theme="@style/Theme.MaterialComponents.Light"
-        app:cardCornerRadius="6dp"
-        app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/headerHolder"
-        app:strokeColor="#ccc"
-        app:strokeWidth="1dp">
+        app:layout_constraintTop_toBottomOf="@id/headerHolder">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -90,14 +84,9 @@
                 app:layout_constraintStart_toStartOf="@+id/tvNationalPicture"
                 app:layout_constraintTop_toBottomOf="@+id/tvNationalPicture" />
 
-            <TextView
+            <ImageView
                 android:id="@+id/ivArrowNext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=">"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/shadow"
-                android:textStyle="bold"
+                style="@style/styleArrowNext"
                 app:layout_constraintBottom_toBottomOf="@+id/tvCountyBreakdown"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tvNationalPicture" />

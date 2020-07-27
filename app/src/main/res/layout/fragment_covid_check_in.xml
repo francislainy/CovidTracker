@@ -98,13 +98,9 @@
         app:layout_constraintStart_toStartOf="@+id/tvYourAge"
         app:layout_constraintTop_toBottomOf="@+id/tvYourAge" />
 
-    <TextView
+    <ImageView
         android:id="@+id/ivArrowNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=">"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textStyle="bold"
+        style="@style/styleArrowNext"
         app:layout_constraintBottom_toBottomOf="@+id/etYourAge"
         app:layout_constraintEnd_toEndOf="@+id/tvYourAge"
         app:layout_constraintHorizontal_bias="1.0"
@@ -120,7 +116,6 @@
         app:layout_constraintEnd_toEndOf="@id/tvYouHaveSharedInfo"
         app:layout_constraintStart_toStartOf="@id/tvYouHaveSharedInfo"
         app:layout_constraintTop_toBottomOf="@id/ivArrowNext" />
-
 
     <TextView
         android:id="@+id/tvYourCounty"
@@ -144,13 +139,9 @@
         app:layout_constraintStart_toStartOf="@+id/tvYourCounty"
         app:layout_constraintTop_toBottomOf="@+id/tvYourCounty" />
 
-    <TextView
+    <ImageView
         android:id="@+id/ivArrowNext2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=">"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textStyle="bold"
+        style="@style/styleArrowNext"
         app:layout_constraintBottom_toBottomOf="@+id/etYourCounty"
         app:layout_constraintEnd_toEndOf="@+id/tvYourCounty"
         app:layout_constraintHorizontal_bias="1.0"
@@ -189,13 +180,9 @@
         app:layout_constraintStart_toStartOf="@+id/tvYourLocality"
         app:layout_constraintTop_toBottomOf="@+id/tvYourLocality" />
 
-    <TextView
+    <ImageView
         android:id="@+id/ivArrowNext3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=">"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textStyle="bold"
+        style="@style/styleArrowNext"
         app:layout_constraintBottom_toBottomOf="@+id/etYourLocality"
         app:layout_constraintEnd_toEndOf="@+id/tvYourLocality"
         app:layout_constraintHorizontal_bias="1.0"

@@ -6,17 +6,11 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        style="@style/materialCardStyle"
         android:layout_margin="16dp"
-        android:theme="@style/Theme.MaterialComponents.Light"
-        app:cardCornerRadius="6dp"
-        app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="#ccc"
-        app:strokeWidth="1dp"
         tools:showIn="@layout/fragment_updates">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -213,7 +207,6 @@
                 app:layout_constraintBottom_toBottomOf="@+id/flRequiredIcu"
                 app:layout_constraintStart_toStartOf="@+id/tvTotalRequiredIcu"
                 app:layout_constraintTop_toBottomOf="@+id/tvTotalRequiredIcu" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
