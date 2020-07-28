@@ -4,8 +4,14 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -19,6 +25,8 @@ import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
+    private var navController: NavController? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,18 +35,18 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
 
-        val navController = findNavController(this, R.id.nav_host_fragment)
+        navController = findNavController(this, R.id.nav_host_fragment)
 
-        NavigationUI.setupActionBarWithNavController(this, navController)
-        NavigationUI.setupWithNavController(toolbar, navController)
-        NavigationUI.setupWithNavController(bottomNav, navController)
+        NavigationUI.setupActionBarWithNavController(this, navController!!)
+        NavigationUI.setupWithNavController(toolbar, navController!!)
+        NavigationUI.setupWithNavController(bottomNav, navController!!)
         bottomNav.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
 
         val appBarConfiguration = AppBarConfiguration(bottomNav.menu)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        setupActionBarWithNavController(navController!!, appBarConfiguration)
 
 
-        navController.addOnDestinationChangedListener { _, destination, _ ->
+        navController!!.addOnDestinationChangedListener { _, destination, _ ->
 
             when (destination.id) {
 
@@ -60,28 +68,28 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.share -> {
                     shareViaWhatsApp()
-                    false
                 }
                 else -> {
-                    true
+                    NavigationUI.onNavDestinationSelected(it, navController!!)
                 }
             }
+
+            true
 
         }
 
 
-
         ivSettingsCog.setOnClickListener {
 
-            when (navController.currentDestination?.id) {
+            when (navController!!.currentDestination?.id) {
                 R.id.updatesFragment -> {
-                    navController.navigate(R.id.action_updatesFragment_to_settingsFragment)
+                    navController!!.navigate(R.id.action_updatesFragment_to_settingsFragment)
                 }
                 R.id.contactTracingFragment -> {
-                    navController.navigate(R.id.action_contactTracingFragment_to_settingsFragment)
+                    navController!!.navigate(R.id.action_contactTracingFragment_to_settingsFragment)
                 }
                 R.id.covidCheckInFragment -> {
-                    navController.navigate(R.id.action_covidCheckInFragment_to_settingsFragment)
+                    navController!!.navigate(R.id.action_covidCheckInFragment_to_settingsFragment)
                 }
                 R.id.share -> {
                     shareViaWhatsApp()
@@ -90,7 +98,6 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-
 
     }
 
