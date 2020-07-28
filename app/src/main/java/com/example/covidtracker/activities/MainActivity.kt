@@ -52,11 +52,13 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.updatesFragment, R.id.contactTracingBottomFragment, R.id.checkInBottomFragment -> {
                     ivSettingsCog.visible()
+                    bottomNav.visible()
                 }
 
                 else -> {
                     ivSettingsCog.gone()
                     tvSettings.gone()
+                    bottomNav.gone()
                 }
             }
 
