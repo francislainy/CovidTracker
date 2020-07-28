@@ -4,13 +4,8 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -105,15 +100,15 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun shareViaWhatsApp(): Unit {
-        val whatsappIntent = Intent(Intent.ACTION_SEND)
-        whatsappIntent.type = "text/plain"
-        whatsappIntent.setPackage("com.whatsapp")
-        whatsappIntent.putExtra(
+        val whatsAppIntent = Intent(Intent.ACTION_SEND)
+        whatsAppIntent.type = "text/plain"
+        whatsAppIntent.setPackage("com.whatsapp")
+        whatsAppIntent.putExtra(
             Intent.EXTRA_TEXT,
             "Application of social rating share with your friend"
         )
         try {
-            Objects.requireNonNull(this).startActivity(whatsappIntent)
+            Objects.requireNonNull(this).startActivity(whatsAppIntent)
         } catch (ex: ActivityNotFoundException) {
             startActivity(
                 Intent(
