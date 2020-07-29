@@ -13,14 +13,17 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.covidtracker.R
 import com.example.covidtracker.activities.MainActivity
+import com.example.covidtracker.api.GetCovidSpreadingAPI
 import com.example.covidtracker.api.GetTotalsAPI
 import com.example.covidtracker.db.DataRoomDbase
 import com.example.covidtracker.model.APIError
+import com.example.covidtracker.model.CovidSpreading
 import com.example.covidtracker.model.MyDataList
 import com.example.covidtracker.model.Totals
 import com.example.covidtracker.utils.gone
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
+import kotlinx.android.synthetic.main.covid_spreading_layout.*
 import kotlinx.android.synthetic.main.fragment_updates.*
 import kotlinx.android.synthetic.main.national_totals_layout.*
 import kotlinx.android.synthetic.main.title_and_progress_bar.*
@@ -63,6 +66,8 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
         retrieveTotals()
 
+        getCovidSpreading("https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/CovidStatisticsProfileHPSCIrelandOpenData/FeatureServer/0/query?f=json&where=Date%3Etimestamp%20%272020-03-17%2023%3A59%3A59%27&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=StatisticsProfileDate%20asc&resultOffset=0&resultRecordCount=32000&resultType=standard&cacheHint=true");
+
 
         btnImGood.setOnClickListener(onClickStatusItemOnCard)
         btnImNotWell.setOnClickListener(onClickStatusItemOnCard)
@@ -70,7 +75,9 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
         ivClose.setOnClickListener(onClickStatusItemOnCard)
     }
 
+
     private fun retrieveTotals() {
+
         val baseUrl =
             "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19StatisticsProfileHPSCIrelandView/FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returnGeometry=false&outStatistics=%5B%7B%22onStatisticField%22%3A%22"
         val appended = "%22%2C%22statisticType%22%3A%22max%22%7D%5D"
@@ -144,8 +151,10 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
                             )
                             tvTotalCases.text = s
 
-                            val preference=(activity as MainActivity).getSharedPreferences(resources.getString(R.string.app_name), Context.MODE_PRIVATE)
-                            val editor=preference.edit()
+                            val preference = (activity as MainActivity).getSharedPreferences(
+                                resources.getString(R.string.app_name), Context.MODE_PRIVATE
+                            )
+                            val editor = preference.edit()
                             editor.putInt("total", attributes?.totalConfirmedCovidCasesMax!!)
                             editor.apply()
 
@@ -176,6 +185,47 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
                     }
 
+                }
+
+
+                override fun onFailure(message: String?) {
+                    Log.e(LOG_TAG, "onFailure $message $LOG_TAG")
+                }
+
+
+                override fun onError(apiError: APIError) {
+                    Log.e(LOG_TAG, "onError $apiError $LOG_TAG")
+                }
+
+            },
+            fullUrl
+        )
+
+    }
+
+
+    private fun getCovidSpreading(fullUrl: String) {
+
+        GetCovidSpreadingAPI.postData(
+            object : GetCovidSpreadingAPI.ThisCallback {
+
+                override fun onSuccess(jo: JsonObject) {
+
+                    Log.i(LOG_TAG, "onSuccess $LOG_TAG")
+
+                    val gson = GsonBuilder().setPrettyPrinting().create()
+                    val covidSpreading: CovidSpreading =
+                        gson.fromJson(jo, CovidSpreading::class.java)
+
+                    val attributes = covidSpreading.features?.get(covidSpreading!!.features!!.size - 1)?.attributes
+
+                    val communityTransmission =  attributes?.communityTransmission
+                    val closeContact =  attributes?.closeContact
+                    val travelAbroad =  attributes?.travelAbroad
+
+                    tvTotalCommunity.text = "$communityTransmission %"
+                    tvTotalCloseContact.text = "$closeContact %"
+                    tvTotalTravelAbroad.text = "$travelAbroad %"
                 }
 
 

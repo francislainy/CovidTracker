@@ -22,4 +22,11 @@ interface ApiInterface {
     fun getCovidGeneral(
         @Url fullUrl: String?
     ): Call<JsonObject>
+
+    @GET("")
+    fun getCovidSpreading(
+        @Url fullUrl: String?
+    ): Call<JsonObject>
+
+
 }
