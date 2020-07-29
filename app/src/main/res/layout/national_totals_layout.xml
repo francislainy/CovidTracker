@@ -1,215 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    style="@style/materialCardStyle"
+    android:layout_margin="16dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:showIn="@layout/fragment_updates">
 
-    <com.google.android.material.card.MaterialCardView
-        style="@style/materialCardStyle"
-        android:layout_margin="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:showIn="@layout/fragment_updates">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp">
+        <FrameLayout
+            android:id="@+id/flCases"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/light_pink"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <FrameLayout
-                android:id="@+id/flCases"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/circle"
-                android:backgroundTint="@color/light_pink"
+            <ImageView
+                android:id="@+id/ivCases"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@drawable/covid_pink"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+        </FrameLayout>
 
-                <ImageView
-                    android:id="@+id/ivCases"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/covid_pink"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
-            </FrameLayout>
+        <TextView
+            android:id="@+id/tvTotalCases"
+            style="@style/textTotalsStyle"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/flCases"
+            app:layout_constraintStart_toEndOf="@+id/flCases"
+            app:layout_constraintTop_toTopOf="@+id/flCases"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="25,600" />
 
-            <TextView
-                android:id="@+id/tvTotalCases"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/text"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/flCases"
-                app:layout_constraintStart_toEndOf="@+id/flCases"
-                app:layout_constraintTop_toTopOf="@+id/flCases"
-                app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintVertical_chainStyle="packed"
-                tools:text="25,600" />
+        <TextView
+            android:id="@+id/tvTotalCasesDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Total confirmed cases"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/flCases"
+            app:layout_constraintStart_toStartOf="@+id/tvTotalCases"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalCases" />
 
-            <TextView
-                android:id="@+id/tvTotalCasesDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Total confirmed cases"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/flCases"
-                app:layout_constraintStart_toStartOf="@+id/tvTotalCases"
-                app:layout_constraintTop_toBottomOf="@+id/tvTotalCases" />
+        <FrameLayout
+            android:id="@+id/flDeaths"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/grey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/flCases">
 
-            <FrameLayout
-                android:id="@+id/flDeaths"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/circle"
-                android:backgroundTint="@color/grey"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/flCases">
+            <ImageView
+                android:id="@+id/ivDeaths"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@drawable/covid_white" />
 
-                <ImageView
-                    android:id="@+id/ivDeaths"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/covid_white" />
+        </FrameLayout>
 
-            </FrameLayout>
+        <TextView
+            android:id="@+id/tvTotalDeaths"
+            style="@style/textTotalsStyle"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/flDeaths"
+            app:layout_constraintStart_toEndOf="@+id/flDeaths"
+            app:layout_constraintTop_toTopOf="@+id/flDeaths"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="1,700" />
 
-            <TextView
-                android:id="@+id/tvTotalDeaths"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/text"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/flDeaths"
-                app:layout_constraintStart_toEndOf="@+id/flDeaths"
-                app:layout_constraintTop_toTopOf="@+id/flDeaths"
-                app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintVertical_chainStyle="packed"
-                tools:text="1,700" />
+        <TextView
+            android:id="@+id/tvTotalDeathsDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Total deaths"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/flDeaths"
+            app:layout_constraintStart_toStartOf="@+id/tvTotalDeaths"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalDeaths" />
 
-            <TextView
-                android:id="@+id/tvTotalDeathsDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Total deaths"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/flDeaths"
-                app:layout_constraintStart_toStartOf="@+id/tvTotalDeaths"
-                app:layout_constraintTop_toBottomOf="@+id/tvTotalDeaths" />
+        <FrameLayout
+            android:id="@+id/flHospitalised"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/light_purple"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTotalDeathsDescription">
 
+            <ImageView
+                android:id="@+id/ivHospitalised"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@drawable/hospital" />
 
-            <FrameLayout
-                android:id="@+id/flHospitalised"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/circle"
-                android:backgroundTint="@color/light_purple"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvTotalDeathsDescription">
+        </FrameLayout>
 
-                <ImageView
-                    android:id="@+id/ivHospitalised"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/hospital" />
+        <TextView
+            android:id="@+id/tvTotalHospitalised"
+            style="@style/textTotalsStyle"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/flHospitalised"
+            app:layout_constraintStart_toEndOf="@+id/flHospitalised"
+            app:layout_constraintTop_toTopOf="@+id/flHospitalised"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="3300" />
 
-            </FrameLayout>
+        <TextView
+            android:id="@+id/tvTotalHospitalisedDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Number Hospitalised"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/flHospitalised"
+            app:layout_constraintStart_toStartOf="@+id/tvTotalHospitalised"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalHospitalised" />
 
-            <TextView
-                android:id="@+id/tvTotalHospitalised"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/text"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/flHospitalised"
-                app:layout_constraintStart_toEndOf="@+id/flHospitalised"
-                app:layout_constraintTop_toTopOf="@+id/flHospitalised"
-                app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintVertical_chainStyle="packed"
-                tools:text="3300" />
+        <FrameLayout
+            android:id="@+id/flRequiredIcu"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/light_blue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTotalHospitalisedDescription">
 
-            <TextView
-                android:id="@+id/tvTotalHospitalisedDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Number Hospitalised"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/flHospitalised"
-                app:layout_constraintStart_toStartOf="@+id/tvTotalHospitalised"
-                app:layout_constraintTop_toBottomOf="@+id/tvTotalHospitalised" />
+            <ImageView
+                android:id="@+id/ivRequiredIcu"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@drawable/icu" />
 
-            <FrameLayout
-                android:id="@+id/flRequiredIcu"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/circle"
-                android:backgroundTint="@color/light_blue"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvTotalHospitalisedDescription">
+        </FrameLayout>
 
-                <ImageView
-                    android:id="@+id/ivRequiredIcu"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/icu" />
+        <TextView
+            android:id="@+id/tvTotalRequiredIcu"
+            style="@style/textTotalsStyle"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/flRequiredIcu"
+            app:layout_constraintStart_toEndOf="@+id/flRequiredIcu"
+            app:layout_constraintTop_toTopOf="@+id/flRequiredIcu"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="430" />
 
-            </FrameLayout>
+        <TextView
+            android:id="@+id/tvTotalRequiredIcuDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Required ICU"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/flRequiredIcu"
+            app:layout_constraintStart_toStartOf="@+id/tvTotalRequiredIcu"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalRequiredIcu" />
 
-            <TextView
-                android:id="@+id/tvTotalRequiredIcu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/text"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/flRequiredIcu"
-                app:layout_constraintStart_toEndOf="@+id/flRequiredIcu"
-                app:layout_constraintTop_toTopOf="@+id/flRequiredIcu"
-                app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintVertical_chainStyle="packed"
-                tools:text="430" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/tvTotalRequiredIcuDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Required ICU"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/flRequiredIcu"
-                app:layout_constraintStart_toStartOf="@+id/tvTotalRequiredIcu"
-                app:layout_constraintTop_toBottomOf="@+id/tvTotalRequiredIcu" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

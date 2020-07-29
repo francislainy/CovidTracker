@@ -1,156 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/materialCardStyle"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".fragments.UpdatesFragment"
-    tools:showIn="@layout/fragment_updates">
+    android:layout_height="wrap_content">
 
-    <com.google.android.material.card.MaterialCardView
-        style="@style/materialCardStyle"
-        android:layout_margin="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp">
+        <FrameLayout
+            android:id="@+id/flCheckIn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/light_blue"
+            app:layout_constraintBottom_toTopOf="@id/pbFeelingGood"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <FrameLayout
-                android:id="@+id/flCheckIn"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/circle"
-                android:backgroundTint="@color/light_blue"
-                app:layout_constraintBottom_toTopOf="@id/pbFeelingGood"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/ivCheckIn"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/checkin"
-                    app:layout_constraintVertical_bias="0.0" />
-
-            </FrameLayout>
-
-            <TextView
-                android:id="@+id/tvNationalPicture"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="5,853"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/text"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/flCheckIn"
-                app:layout_constraintStart_toEndOf="@+id/flCheckIn"
-                app:layout_constraintTop_toTopOf="@+id/flCheckIn"
-                app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintVertical_chainStyle="packed" />
-
-            <TextView
-                android:id="@+id/tvCountyBreakdown"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Total Check-Ins today"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/flCheckIn"
-                app:layout_constraintStart_toStartOf="@+id/tvNationalPicture"
-                app:layout_constraintTop_toBottomOf="@+id/tvNationalPicture" />
-
-            <ProgressBar
-                android:id="@+id/pbFeelingGood"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="60dp"
-                android:layout_height="12dp"
-                android:layout_marginTop="24dp"
-                android:padding="2dp"
-                android:progress="60"
-                android:progressDrawable="@drawable/progressbar_rounder_corner"
-                app:layout_constraintBottom_toTopOf="@id/pbFeelingSymptoms"
-                app:layout_constraintStart_toStartOf="@+id/flCheckIn"
-                app:layout_constraintTop_toBottomOf="@id/flCheckIn"
+            <ImageView
+                android:id="@+id/ivCheckIn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@drawable/checkin"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
-                android:id="@+id/tvPercentFeelingGood"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="98%"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/text"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/pbFeelingGood"
-                app:layout_constraintStart_toEndOf="@+id/pbFeelingGood"
-                app:layout_constraintTop_toTopOf="@+id/pbFeelingGood" />
+        </FrameLayout>
 
-            <TextView
-                android:id="@+id/tvPercentFeelingGoodDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Feeling good"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/tvPercentFeelingGood"
-                app:layout_constraintStart_toEndOf="@+id/tvPercentFeelingGood"
-                app:layout_constraintTop_toTopOf="@+id/tvPercentFeelingGood" />
+        <TextView
+            android:id="@+id/tvNationalPicture"
+            style="@style/textTotalsStyle"
+            android:layout_marginStart="16dp"
+            android:text="5,853"
+            app:layout_constraintBottom_toBottomOf="@+id/flCheckIn"
+            app:layout_constraintStart_toEndOf="@+id/flCheckIn"
+            app:layout_constraintTop_toTopOf="@+id/flCheckIn"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-            <ProgressBar
-                android:id="@+id/pbFeelingSymptoms"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="60dp"
-                android:layout_height="12dp"
-                android:layout_marginTop="24dp"
-                android:padding="2dp"
-                android:progress="60"
-                android:progressDrawable="@drawable/progressbar_rounder_corner"
-                android:src="@drawable/my_avatar"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/pbFeelingGood"
-                app:layout_constraintTop_toBottomOf="@id/pbFeelingGood"
-                app:layout_constraintVertical_bias="0.0" />
+        <TextView
+            android:id="@+id/tvCountyBreakdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Check-Ins today"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/flCheckIn"
+            app:layout_constraintStart_toStartOf="@+id/tvNationalPicture"
+            app:layout_constraintTop_toBottomOf="@+id/tvNationalPicture" />
 
-            <TextView
-                android:id="@+id/tvPercentFeelingSymptoms"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="2%"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/text"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/pbFeelingSymptoms"
-                app:layout_constraintStart_toEndOf="@+id/pbFeelingSymptoms"
-                app:layout_constraintTop_toTopOf="@+id/pbFeelingSymptoms" />
+        <ProgressBar
+            android:id="@+id/pbFeelingGood"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="60dp"
+            android:layout_height="12dp"
+            android:layout_marginTop="24dp"
+            android:padding="2dp"
+            android:progress="60"
+            android:progressDrawable="@drawable/progressbar_rounder_corner"
+            app:layout_constraintBottom_toTopOf="@id/pbFeelingSymptoms"
+            app:layout_constraintStart_toStartOf="@+id/flCheckIn"
+            app:layout_constraintTop_toBottomOf="@id/flCheckIn"
+            app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
-                android:id="@+id/tvPercentFeelingSymptomsDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Some symptoms"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/tvPercentFeelingSymptoms"
-                app:layout_constraintStart_toEndOf="@+id/tvPercentFeelingSymptoms"
-                app:layout_constraintTop_toTopOf="@+id/tvPercentFeelingSymptoms" />
+        <TextView
+            android:id="@+id/tvPercentFeelingGood"
+            style="@style/textTotalsStyle"
+            android:layout_marginStart="16dp"
+            android:text="98%"
+            app:layout_constraintBottom_toBottomOf="@+id/pbFeelingGood"
+            app:layout_constraintStart_toEndOf="@+id/pbFeelingGood"
+            app:layout_constraintTop_toTopOf="@+id/pbFeelingGood" />
 
+        <TextView
+            android:id="@+id/tvPercentFeelingGoodDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Feeling good"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPercentFeelingGood"
+            app:layout_constraintStart_toEndOf="@+id/tvPercentFeelingGood"
+            app:layout_constraintTop_toTopOf="@+id/tvPercentFeelingGood" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <ProgressBar
+            android:id="@+id/pbFeelingSymptoms"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="60dp"
+            android:layout_height="12dp"
+            android:layout_marginTop="24dp"
+            android:padding="2dp"
+            android:progress="60"
+            android:progressDrawable="@drawable/progressbar_rounder_corner"
+            android:src="@drawable/my_avatar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/pbFeelingGood"
+            app:layout_constraintTop_toBottomOf="@id/pbFeelingGood"
+            app:layout_constraintVertical_bias="0.0" />
 
-    </com.google.android.material.card.MaterialCardView>
+        <TextView
+            android:id="@+id/tvPercentFeelingSymptoms"
+            style="@style/textTotalsStyle"
+            android:layout_marginStart="16dp"
+            android:text="2%"
+            app:layout_constraintBottom_toBottomOf="@+id/pbFeelingSymptoms"
+            app:layout_constraintStart_toEndOf="@+id/pbFeelingSymptoms"
+            app:layout_constraintTop_toTopOf="@+id/pbFeelingSymptoms" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvPercentFeelingSymptomsDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Some symptoms"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPercentFeelingSymptoms"
+            app:layout_constraintStart_toEndOf="@+id/tvPercentFeelingSymptoms"
+            app:layout_constraintTop_toTopOf="@+id/tvPercentFeelingSymptoms" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

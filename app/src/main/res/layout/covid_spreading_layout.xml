@@ -1,178 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/covidSpreadingLayout"
+    style="@style/materialCardStyle"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintTop_toBottomOf="@+id/nationalTotalsLayout">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tvHowSpreadingHeader"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/covidSpreadingLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:gravity="center"
-        android:textScaleX="1.2"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:textColor="@color/text"
-        android:text="How COVID-19 is spreading"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/nationalTotalsLayout">
 
-    <TextView
-        android:id="@+id/tvTotalCommunity"
-        android:layout_width="70dp"
-        android:gravity="end"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        tools:text="30%"
-        android:textColor="@color/text"
-        android:textSize="32sp"
-        android:layout_marginTop="16dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHowSpreadingHeader" />
+        <TextView
+            android:id="@+id/tvHowSpreadingHeader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:text="How COVID-19 is spreading"
+            android:textColor="@color/text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="1dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:background="@color/greyCcc"
-        app:layout_constraintBottom_toBottomOf="@id/tvTotalCommunity"
-        app:layout_constraintStart_toEndOf="@id/tvTotalCommunity"
-        app:layout_constraintTop_toTopOf="@+id/tvTotalCommunity" />
+        <TextView
+            android:id="@+id/tvTotalCommunity"
+            style="@style/textTotalsStyle"
+            android:layout_width="70dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:gravity="end"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHowSpreadingHeader"
+            tools:text="30%" />
 
-    <ProgressBar
-        android:id="@id/pbCommunity"
-        style="@style/pbStyle"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:scaleY="1.1"
-        app:layout_constraintBottom_toTopOf="@+id/tvCommunityTransmissionLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/view"
-        app:layout_constraintTop_toTopOf="@+id/tvTotalCommunity"
-        app:layout_constraintVertical_chainStyle="packed" />
+        <View
+            android:id="@+id/view"
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:background="@color/greyCcc"
+            app:layout_constraintBottom_toBottomOf="@id/tvTotalCommunity"
+            app:layout_constraintStart_toEndOf="@id/tvTotalCommunity"
+            app:layout_constraintTop_toTopOf="@+id/tvTotalCommunity" />
 
-    <TextView
-        android:id="@+id/tvCommunityTransmissionLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textColor="@color/text"
-        android:text="Community transmission"
-        app:layout_constraintBottom_toBottomOf="@+id/tvTotalCommunity"
-        app:layout_constraintStart_toStartOf="@id/pbCommunity"
-        app:layout_constraintTop_toBottomOf="@+id/pbCommunity" />
+        <ProgressBar
+            android:id="@id/pbCommunity"
+            style="@style/pbStyle"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:scaleY="1.1"
+            app:layout_constraintBottom_toTopOf="@+id/tvCommunityTransmissionLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/view"
+            app:layout_constraintTop_toTopOf="@+id/tvTotalCommunity"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-
-    <TextView
-        android:id="@+id/tvTotalCloseContact"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        tools:text="60%"
-        android:gravity="end"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:textColor="@color/text"
-        app:layout_constraintEnd_toEndOf="@+id/tvTotalCommunity"
-        app:layout_constraintStart_toStartOf="@+id/tvTotalCommunity"
-        app:layout_constraintTop_toBottomOf="@+id/tvCommunityTransmissionLabel" />
-
-    <View
-        android:id="@+id/view2"
-        android:layout_width="1dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:background="@color/greyCcc"
-        app:layout_constraintBottom_toBottomOf="@id/tvTotalCloseContact"
-        app:layout_constraintStart_toEndOf="@id/tvTotalCloseContact"
-        app:layout_constraintTop_toTopOf="@+id/tvTotalCloseContact" />
-
-    <ProgressBar
-        android:id="@+id/pbCloseContact"
-        style="@style/pbStyle"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:scaleY="1.1"
-        app:layout_constraintBottom_toTopOf="@+id/tvCloseContactLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/view2"
-        app:layout_constraintTop_toTopOf="@+id/tvTotalCloseContact"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <TextView
-        android:id="@+id/tvCloseContactLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Close contact"
-        android:textColor="@color/text"
-        app:layout_constraintBottom_toBottomOf="@+id/tvTotalCloseContact"
-        app:layout_constraintStart_toStartOf="@id/pbCloseContact"
-        app:layout_constraintTop_toBottomOf="@+id/pbCloseContact" />
+        <TextView
+            android:id="@+id/tvCommunityTransmissionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Community transmission"
+            android:textColor="@color/text"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTotalCommunity"
+            app:layout_constraintStart_toStartOf="@id/pbCommunity"
+            app:layout_constraintTop_toBottomOf="@+id/pbCommunity" />
 
 
-    <TextView
-        android:id="@+id/tvTotalTravelAbroad"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        tools:text="1%"
-        android:gravity="end"
-        android:textSize="32sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/tvTotalCloseContact"
-        app:layout_constraintStart_toStartOf="@+id/tvTotalCloseContact"
-        app:layout_constraintTop_toBottomOf="@+id/tvCloseContactLabel" />
+        <TextView
+            android:id="@+id/tvTotalCloseContact"
+            style="@style/textTotalsStyle"
+            android:layout_width="0dp"
+            android:layout_marginTop="16dp"
+            android:gravity="end"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/tvTotalCommunity"
+            app:layout_constraintStart_toStartOf="@+id/tvTotalCommunity"
+            app:layout_constraintTop_toBottomOf="@+id/tvCommunityTransmissionLabel"
+            tools:text="60%" />
 
-    <View
-        android:id="@+id/view3"
-        android:layout_width="1dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:background="@color/text"
-        app:layout_constraintBottom_toBottomOf="@id/tvTotalTravelAbroad"
-        app:layout_constraintStart_toEndOf="@id/tvTotalTravelAbroad"
-        app:layout_constraintTop_toTopOf="@+id/tvTotalTravelAbroad" />
+        <View
+            android:id="@+id/view2"
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:background="@color/greyCcc"
+            app:layout_constraintBottom_toBottomOf="@id/tvTotalCloseContact"
+            app:layout_constraintStart_toEndOf="@id/tvTotalCloseContact"
+            app:layout_constraintTop_toTopOf="@+id/tvTotalCloseContact" />
 
-    <ProgressBar
-        android:id="@+id/pbTravelAbroad"
-        style="@style/pbStyle"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:scaleY="1.1"
-        app:layout_constraintBottom_toTopOf="@+id/tvTravelAbroadLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/view3"
-        app:layout_constraintTop_toTopOf="@+id/tvTotalTravelAbroad"
-        app:layout_constraintVertical_chainStyle="packed" />
+        <ProgressBar
+            android:id="@+id/pbCloseContact"
+            style="@style/pbStyle"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:scaleY="1.1"
+            app:layout_constraintBottom_toTopOf="@+id/tvCloseContactLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/view2"
+            app:layout_constraintTop_toTopOf="@+id/tvTotalCloseContact"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-    <TextView
-        android:id="@+id/tvTravelAbroadLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Travel abroad"
-        android:textColor="@color/text"
-        app:layout_constraintBottom_toBottomOf="@+id/tvTotalTravelAbroad"
-        app:layout_constraintStart_toStartOf="@id/pbTravelAbroad"
-        app:layout_constraintTop_toBottomOf="@+id/pbTravelAbroad" />
+        <TextView
+            android:id="@+id/tvCloseContactLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Close contact"
+            android:textColor="@color/text"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTotalCloseContact"
+            app:layout_constraintStart_toStartOf="@id/pbCloseContact"
+            app:layout_constraintTop_toBottomOf="@+id/pbCloseContact" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvTotalTravelAbroad"
+            style="@style/textTotalsStyle"
+            android:layout_width="0dp"
+            android:layout_marginTop="16dp"
+            android:gravity="end"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/tvTotalCloseContact"
+            app:layout_constraintStart_toStartOf="@+id/tvTotalCloseContact"
+            app:layout_constraintTop_toBottomOf="@+id/tvCloseContactLabel"
+            tools:text="1%" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:background="@color/greyCcc"
+            app:layout_constraintBottom_toBottomOf="@id/tvTotalTravelAbroad"
+            app:layout_constraintStart_toEndOf="@id/tvTotalTravelAbroad"
+            app:layout_constraintTop_toTopOf="@+id/tvTotalTravelAbroad" />
+
+        <ProgressBar
+            android:id="@+id/pbTravelAbroad"
+            style="@style/pbStyle"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:scaleY="1.1"
+            app:layout_constraintBottom_toTopOf="@+id/tvTravelAbroadLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/view3"
+            app:layout_constraintTop_toTopOf="@+id/tvTotalTravelAbroad"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tvTravelAbroadLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Travel abroad"
+            android:textColor="@color/text"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTotalTravelAbroad"
+            app:layout_constraintStart_toStartOf="@id/pbTravelAbroad"
+            app:layout_constraintTop_toBottomOf="@+id/pbTravelAbroad" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
