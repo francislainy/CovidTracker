@@ -16,4 +16,8 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="confirmed_cases_param">confirmed_cases</string>
+    <string name="total_deaths_param">total_deaths</string>
+    <string name="total_hospitalised_param">total_hospitalised</string>
+    <string name="total_required_icu">total_required_icu</string>
 </resources>

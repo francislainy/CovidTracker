@@ -15,7 +15,6 @@ import com.example.covidtracker.activities.MainActivity
 import com.example.covidtracker.api.GetResponseAPI
 import com.example.covidtracker.db.DataRoomDbase
 import com.example.covidtracker.model.APIError
-import com.example.covidtracker.model.CovidSpreading
 import com.example.covidtracker.model.MyDataList
 import com.example.covidtracker.model.Totals
 import com.example.covidtracker.utils.gone
@@ -64,7 +63,7 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
         retrieveTotals()
 
-        getResponseApi("", "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/CovidStatisticsProfileHPSCIrelandOpenData/FeatureServer/0/query?f=json&where=Date%3Etimestamp%20%272020-03-17%2023%3A59%3A59%27&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=StatisticsProfileDate%20asc&resultOffset=0&resultRecordCount=32000&resultType=standard&cacheHint=true");
+        getResponseApi(fullUrl = "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/CovidStatisticsProfileHPSCIrelandOpenData/FeatureServer/0/query?f=json&where=Date%3Etimestamp%20%272020-03-17%2023%3A59%3A59%27&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=StatisticsProfileDate%20asc&resultOffset=0&resultRecordCount=32000&resultType=standard&cacheHint=true");
 
 
         btnImGood.setOnClickListener(onClickStatusItemOnCard)
@@ -82,7 +81,7 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
 
         getResponseApi(
-            "confirmed_cases",
+            getString(R.string.confirmed_cases_param),
             baseUrl + "TotalConfirmedCovidCases%22%2C%22outStatisticFieldName%22%3A%22TotalConfirmedCovidCases_max" + appended
         )
 
@@ -92,12 +91,12 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
         )
 
         getResponseApi(
-            "total_hospitalised",
+            getString(R.string.total_hospitalised_param),
             baseUrl + "HospitalisedCovidCases%22%2C%22outStatisticFieldName%22%3A%22HospitalisedCovidCases_max" + appended
         )
 
         getResponseApi(
-            "total_required_icu",
+            getString(R.string.total_required_icu),
             baseUrl + "RequiringICUCovidCases%22%2C%22outStatisticFieldName%22%3A%22RequiringICUCovidCases_max" + appended
         )
     }
@@ -143,7 +142,7 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
                     when (section) {
 
-                        "confirmed_cases" -> {
+                        getString(R.string.confirmed_cases_param) -> {
                             val s = String.format(
                                 "%,d",
                                 attributes?.totalConfirmedCovidCasesMax.toString().toLong()
@@ -158,7 +157,7 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
                             editor.apply()
                         }
 
-                        "total_deaths" -> {
+                        getString(R.string.total_deaths_param) -> {
                             val s = String.format(
                                 "%,d",
                                 attributes?.totalCovidDeathsMax.toString().toLong()
@@ -166,7 +165,7 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
                             tvTotalDeaths.text = s
                         }
 
-                        "total_hospitalised" -> {
+                        getString(R.string.total_hospitalised_param) -> {
                             val s = String.format(
                                 "%,d",
                                 attributes?.totalHospitalisedCovidCasesMax.toString().toLong()
@@ -174,7 +173,7 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
                             tvTotalHospitalised.text = s
                         }
 
-                        "total_required_icu" -> {
+                        getString(R.string.total_required_icu) -> {
                             val s = String.format(
                                 "%,d",
                                 attributes?.totalRequiringICUCovidCasesMax.toString().toLong()
@@ -184,11 +183,12 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
                         "" -> {
 
-                            attributes = totals.features?.get(totals.features!!.size - 1)?.attributes // last element contains most up to date value as we're getting them for multiple days period
+                            attributes =
+                                totals.features?.get(totals.features!!.size - 1)?.attributes // last element contains most up to date value as we're getting them for multiple days period
 
-                            val communityTransmission =  attributes?.communityTransmission
-                            val closeContact =  attributes?.closeContact
-                            val travelAbroad =  attributes?.travelAbroad
+                            val communityTransmission = attributes?.communityTransmission
+                            val closeContact = attributes?.closeContact
+                            val travelAbroad = attributes?.travelAbroad
 
                             tvTotalCommunity.text = "$communityTransmission %"
                             tvTotalCloseContact.text = "$closeContact %"
