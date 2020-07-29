@@ -1,9 +1,13 @@
 package com.example.covidtracker.adapter_holders
 
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.covidtracker.R
 import com.example.covidtracker.activities.MainActivity
+import com.example.covidtracker.fragments.DataProtectionFragment
+import com.example.covidtracker.fragments.DataProtectionFragmentDirections
+import com.example.covidtracker.fragments.SettingsFragmentDirections
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.fragment_covid_check_in.view.*
@@ -33,7 +37,22 @@ class RecyclerSettingsItem(
                     when (settingItem) {
                         "Contact Tracing" -> navController!!.navigate(R.id.action_settingsFragment_to_contactTracingFragment)
                         "COVID Check-In" -> navController!!.navigate(R.id.action_settingsFragment_to_covidCheckInFragment)
-                        "Data Protection Information Notice" -> navController!!.navigate(R.id.action_settingsFragment_to_dataProtectionFragment)
+//                        "Data Protection Information Notice" -> navController!!.navigate(R.id.action_settingsFragment_to_dataProtectionFragment)
+                        "Data Protection Information Notice" -> {
+                            val bundle = bundleOf("section" to "Data Protection Information Notice")
+                            navController!!.navigate(
+                                R.id.action_settingsFragment_to_dataProtectionFragment,
+                                bundle
+                            )
+                        }
+                        "Terms & Conditions" -> {
+                            val bundle = bundleOf("section" to "Terms & Conditions")
+                            navController!!.navigate(
+                                R.id.action_settingsFragment_to_dataProtectionFragment,
+                                bundle
+                            )
+
+                        }
                     }
 
                 }

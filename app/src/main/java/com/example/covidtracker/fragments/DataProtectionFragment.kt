@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.example.covidtracker.R
 import com.example.covidtracker.api.GetResponseAPI
 import com.example.covidtracker.model.APIError
@@ -16,13 +17,17 @@ import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_data_protection.*
 import kotlinx.android.synthetic.main.title_and_progress_bar.*
 
-    class DataProtectionFragment : Fragment(R.layout.fragment_data_protection) {
+class DataProtectionFragment : Fragment(R.layout.fragment_data_protection) {
+
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tvHeader.text = "Data Protection Information Notice"
+        val args: DataProtectionFragmentArgs by navArgs()
+
+        tvHeader.text = args.section
+
 
         val url = "https://hidden-dusk-75987.herokuapp.com/api/v1/covidTracker/termsHtml"
 
