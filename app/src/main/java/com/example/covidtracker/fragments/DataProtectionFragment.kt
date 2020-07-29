@@ -1,6 +1,5 @@
 package com.example.covidtracker.fragments
 
-import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
@@ -9,7 +8,7 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.covidtracker.R
-import com.example.covidtracker.api.GetCovidGeneralAPI
+import com.example.covidtracker.api.GetResponseAPI
 import com.example.covidtracker.model.APIError
 import com.example.covidtracker.model.CovidGeneral
 import com.google.gson.GsonBuilder
@@ -27,15 +26,15 @@ import kotlinx.android.synthetic.main.title_and_progress_bar.*
 
         val url = "https://hidden-dusk-75987.herokuapp.com/api/v1/covidTracker/termsHtml"
 
-        getCovidGeneral(url)
+        getResponseApi(url)
 
     }
 
 
-    private fun getCovidGeneral(fullUrl: String) {
+    private fun getResponseApi(fullUrl: String) {
 
-        GetCovidGeneralAPI.postData(
-            object : GetCovidGeneralAPI.ThisCallback {
+        GetResponseAPI.postData(
+            object : GetResponseAPI.ThisCallback {
 
                 @RequiresApi(Build.VERSION_CODES.N)
                 override fun onSuccess(jo: JsonObject) {

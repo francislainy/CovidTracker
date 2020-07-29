@@ -11,9 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.covidtracker.R
 import com.example.covidtracker.activities.MainActivity
 import com.example.covidtracker.adapter_holders.RecyclerCountyItem
-import com.example.covidtracker.api.GetTotalsAPI
+import com.example.covidtracker.api.GetResponseAPI
 import com.example.covidtracker.model.APIError
-import com.example.covidtracker.model.Feature
 import com.example.covidtracker.model.Totals
 import com.example.covidtracker.utils.addDecoration
 import com.example.covidtracker.view_models.HomeViewModel
@@ -65,8 +64,8 @@ class CasesByCountyFragment : Fragment(R.layout.fragment_cases_by_county) {
 
     private fun getTotals(fullUrl: String) {
 
-        GetTotalsAPI.postData(
-            object : GetTotalsAPI.ThisCallback {
+        GetResponseAPI.postData(
+            object : GetResponseAPI.ThisCallback {
 
                 @RequiresApi(Build.VERSION_CODES.N)
                 override fun onSuccess(jo: JsonObject) {

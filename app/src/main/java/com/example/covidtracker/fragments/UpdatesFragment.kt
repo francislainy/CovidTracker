@@ -1,7 +1,6 @@
 package com.example.covidtracker.fragments
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -13,8 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.covidtracker.R
 import com.example.covidtracker.activities.MainActivity
-import com.example.covidtracker.api.GetCovidSpreadingAPI
-import com.example.covidtracker.api.GetTotalsAPI
+import com.example.covidtracker.api.GetResponseAPI
 import com.example.covidtracker.db.DataRoomDbase
 import com.example.covidtracker.model.APIError
 import com.example.covidtracker.model.CovidSpreading
@@ -66,7 +64,7 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
         retrieveTotals()
 
-        getCovidSpreading("https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/CovidStatisticsProfileHPSCIrelandOpenData/FeatureServer/0/query?f=json&where=Date%3Etimestamp%20%272020-03-17%2023%3A59%3A59%27&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=StatisticsProfileDate%20asc&resultOffset=0&resultRecordCount=32000&resultType=standard&cacheHint=true");
+        getResponseApi("", "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/CovidStatisticsProfileHPSCIrelandOpenData/FeatureServer/0/query?f=json&where=Date%3Etimestamp%20%272020-03-17%2023%3A59%3A59%27&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=StatisticsProfileDate%20asc&resultOffset=0&resultRecordCount=32000&resultType=standard&cacheHint=true");
 
 
         btnImGood.setOnClickListener(onClickStatusItemOnCard)
@@ -83,22 +81,22 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
         val appended = "%22%2C%22statisticType%22%3A%22max%22%7D%5D"
 
 
-        getTotals(
+        getResponseApi(
             "confirmed_cases",
             baseUrl + "TotalConfirmedCovidCases%22%2C%22outStatisticFieldName%22%3A%22TotalConfirmedCovidCases_max" + appended
         )
 
-        getTotals(
+        getResponseApi(
             "total_deaths",
             baseUrl + "TotalCovidDeaths%22%2C%22outStatisticFieldName%22%3A%22TotalCovidDeaths_max" + appended
         )
 
-        getTotals(
+        getResponseApi(
             "total_hospitalised",
             baseUrl + "HospitalisedCovidCases%22%2C%22outStatisticFieldName%22%3A%22HospitalisedCovidCases_max" + appended
         )
 
-        getTotals(
+        getResponseApi(
             "total_required_icu",
             baseUrl + "RequiringICUCovidCases%22%2C%22outStatisticFieldName%22%3A%22RequiringICUCovidCases_max" + appended
         )
@@ -129,10 +127,10 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
     }
 
 
-    private fun getTotals(section: String, fullUrl: String) {
+    private fun getResponseApi(section: String = "", fullUrl: String) {
 
-        GetTotalsAPI.postData(
-            object : GetTotalsAPI.ThisCallback {
+        GetResponseAPI.postData(
+            object : GetResponseAPI.ThisCallback {
 
                 override fun onSuccess(jo: JsonObject) {
 
@@ -141,9 +139,10 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
                     val gson = GsonBuilder().setPrettyPrinting().create()
                     val totals: Totals =
                         gson.fromJson(jo, Totals::class.java)
-                    val attributes = totals.features?.get(0)?.attributes
+                    var attributes = totals.features?.get(0)?.attributes
 
                     when (section) {
+
                         "confirmed_cases" -> {
                             val s = String.format(
                                 "%,d",
@@ -157,17 +156,16 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
                             val editor = preference.edit()
                             editor.putInt("total", attributes?.totalConfirmedCovidCasesMax!!)
                             editor.apply()
-
-
                         }
+
                         "total_deaths" -> {
                             val s = String.format(
                                 "%,d",
                                 attributes?.totalCovidDeathsMax.toString().toLong()
                             )
                             tvTotalDeaths.text = s
-
                         }
+
                         "total_hospitalised" -> {
                             val s = String.format(
                                 "%,d",
@@ -175,6 +173,7 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
                             )
                             tvTotalHospitalised.text = s
                         }
+
                         "total_required_icu" -> {
                             val s = String.format(
                                 "%,d",
@@ -183,49 +182,22 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
                             tvTotalRequiredIcu.text = s
                         }
 
+                        "" -> {
+
+                            attributes = totals.features?.get(totals.features!!.size - 1)?.attributes // last element contains most up to date value as we're getting them for multiple days period
+
+                            val communityTransmission =  attributes?.communityTransmission
+                            val closeContact =  attributes?.closeContact
+                            val travelAbroad =  attributes?.travelAbroad
+
+                            tvTotalCommunity.text = "$communityTransmission %"
+                            tvTotalCloseContact.text = "$closeContact %"
+                            tvTotalTravelAbroad.text = "$travelAbroad %"
+
+                        }
+
                     }
 
-                }
-
-
-                override fun onFailure(message: String?) {
-                    Log.e(LOG_TAG, "onFailure $message $LOG_TAG")
-                }
-
-
-                override fun onError(apiError: APIError) {
-                    Log.e(LOG_TAG, "onError $apiError $LOG_TAG")
-                }
-
-            },
-            fullUrl
-        )
-
-    }
-
-
-    private fun getCovidSpreading(fullUrl: String) {
-
-        GetCovidSpreadingAPI.postData(
-            object : GetCovidSpreadingAPI.ThisCallback {
-
-                override fun onSuccess(jo: JsonObject) {
-
-                    Log.i(LOG_TAG, "onSuccess $LOG_TAG")
-
-                    val gson = GsonBuilder().setPrettyPrinting().create()
-                    val covidSpreading: CovidSpreading =
-                        gson.fromJson(jo, CovidSpreading::class.java)
-
-                    val attributes = covidSpreading.features?.get(covidSpreading!!.features!!.size - 1)?.attributes
-
-                    val communityTransmission =  attributes?.communityTransmission
-                    val closeContact =  attributes?.closeContact
-                    val travelAbroad =  attributes?.travelAbroad
-
-                    tvTotalCommunity.text = "$communityTransmission %"
-                    tvTotalCloseContact.text = "$closeContact %"
-                    tvTotalTravelAbroad.text = "$travelAbroad %"
                 }
 
 

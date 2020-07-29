@@ -10,9 +10,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-object GetCovidSpreadingAPI {
+object GetResponseAPI {
 
-    private val LOG_TAG = GetCovidSpreadingAPI::class.java.canonicalName
+    private val LOG_TAG = GetResponseAPI::class.java.canonicalName
 
     interface ThisCallback {
 
@@ -28,7 +28,7 @@ object GetCovidSpreadingAPI {
     fun postData(callback: ThisCallback, fullUrl: String) {
 
         val service = ServiceBuilder.buildService(ApiInterface::class.java)
-        val call = service.getCovidGeneral(
+        val call = service.getResponse(
             fullUrl
         )
 
