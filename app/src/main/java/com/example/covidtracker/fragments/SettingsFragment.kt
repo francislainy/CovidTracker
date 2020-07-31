@@ -11,17 +11,19 @@ import com.example.covidtracker.R
 import com.example.covidtracker.activities.MainActivity
 import com.example.covidtracker.adapter_holders.RecyclerSettingsItem
 import com.example.covidtracker.utils.addDecoration
+import com.example.covidtracker.utils.addDecorationSkipLast
 import com.example.covidtracker.view_models.HomeViewModel
 import com.example.covidtracker.view_models.MyViewModelFactory
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
+import kotlinx.android.synthetic.main.fragment_cases_by_county.*
 import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.title_and_progress_bar.*
 
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
-    private var gAdapter: GroupAdapter<GroupieViewHolder>? = null
+    private var adapter: GroupAdapter<GroupieViewHolder>? = null
     private var viewModel: HomeViewModel? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,14 +31,12 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
         tvHeader.text = "Settings"
 
-        val linearLayoutManager = LinearLayoutManager(activity)
-        gAdapter = GroupAdapter()
-        rvSettings.apply {
-            layoutManager = linearLayoutManager
-            addDecoration(activity as MainActivity)
-            adapter = gAdapter
-        }
 
+        adapter = GroupAdapter()
+        rvSettings.layoutManager = LinearLayoutManager(activity)
+        rvSettings.addDecorationSkipLast(activity as MainActivity)
+        rvSettings.adapter = adapter
+        
 
         viewModel = ViewModelProviders.of(activity as MainActivity).get(HomeViewModel::class.java)
 
@@ -52,7 +52,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     private val userListUpdateObserver: Observer<Array<String>?> =
         Observer { userArrayList ->
             for (s in userArrayList!!) {
-                gAdapter!!.add(RecyclerSettingsItem(activity as MainActivity, s))
+                adapter!!.add(RecyclerSettingsItem(activity as MainActivity, s))
             }
         }
 

@@ -14,7 +14,7 @@ import com.example.covidtracker.adapter_holders.RecyclerCountyItem
 import com.example.covidtracker.api.GetResponseAPI
 import com.example.covidtracker.model.APIError
 import com.example.covidtracker.model.Totals
-import com.example.covidtracker.utils.addDecoration
+import com.example.covidtracker.utils.addDecorationSkipLast
 import com.example.covidtracker.view_models.HomeViewModel
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
@@ -28,7 +28,7 @@ import kotlin.Comparator
 
 class CasesByCountyFragment : Fragment(R.layout.fragment_cases_by_county) {
 
-    private var gAdapter: GroupAdapter<GroupieViewHolder>? = null
+    private var adapter: GroupAdapter<GroupieViewHolder>? = null
     private var viewModel: HomeViewModel? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,13 +36,10 @@ class CasesByCountyFragment : Fragment(R.layout.fragment_cases_by_county) {
 
         tvHeader.text = "Cases by county"
 
-        val linearLayoutManager = LinearLayoutManager(activity)
-        gAdapter = GroupAdapter()
-        rvCounty.apply {
-            layoutManager = linearLayoutManager
-            addDecoration(activity as MainActivity)
-            adapter = gAdapter
-        }
+        adapter = GroupAdapter()
+        rvCounty.layoutManager = LinearLayoutManager(activity)
+        rvCounty.addDecorationSkipLast(activity as MainActivity)
+        rvCounty.adapter = adapter
 
 
         val url =
@@ -98,7 +95,7 @@ class CasesByCountyFragment : Fragment(R.layout.fragment_cases_by_county) {
                         val countyName = attributes?.countyName
                         val value = attributes?.value
 
-                        gAdapter?.add(
+                        adapter?.add(
                             RecyclerCountyItem(
                                 activity as MainActivity,
                                 countyName,

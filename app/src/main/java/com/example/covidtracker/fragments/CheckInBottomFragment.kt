@@ -19,6 +19,7 @@ import com.example.covidtracker.activities.MainActivity
 import com.example.covidtracker.adapter_holders.RecyclerHistoryItem
 import com.example.covidtracker.model.MyDataList
 import com.example.covidtracker.utils.Utils
+import com.example.covidtracker.utils.addDecorationSkipLast
 import com.example.covidtracker.view_models.PostViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -38,14 +39,11 @@ class CheckInBottomFragment : Fragment(R.layout.fragment_check_in_bottom) {
         tvHeader.text = "Your symptom history"
 
 
-        val linearLayoutManager = LinearLayoutManager(activity)
-        rvHistory.layoutManager = linearLayoutManager
+        rvHistory.layoutManager = LinearLayoutManager(activity)
         adapter = GroupAdapter()
         rvHistory.adapter = adapter
 
-        val dividerItemDecoration: ItemDecoration =
-            DividerItemDecorator(ContextCompat.getDrawable(requireContext(), R.drawable.divider))
-        rvHistory.addItemDecoration(dividerItemDecoration)
+        rvHistory.addDecorationSkipLast(activity as MainActivity)
 
     }
 
