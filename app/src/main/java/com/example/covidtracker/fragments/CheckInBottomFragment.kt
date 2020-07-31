@@ -1,14 +1,19 @@
 package com.example.covidtracker.fragments
 
 import android.app.Activity
+import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.example.covidtracker.R
 import com.example.covidtracker.activities.MainActivity
 import com.example.covidtracker.adapter_holders.RecyclerHistoryItem
@@ -21,8 +26,7 @@ import kotlinx.android.synthetic.main.fragment_check_in_bottom.*
 import kotlinx.android.synthetic.main.title_and_progress_bar.*
 import java.text.SimpleDateFormat
 
-
-class CheckInFragment : Fragment(R.layout.fragment_check_in_bottom) {
+class CheckInBottomFragment : Fragment(R.layout.fragment_check_in_bottom) {
 
     private var adapter: GroupAdapter<GroupieViewHolder>? = null
 
@@ -39,7 +43,12 @@ class CheckInFragment : Fragment(R.layout.fragment_check_in_bottom) {
         adapter = GroupAdapter()
         rvHistory.adapter = adapter
 
+        val dividerItemDecoration: ItemDecoration =
+            DividerItemDecorator(ContextCompat.getDrawable(requireContext(), R.drawable.divider))
+        rvHistory.addItemDecoration(dividerItemDecoration)
+
     }
+
 
     override fun onAttach(activity: Activity) {
         super.onAttach(activity)

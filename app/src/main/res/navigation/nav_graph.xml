@@ -73,7 +73,7 @@
     </fragment>
     <fragment
         android:id="@+id/checkInBottomFragment"
-        android:name="com.example.covidtracker.fragments.CheckInFragment"
+        android:name="com.example.covidtracker.fragments.CheckInBottomFragment"
         tools:layout="@layout/fragment_check_in_bottom" />
     <fragment
         android:id="@+id/contactTracingBottomFragment"
