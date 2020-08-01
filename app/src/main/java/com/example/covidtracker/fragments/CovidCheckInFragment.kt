@@ -1,7 +1,5 @@
 package com.example.covidtracker.fragments
 
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -23,6 +21,7 @@ class CovidCheckInFragment : Fragment(R.layout.fragment_covid_check_in) {
 
     var navController: NavController? = null
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
