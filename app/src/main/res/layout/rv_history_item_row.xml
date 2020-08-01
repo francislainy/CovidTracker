@@ -27,6 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/text"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -38,6 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Symptoms"
+        android:textColor="@color/text"
+        app:layout_constraintBottom_toBottomOf="@+id/tvNumber"
         app:layout_constraintStart_toEndOf="@+id/tvNumber"
         app:layout_constraintTop_toTopOf="@+id/tvNumber" />
 
@@ -46,7 +50,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="19th July"
+        tools:text="19th July"
+        android:textColor="@color/text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/tvSymptoms"

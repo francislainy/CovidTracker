@@ -36,7 +36,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         rvSettings.layoutManager = LinearLayoutManager(activity)
         rvSettings.addDecorationSkipLast(activity as MainActivity)
         rvSettings.adapter = adapter
-        
+
 
         viewModel = ViewModelProviders.of(activity as MainActivity).get(HomeViewModel::class.java)
 

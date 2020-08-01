@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.covidtracker.R
 import com.example.covidtracker.activities.MainActivity
+import com.example.covidtracker.adapter_holders.RecyclerDialogOptionsItem
 import com.example.covidtracker.adapter_holders.RecyclerSettingsItem
 import com.example.covidtracker.view_models.HomeViewModel
 import com.example.covidtracker.view_models.MyViewModelFactory
@@ -42,8 +43,7 @@ class MyDialogFragment : DialogFragment() {
         tvChoose.text = arguments?.getString("headerText")
 
 
-        val linearLayoutManager = LinearLayoutManager(activity)
-        rvOptions.layoutManager = linearLayoutManager
+        rvOptions.layoutManager =  LinearLayoutManager(activity)
         adapter = GroupAdapter()
         rvOptions.adapter = adapter
 
@@ -56,7 +56,7 @@ class MyDialogFragment : DialogFragment() {
         myViewModel.userMutableLiveData.observe(viewLifecycleOwner, userListUpdateObserver)
 
 
-        tvClose.setOnClickListener {
+        ivClose.setOnClickListener {
             this.dismiss()
         }
     }
@@ -65,7 +65,7 @@ class MyDialogFragment : DialogFragment() {
      private val userListUpdateObserver: Observer<Array<String>?> =
         Observer { userArrayList ->
             for (s in userArrayList!!) {
-                adapter.add(RecyclerSettingsItem(activity as MainActivity, s))
+                adapter.add(RecyclerDialogOptionsItem(activity as MainActivity, s))
             }
         }
 

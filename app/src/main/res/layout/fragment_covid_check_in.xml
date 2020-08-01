@@ -22,6 +22,7 @@
         android:layout_marginEnd="16dp"
         android:text="You have shared the following information\nwith us."
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/headerHolder"
         app:layout_constraintTop_toBottomOf="@id/headerHolder" />
@@ -32,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Your sex (optional)"
+        android:textColor="@color/text"
         app:layout_constraintEnd_toEndOf="@+id/tvYouHaveSharedInfo"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvYouHaveSharedInfo"
@@ -47,22 +49,27 @@
         app:layout_constraintStart_toStartOf="@+id/tvYouHaveSharedInfo"
         app:layout_constraintTop_toBottomOf="@+id/tvYourSex">
 
-        <RadioButton
+        <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/rbFemale"
             style="@style/radio_gender_selection"
+            android:button="@drawable/radio_button_inset"
             android:text="Female" />
 
-        <RadioButton
+        <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/rbMale"
             style="@style/radio_gender_selection"
-            android:backgroundTint="@color/greyCcc"
-            android:text="Male" />
+            android:backgroundTint="@color/greyEee"
+            android:button="@drawable/radio_button_inset"
+            android:text="Male"
+            android:textColor="@color/text" />
 
-        <RadioButton
+        <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/rbPreferNotToSay"
             style="@style/radio_gender_selection"
-            android:backgroundTint="@color/greyCcc"
-            android:text="Prefer not to say" />
+            android:backgroundTint="@color/greyEee"
+            android:button="@drawable/radio_button_inset"
+            android:text="Prefer not to say"
+            android:textColor="@color/text" />
 
     </RadioGroup>
 
@@ -82,17 +89,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Your age range (optional)"
+        android:textColor="@color/text"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvYourSex"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
-    <EditText
+    <TextView
         android:id="@+id/etYourAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="16-39"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/shadow"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/tvYourAge"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvYourAge"
@@ -123,17 +134,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Your county (optional)"
+        android:textColor="@color/text"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvYourAge"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
-    <EditText
+    <TextView
         android:id="@+id/etYourCounty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Dublin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/shadow"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/tvYourCounty"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvYourCounty"
@@ -164,17 +179,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Your county (optional)"
+        android:textColor="@color/text"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvYourCounty"
         app:layout_constraintTop_toBottomOf="@+id/view3" />
 
-    <EditText
+    <TextView
         android:id="@+id/etYourLocality"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Dublin 6"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/shadow"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/tvYourLocality"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvYourLocality"
