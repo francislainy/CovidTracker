@@ -15,38 +15,14 @@ import com.example.covidtracker.view_models.TestViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_contact_tracing_bottom.*
+import kotlinx.android.synthetic.main.title_and_progress_bar.*
 
 class ContactTracingBottomFragment : Fragment(R.layout.fragment_contact_tracing_bottom) {
-
-    private var adapter: GroupAdapter<GroupieViewHolder>? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        adapter = GroupAdapter()
-        rvTest.layoutManager = LinearLayoutManager(activity)
-        rvTest.adapter = adapter
-
-
-        val viewModel = ViewModelProviders.of(this, MyViewModelFactoryForHashMap("Choose your age range")).get(TestViewModel::class.java)
-
-        viewModel.userMutableLiveData.observe(viewLifecycleOwner, userListUpdateObserver)
-
+        tvHeader.text = "Contact Tracing"
     }
-
-
-    private val userListUpdateObserver: Observer<Array<ModelTest>?> =
-        Observer { userArrayList ->
-            for (s in userArrayList!!) {
-                adapter!!.add(
-                    RecyclerTestItem(
-                        activity as MainActivity,
-                        s.title,
-                        s.selected.toString()
-                    )
-                )
-            }
-        }
 
 }
