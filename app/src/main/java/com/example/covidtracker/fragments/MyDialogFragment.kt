@@ -62,13 +62,14 @@ class MyDialogFragment : DialogFragment(), RecyclerDialogOptionsItem.AdapterList
         }
     }
 
+    var selected_position = -1
 
     private val userListUpdateObserver: Observer<Array<ModelTest>?> =
         Observer { userArrayList ->
             for (s in userArrayList!!) {
                 adapter.add(
                     RecyclerDialogOptionsItem(
-                        activity as MainActivity,
+                        this@MyDialogFragment,
                         s.title,
                         s.selected!!,
                         this@MyDialogFragment
@@ -77,8 +78,12 @@ class MyDialogFragment : DialogFragment(), RecyclerDialogOptionsItem.AdapterList
             }
         }
 
-    override fun onClickItem(id: Int, position: Int) {
-        Log.i("clicked", "id: $id - position: $position" )
+    override fun onClickItem( position: Int) {
+
+        selected_position = position
+        adapter.notifyDataSetChanged()
+
+        Log.i("clicked", "position: $position" )
     }
 
 }
