@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_dataProtectionFragment"
             app:destination="@id/dataProtectionFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_leaveFragment"
+            app:destination="@id/leaveFragment" />
     </fragment>
 
     <fragment
@@ -98,6 +101,15 @@
             android:name="section"
             app:argType="string"
             android:defaultValue="terms"/>
+    </fragment>
+    <fragment
+        android:id="@+id/leaveFragment"
+        android:name="com.example.covidtracker.fragments.LeaveFragment"
+        android:label="Back"
+        tools:layout="@layout/fragment_leave" >
+        <action
+            android:id="@+id/action_leaveFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 
 </navigation>

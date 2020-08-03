@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.LeaveFragment">
+
+    <include
+        android:id="@+id/titleAndProgressBar"
+        layout="@layout/title_and_progress_bar" />
+
+    <TextView
+        android:id="@+id/tvThankYouLeave"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Thank you for helping us fight COVID-19. We're sorry to see you go. When you tap 'I want to leave' we will remove all data stored by the app from your device including a mobile number, if you have shared one, symptom data and any demographic health data you may have shared. Non-identifying authorisation tokens stored on the server will also be deleted.\n\nRandom IDs created or collected by Exposure Notification Services cannot be removed by the COVID Tracker app. If you wish to remove these Random IDs you can do this via your device Settings."
+        android:textColor="@color/text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleAndProgressBar" />
+
+    <TextView
+        android:id="@+id/tvReadPrivacy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="You can read the Data Protection \nInformation Notice here"
+        android:textColor="@color/shadow"
+        app:layout_constraintBottom_toBottomOf="@+id/ivLockPrivacy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivLockPrivacy"
+        app:layout_constraintTop_toTopOf="@+id/ivLockPrivacy" />
+
+    <ImageView
+        android:id="@+id/ivLockPrivacy"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/privacy"
+        app:layout_constraintBottom_toTopOf="@+id/btnLeave"
+        app:layout_constraintStart_toStartOf="@+id/tvThankYouLeave"
+        app:layout_constraintTop_toBottomOf="@+id/tvThankYouLeave"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnLeave"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rectangle_button"
+        android:backgroundTint="@color/danger"
+        android:text="I want to leave"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

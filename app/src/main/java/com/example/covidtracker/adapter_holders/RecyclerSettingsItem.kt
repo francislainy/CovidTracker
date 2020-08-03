@@ -51,7 +51,9 @@ class RecyclerSettingsItem(
                                 R.id.action_settingsFragment_to_dataProtectionFragment,
                                 bundle
                             )
-
+                        }
+                        "Leave" -> {
+                            navController!!.navigate(R.id.action_settingsFragment_to_leaveFragment)
                         }
                     }
 
