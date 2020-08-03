@@ -18,6 +18,16 @@ import com.example.covidtracker.model.APIError
 import com.example.covidtracker.model.MyDataList
 import com.example.covidtracker.model.Totals
 import com.example.covidtracker.utils.gone
+import com.example.covidtracker.utils.invisible
+import com.example.covidtracker.utils.visible
+import com.github.mikephil.charting.components.AxisBase
+import com.github.mikephil.charting.components.YAxis
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
+import com.github.mikephil.charting.utils.ViewPortHandler
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.covid_spreading_layout.*
@@ -37,6 +47,7 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
+
 
         val ll = todaysFightLayout as ConstraintLayout
         val ll2 = ll.titleAndProgressBar
@@ -65,11 +76,80 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
         getResponseApi(fullUrl = "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/CovidStatisticsProfileHPSCIrelandOpenData/FeatureServer/0/query?f=json&where=Date%3Etimestamp%20%272020-03-17%2023%3A59%3A59%27&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=StatisticsProfileDate%20asc&resultOffset=0&resultRecordCount=32000&resultType=standard&cacheHint=true");
 
+        getResponseApi(
+            "graph",
+            "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/CovidStatisticsProfileHPSCIrelandOpenData/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=Date%20asc&resultOffset=0&resultRecordCount=32600&resultType=standard&cacheHint=true"
+        )
+
 
         btnImGood.setOnClickListener(onClickStatusItemOnCard)
         btnImNotWell.setOnClickListener(onClickStatusItemOnCard)
-
         ivClose.setOnClickListener(onClickStatusItemOnCard)
+
+    }
+
+
+    private fun addChart() {
+
+        val values = arrayOf<String>("jan", "feb", "mar")
+        val xAxis = chart1.xAxis
+        xAxis.valueFormatter = MyXAxisValuesFormatter(values);
+
+        chart1.apply {
+            isDragEnabled = true
+            isScaleXEnabled = false
+            isScaleYEnabled = true
+            axisRight.isEnabled = false
+            axisLeft.setDrawAxisLine(false)
+            xAxis.isEnabled = false
+            legend.isEnabled = false
+            description.text = ""
+            setTouchEnabled(false)
+        }
+
+        val y: YAxis = chart1.axisLeft
+        y.setAxisMaxValue(800f)
+        y.setAxisMinValue(0f)
+        y.labelCount = 5
+
+
+//        xAxis.granularity = 1F
+
+        val yValues = ArrayList<Entry>()
+        yValues.add(Entry(0f, 600f))
+        yValues.add(Entry(1f, 500f))
+        yValues.add(Entry(2f, 700f))
+        yValues.add(Entry(3f, 200f))
+        yValues.add(Entry(4f, 400f))
+        yValues.add(Entry(5f, 300f))
+        yValues.add(Entry(6f, 600f))
+        yValues.add(Entry(7f, 500f))
+        yValues.add(Entry(8f, 700f))
+        yValues.add(Entry(9f, 200f))
+        yValues.add(Entry(10f, 400f))
+        yValues.add(Entry(11f, 300f))
+        yValues.add(Entry(12f, 600f))
+        yValues.add(Entry(13f, 100f))
+        yValues.add(Entry(14f, 700f))
+        yValues.add(Entry(15f, 200f))
+        yValues.add(Entry(16f, 400f))
+        yValues.add(Entry(17f, 300f))
+
+
+
+        val set1 = LineDataSet(yValues, "Data set 1")
+        set1.fillAlpha = 110
+        set1.color = resources.getColor(R.color.orange)
+        set1.valueTextSize = 0F
+        set1.setDrawCircles(false);
+
+
+        val dataSets = ArrayList<ILineDataSet>()
+        dataSets.add(set1)
+        val data = LineData(dataSets)
+
+        chart1.data = data
+
     }
 
 
@@ -181,6 +261,13 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
                             tvTotalRequiredIcu.text = s
                         }
 
+                        "graph" -> {
+
+                            chart1.invisible()
+                            addChart()
+                            chart1.visible()
+                        }
+
                         "" -> {
 
                             attributes =
@@ -195,6 +282,7 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
                             tvTotalTravelAbroad.text = "$travelAbroad %"
 
                         }
+
 
                     }
 
@@ -221,4 +309,39 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
         private val LOG_TAG = UpdatesFragment::class.java.canonicalName
     }
+}
+
+
+private class MyValueFormatter(values: Array<String>) :
+    IndexAxisValueFormatter(values) {
+
+    override fun getFormattedValue(
+        value: Float,
+        entry: Entry?,
+        dataSetIndex: Int,
+        viewPortHandler: ViewPortHandler?
+    ): String? {
+        return if (values.get(0).toInt() > 0) {
+            value.toString()
+        } else {
+            ""
+        }
+    }
+}
+
+
+class MyAxisValueFormatter(values: Array<String>) : IndexAxisValueFormatter(values) {
+    private val mValues: Array<String> = values
+    override fun getFormattedValue(value: Float, axis: AxisBase): String {
+        return mValues[value.toInt()]
+    }
+}
+
+
+class MyXAxisValuesFormatter(values: Array<String>) : IndexAxisValueFormatter(values) {
+
+    override fun getFormattedValue(value: Float, axis: AxisBase?): String {
+        return values[value.toInt()]
+    }
+
 }

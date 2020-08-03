@@ -39,6 +39,14 @@ data class Attributes(
 
     @SerializedName("TravelAbroad")
     @Expose
-    var travelAbroad: Int? = null
+    var travelAbroad: Int? = null,
+
+    @SerializedName("ConfirmedCovidCases")
+    @Expose
+    var confirmedCovidCases: String? = null,
+
+    @SerializedName("TotalConfirmedCovidCases")
+    @Expose
+    var totalConfirmedCovidCases: String? = null
 
 )
