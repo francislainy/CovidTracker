@@ -89,7 +89,7 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
     }
 
 
-    private fun addChart() {
+    private fun addChart(totals: Totals) {
 
         val values = arrayOf<String>("jan", "feb", "mar")
         val xAxis = chart1.xAxis
@@ -108,33 +108,17 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
         }
 
         val y: YAxis = chart1.axisLeft
-        y.setAxisMaxValue(800f)
-        y.setAxisMinValue(0f)
+        y.axisMaximum = 800f
+        y.axisMinimum = 0f
         y.labelCount = 5
 
-
-//        xAxis.granularity = 1F
-
         val yValues = ArrayList<Entry>()
-        yValues.add(Entry(0f, 600f))
-        yValues.add(Entry(1f, 500f))
-        yValues.add(Entry(2f, 700f))
-        yValues.add(Entry(3f, 200f))
-        yValues.add(Entry(4f, 400f))
-        yValues.add(Entry(5f, 300f))
-        yValues.add(Entry(6f, 600f))
-        yValues.add(Entry(7f, 500f))
-        yValues.add(Entry(8f, 700f))
-        yValues.add(Entry(9f, 200f))
-        yValues.add(Entry(10f, 400f))
-        yValues.add(Entry(11f, 300f))
-        yValues.add(Entry(12f, 600f))
-        yValues.add(Entry(13f, 100f))
-        yValues.add(Entry(14f, 700f))
-        yValues.add(Entry(15f, 200f))
-        yValues.add(Entry(16f, 400f))
-        yValues.add(Entry(17f, 300f))
 
+        for ((index, i) in totals.features!!.withIndex()) {
+
+            yValues.add(Entry(index.toFloat(), i.attributes?.confirmedCovidCases!!.toFloat()))
+
+        }
 
 
         val set1 = LineDataSet(yValues, "Data set 1")
@@ -263,8 +247,8 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
                         "graph" -> {
 
-                            chart1.invisible()
-                            addChart()
+                            chart1.invisible() // For some reason, without hiding and showing the chart the data won't show and that's why this is here.
+                            addChart(totals)
                             chart1.visible()
                         }
 
