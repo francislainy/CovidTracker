@@ -62,17 +62,6 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
         tv2.text = "Latest Update"
 
 
-        navController = Navigation.findNavController(view)
-
-        tvHeader.setOnClickListener {
-            navController!!.navigate(R.id.action_updatesFragment_to_settingsFragment)
-        }
-
-        nationalPictureLayout.setOnClickListener {
-            navController!!.navigate(R.id.action_updatesFragment_to_casesByCountyFragment)
-        }
-
-
         retrieveTotals()
 
         getResponseApi(fullUrl = "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/CovidStatisticsProfileHPSCIrelandOpenData/FeatureServer/0/query?f=json&where=Date%3Etimestamp%20%272020-03-17%2023%3A59%3A59%27&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=StatisticsProfileDate%20asc&resultOffset=0&resultRecordCount=32000&resultType=standard&cacheHint=true");
@@ -82,6 +71,12 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
             "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/CovidStatisticsProfileHPSCIrelandOpenData/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=Date%20asc&resultOffset=0&resultRecordCount=32600&resultType=standard&cacheHint=true"
         )
 
+
+        navController = Navigation.findNavController(view)
+
+        nationalPictureLayout.setOnClickListener {
+            navController!!.navigate(R.id.action_updatesFragment_to_casesByCountyFragment)
+        }
 
         btnImGood.setOnClickListener(onClickStatusItemOnCard)
         btnImNotWell.setOnClickListener(onClickStatusItemOnCard)

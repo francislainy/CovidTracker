@@ -82,11 +82,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.updatesFragment -> {
                     navController!!.navigate(R.id.action_updatesFragment_to_settingsFragment)
                 }
-                R.id.contactTracingFragment -> {
-                    navController!!.navigate(R.id.action_contactTracingFragment_to_settingsFragment)
+                R.id.contactTracingBottomFragment -> {
+                    navController!!.navigate(R.id.action_contactTracingBottomFragment_to_settingsFragment)
                 }
-                R.id.covidCheckInFragment -> {
-                    navController!!.navigate(R.id.action_covidCheckInFragment_to_settingsFragment)
+                R.id.checkInBottomFragment -> {
+                    navController!!.navigate(R.id.action_checkInBottomFragment_to_settingsFragment)
                 }
                 R.id.share -> {
                     shareViaWhatsApp()

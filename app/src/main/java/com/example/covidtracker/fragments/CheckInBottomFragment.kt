@@ -48,27 +48,30 @@ class CheckInBottomFragment : Fragment(R.layout.fragment_check_in_bottom) {
     }
 
 
-    override fun onAttach(activity: Activity) {
-        super.onAttach(activity)
+    override fun onResume() {
+        super.onResume()
+
 
         val postViewModel = ViewModelProviders.of(this).get(PostViewModel::class.java)
         postViewModel.allPosts.observe(activity as MainActivity,
             Observer { posts: List<MyDataList?>? ->
 
-                for (p in posts!!) {
+                if (activity !== null) {
+                    
+                    for (p in posts!!) {
 
-                    val date = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").parse(p?.date)
-                    adapter!!.add(
-                        RecyclerHistoryItem(
-                            activity as MainActivity,
-                            p?.status,
-                            Utils.formatDate(date)
+                        val date =
+                            SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").parse(p?.date)
+                        adapter!!.add(
+                            RecyclerHistoryItem(
+                                activity as MainActivity,
+                                p?.status,
+                                Utils.formatDate(date)
+                            )
                         )
-                    )
+                    }
                 }
             }
         )
-
     }
-
 }

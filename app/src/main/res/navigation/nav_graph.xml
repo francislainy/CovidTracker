@@ -8,13 +8,33 @@
     <fragment
         android:id="@+id/updatesFragment"
         android:name="com.example.covidtracker.fragments.UpdatesFragment"
-        tools:layout="@layout/todays_fight_figures">
+        tools:layout="@layout/fragment_updates">
         <action
             android:id="@+id/action_updatesFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
         <action
             android:id="@+id/action_updatesFragment_to_casesByCountyFragment"
             app:destination="@id/casesByCountyFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkInBottomFragment"
+        android:name="com.example.covidtracker.fragments.CheckInBottomFragment"
+        tools:layout="@layout/fragment_check_in_bottom" >
+
+        <action
+            android:id="@+id/action_checkInBottomFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/contactTracingBottomFragment"
+        android:name="com.example.covidtracker.fragments.ContactTracingBottomFragment"
+        tools:layout="@layout/fragment_contact_tracing_bottom" >
+
+        <action
+            android:id="@+id/action_contactTracingBottomFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 
     <fragment
@@ -33,6 +53,12 @@
         <action
             android:id="@+id/action_settingsFragment_to_leaveFragment"
             app:destination="@id/leaveFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_contactTracingBottomFragment"
+            app:destination="@id/contactTracingBottomFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_checkInBottomFragment"
+            app:destination="@id/checkInBottomFragment" />
     </fragment>
 
     <fragment
@@ -40,19 +66,14 @@
         android:name="com.example.covidtracker.fragments.ContactTracingFragment"
         tools:layout="@layout/fragment_contact_tracing">
         <action
-            android:id="@+id/action_contactTracingFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-        <action
             android:id="@+id/action_contactTracingFragment_to_receiveFragment"
             app:destination="@id/receiveFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/covidCheckInFragment"
         android:name="com.example.covidtracker.fragments.CovidCheckInFragment"
         tools:layout="@layout/fragment_covid_check_in">
-        <action
-            android:id="@+id/action_covidCheckInFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
         <action
             android:id="@+id/action_covidCheckInFragment_to_my_dialog_fragment"
             app:destination="@id/myDialogFragment" />
@@ -66,6 +87,7 @@
             android:id="@+id/action_my_dialog_fragment_to_covidCheckInFragment"
             app:destination="@id/covidCheckInFragment" />
     </dialog>
+
     <fragment
         android:id="@+id/receiveFragment"
         android:name="com.example.covidtracker.fragments.ReceiveFragment"
@@ -74,14 +96,7 @@
             android:id="@+id/action_receiveFragment_to_contactTracingFragment"
             app:destination="@id/contactTracingFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/checkInBottomFragment"
-        android:name="com.example.covidtracker.fragments.CheckInBottomFragment"
-        tools:layout="@layout/fragment_check_in_bottom" />
-    <fragment
-        android:id="@+id/contactTracingBottomFragment"
-        android:name="com.example.covidtracker.fragments.ContactTracingBottomFragment"
-        tools:layout="@layout/fragment_contact_tracing_bottom" />
+
     <fragment
         android:id="@+id/casesByCountyFragment"
         android:name="com.example.covidtracker.fragments.CasesByCountyFragment"
@@ -90,6 +105,7 @@
             android:id="@+id/action_casesByCountyFragment_to_updatesFragment"
             app:destination="@id/updatesFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/dataProtectionFragment"
         android:name="com.example.covidtracker.fragments.DataProtectionFragment"
@@ -102,6 +118,7 @@
             app:argType="string"
             android:defaultValue="terms"/>
     </fragment>
+
     <fragment
         android:id="@+id/leaveFragment"
         android:name="com.example.covidtracker.fragments.LeaveFragment"
