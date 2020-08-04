@@ -26,6 +26,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.github.mikephil.charting.utils.ViewPortHandler
 import com.google.gson.GsonBuilder
@@ -93,7 +94,11 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
         val values = arrayOf<String>("jan", "feb", "mar")
         val xAxis = chart1.xAxis
-        xAxis.valueFormatter = MyXAxisValuesFormatter(values);
+//        xAxis.valueFormatter = MyValueFormatter(values)
+//        xAxis.valueFormatter = IndexAxisValueFormatter(values)
+        xAxis.enableGridDashedLine(10f, 10f, 0f)
+        xAxis.setDrawGridLines(true)
+        xAxis.setDrawAxisLine(true)
 
         chart1.apply {
             isDragEnabled = true
@@ -107,6 +112,7 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
             setTouchEnabled(false)
         }
 
+
         val y: YAxis = chart1.axisLeft
         y.axisMaximum = 800f
         y.axisMinimum = 0f
@@ -117,6 +123,7 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
         for ((index, i) in totals.features!!.withIndex()) {
 
             yValues.add(Entry(index.toFloat(), i.attributes?.confirmedCovidCases!!.toFloat()))
+//            yValues.add(Entry(index.toFloat(), index.toFloat()*100))
 
         }
 
@@ -125,7 +132,7 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
         set1.fillAlpha = 110
         set1.color = resources.getColor(R.color.orange)
         set1.valueTextSize = 0F
-        set1.setDrawCircles(false);
+        set1.setDrawCircles(false)
 
 
         val dataSets = ArrayList<ILineDataSet>()
@@ -296,6 +303,19 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 }
 
 
+private class MyValueFormatter2 :
+    ValueFormatter() {
+    override fun getFormattedValue(
+        value: Float,
+        entry: Entry,
+        dataSetIndex: Int,
+        viewPortHandler: ViewPortHandler
+    ): String {
+        // write your logic here
+        return if (value > 0) super.getFormattedValue(value) else ""
+    }
+}
+
 private class MyValueFormatter(values: Array<String>) :
     IndexAxisValueFormatter(values) {
 
@@ -305,11 +325,12 @@ private class MyValueFormatter(values: Array<String>) :
         dataSetIndex: Int,
         viewPortHandler: ViewPortHandler?
     ): String? {
-        return if (values.get(0).toInt() > 0) {
-            value.toString()
-        } else {
-            ""
+        for (i in 0 until values.size) {
+            if (values.get(i).equals(value)) {
+                return values.get(i)
+            }
         }
+        return null
     }
 }
 
