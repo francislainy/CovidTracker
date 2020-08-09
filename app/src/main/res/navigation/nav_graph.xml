@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/checkInBottomFragment"
         android:name="com.example.covidtracker.fragments.CheckInBottomFragment"
-        tools:layout="@layout/fragment_check_in_bottom" >
+        tools:layout="@layout/fragment_check_in_bottom">
 
         <action
             android:id="@+id/action_checkInBottomFragment_to_settingsFragment"
@@ -33,7 +33,7 @@
     <fragment
         android:id="@+id/contactTracingBottomFragment"
         android:name="com.example.covidtracker.fragments.ContactTracingBottomFragment"
-        tools:layout="@layout/fragment_contact_tracing_bottom" >
+        tools:layout="@layout/fragment_contact_tracing_bottom">
 
         <action
             android:id="@+id/action_contactTracingBottomFragment_to_settingsFragment"
@@ -103,7 +103,7 @@
     <fragment
         android:id="@+id/casesByCountyFragment"
         android:name="com.example.covidtracker.fragments.CasesByCountyFragment"
-        tools:layout="@layout/fragment_cases_by_county" >
+        tools:layout="@layout/fragment_cases_by_county">
         <action
             android:id="@+id/action_casesByCountyFragment_to_updatesFragment"
             app:destination="@id/updatesFragment" />
@@ -112,21 +112,21 @@
     <fragment
         android:id="@+id/dataProtectionFragment"
         android:name="com.example.covidtracker.fragments.DataProtectionFragment"
-        tools:layout="@layout/fragment_data_protection" >
+        tools:layout="@layout/fragment_data_protection">
         <action
             android:id="@+id/action_dataProtectionFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
         <argument
             android:name="section"
-            app:argType="string"
-            android:defaultValue="terms"/>
+            android:defaultValue="terms"
+            app:argType="string" />
     </fragment>
 
     <fragment
         android:id="@+id/leaveFragment"
         android:name="com.example.covidtracker.fragments.LeaveFragment"
         android:label="Back"
-        tools:layout="@layout/fragment_leave" >
+        tools:layout="@layout/fragment_leave">
         <action
             android:id="@+id/action_leaveFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
@@ -134,10 +134,21 @@
     <fragment
         android:id="@+id/howYouFeelingFragment"
         android:name="com.example.covidtracker.fragments.HowYouFeelingFragment"
-        tools:layout="@layout/fragment_how_you_feeling" >
+        tools:layout="@layout/fragment_how_you_feeling">
         <action
             android:id="@+id/action_howYouFeelingFragment_to_checkInBottomFragment"
             app:destination="@id/checkInBottomFragment" />
+        <action
+            android:id="@+id/action_howYouFeelingFragment_to_thankYouFragment"
+            app:destination="@id/thankYouFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/thankYouFragment"
+        android:name="com.example.covidtracker.fragments.ThankYouFragment"
+        tools:layout="@layout/fragment_thank_you">
+        <action
+            android:id="@+id/action_thankYouFragment_to_howYouFeelingFragment"
+            app:destination="@id/howYouFeelingFragment" />
     </fragment>
 
 </navigation>

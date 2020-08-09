@@ -43,7 +43,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.updatesFragment,
                 R.id.contactTracingBottomFragment,
                 R.id.checkInBottomFragment,
-                R.id.howYouFeelingFragment
+                R.id.howYouFeelingFragment,
+                R.id.thankYouFragment
             )
         )
         setupActionBarWithNavController(navController!!, appBarConfiguration)
@@ -53,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
             when (destination.id) {
 
-                R.id.updatesFragment, R.id.contactTracingBottomFragment, R.id.checkInBottomFragment, R.id.howYouFeelingFragment -> {
+                R.id.updatesFragment, R.id.contactTracingBottomFragment, R.id.checkInBottomFragment, R.id.howYouFeelingFragment, R.id.thankYouFragment -> {
                     ivSettingsCog.visible()
                     bottomNav.visible()
                 }
