@@ -62,6 +62,12 @@
         <action
             android:id="@+id/action_settingsFragment_to_checkInBottomFragment"
             app:destination="@id/checkInBottomFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_thankYouFragment"
+            app:destination="@id/thankYouFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_howYouFeelingFragment"
+            app:destination="@id/howYouFeelingFragment" />
     </fragment>
 
     <fragment
@@ -141,6 +147,9 @@
         <action
             android:id="@+id/action_howYouFeelingFragment_to_thankYouFragment"
             app:destination="@id/thankYouFragment" />
+        <action
+            android:id="@+id/action_howYouFeelingFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/thankYouFragment"
@@ -149,6 +158,9 @@
         <action
             android:id="@+id/action_thankYouFragment_to_howYouFeelingFragment"
             app:destination="@id/howYouFeelingFragment" />
+        <action
+            android:id="@+id/action_thankYouFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 
 </navigation>

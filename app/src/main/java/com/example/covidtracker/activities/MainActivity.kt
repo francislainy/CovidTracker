@@ -97,6 +97,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.checkInBottomFragment -> {
                     navController!!.navigate(R.id.action_checkInBottomFragment_to_settingsFragment)
                 }
+                R.id.howYouFeelingFragment -> {
+                    navController!!.navigate(R.id.action_howYouFeelingFragment_to_settingsFragment)
+                }
+                R.id.thankYouFragment -> {
+                    navController!!.navigate(R.id.action_thankYouFragment_to_settingsFragment)
+                }
+
                 R.id.share -> {
                     shareViaWhatsApp()
                 }

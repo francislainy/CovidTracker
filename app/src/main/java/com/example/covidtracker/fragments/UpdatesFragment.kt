@@ -61,6 +61,9 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
         val tv2 = ll2a.tvHeader
         tv2.text = "Latest Update"
 
+        tvWelcomeBack.visible()
+        ivClose.visible()
+
 
         retrieveTotals()
 
