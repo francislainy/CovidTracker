@@ -33,8 +33,8 @@ import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.covid_spreading_layout.*
 import kotlinx.android.synthetic.main.fragment_updates.*
+import kotlinx.android.synthetic.main.how_you_feeling_layout.*
 import kotlinx.android.synthetic.main.national_totals_layout.*
-import kotlinx.android.synthetic.main.title_and_progress_bar.*
 import kotlinx.android.synthetic.main.title_and_progress_bar.view.*
 import kotlinx.android.synthetic.main.todays_fight_layout.view.*
 

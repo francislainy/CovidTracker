@@ -37,7 +37,15 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(bottomNav, navController!!)
         bottomNav.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
 
-        val appBarConfiguration = AppBarConfiguration(bottomNav.menu)
+//        val appBarConfiguration = AppBarConfiguration(bottomNav.menu)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.updatesFragment,
+                R.id.contactTracingBottomFragment,
+                R.id.checkInBottomFragment,
+                R.id.howYouFeelingFragment
+            )
+        )
         setupActionBarWithNavController(navController!!, appBarConfiguration)
 
 
@@ -45,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
             when (destination.id) {
 
-                R.id.updatesFragment, R.id.contactTracingBottomFragment, R.id.checkInBottomFragment -> {
+                R.id.updatesFragment, R.id.contactTracingBottomFragment, R.id.checkInBottomFragment, R.id.howYouFeelingFragment -> {
                     ivSettingsCog.visible()
                     bottomNav.visible()
                 }
