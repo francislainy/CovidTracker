@@ -51,7 +51,7 @@ class HowYouFeelingFragment : Fragment(R.layout.fragment_how_you_feeling) {
             }
             btnImNotWell -> {
                 myDataList.status = "Bad"
-                navController!!.navigate(R.id.action_howYouFeelingFragment_to_thankYouFragment)
+                navController!!.navigate(R.id.action_howYouFeelingFragment_to_notWellSymptomsFragment)
             }
         }
 

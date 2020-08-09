@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_checkInBottomFragment_to_howYouFeelingFragment"
             app:destination="@id/howYouFeelingFragment" />
+        <action
+            android:id="@+id/action_checkInBottomFragment_to_thankYouFragment"
+            app:destination="@id/thankYouFragment" />
     </fragment>
 
     <fragment
@@ -68,6 +71,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_howYouFeelingFragment"
             app:destination="@id/howYouFeelingFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_notWellSymptomsFragment"
+            app:destination="@id/notWellSymptomsFragment" />
     </fragment>
 
     <fragment
@@ -150,6 +156,9 @@
         <action
             android:id="@+id/action_howYouFeelingFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_howYouFeelingFragment_to_notWellSymptomsFragment"
+            app:destination="@id/notWellSymptomsFragment" />
     </fragment>
     <fragment
         android:id="@+id/thankYouFragment"
@@ -160,6 +169,20 @@
             app:destination="@id/howYouFeelingFragment" />
         <action
             android:id="@+id/action_thankYouFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_thankYouFragment_to_checkInBottomFragment"
+            app:destination="@id/checkInBottomFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notWellSymptomsFragment"
+        android:name="com.example.covidtracker.fragments.NotWellSymptomsFragment"
+        tools:layout="@layout/fragment_not_well_symptoms" >
+        <action
+            android:id="@+id/action_notWellSymptomsFragment_to_howYouFeelingFragment"
+            app:destination="@id/howYouFeelingFragment" />
+        <action
+            android:id="@+id/action_notWellSymptomsFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
     </fragment>
 
