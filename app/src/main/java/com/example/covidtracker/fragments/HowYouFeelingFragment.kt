@@ -38,7 +38,6 @@ class HowYouFeelingFragment : Fragment(R.layout.fragment_how_you_feeling) {
         myDataList.date = java.util.Date().toString()
         myDataList.hasRepliedToday = true
         it?.isEnabled = false
-        howAreYouFeelingLayout.gone()
 
         navController = Navigation.findNavController(requireView())
 
@@ -47,7 +46,7 @@ class HowYouFeelingFragment : Fragment(R.layout.fragment_how_you_feeling) {
         when (it) {
             btnImGood -> {
                 myDataList.status = "Good"
-                navController!!.navigate(R.id.action_howYouFeelingFragment_to_thankYouFragment)
+
             }
             btnImNotWell -> {
                 myDataList.status = "Bad"

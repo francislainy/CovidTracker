@@ -175,22 +175,30 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
     private val onClickStatusItemOnCard = View.OnClickListener run@{
 
         val myDataList = MyDataList()
+        myDataList.date = java.util.Date().toString()
+        myDataList.hasRepliedToday = true
+        it?.isEnabled = false
+
+
+        myDatabase = DataRoomDbase.getDatabase(activity as MainActivity)
+
 
         when (it) {
             ivClose -> {
                 howAreYouFeelingLayout.gone()
                 return@run
             }
-            btnImGood -> myDataList.status = "Good"
-            btnImNotWell -> myDataList.status = "Bad"
+            btnImGood -> {
+                myDataList.status = "Good"
+                howAreYouFeelingLayout.gone()
+            }
+            btnImNotWell -> {
+                myDataList.status = "Bad"
+                navController!!.navigate(R.id.action_updatesFragment_to_notWellSymptomsFragment)
+            }
         }
 
-        myDataList.date = java.util.Date().toString()
-        myDataList.hasRepliedToday = true
-        it?.isEnabled = false
-        howAreYouFeelingLayout.gone()
 
-        myDatabase = DataRoomDbase.getDatabase(activity as MainActivity)
         myDatabase?.dataDAO()?.addData(myDataList)
     }
 

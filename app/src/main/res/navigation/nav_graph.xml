@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_updatesFragment_to_casesByCountyFragment"
             app:destination="@id/casesByCountyFragment" />
+        <action
+            android:id="@+id/action_updatesFragment_to_notWellSymptomsFragment"
+            app:destination="@id/notWellSymptomsFragment" />
     </fragment>
 
     <fragment
@@ -184,6 +187,9 @@
         <action
             android:id="@+id/action_notWellSymptomsFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_notWellSymptomsFragment_to_updatesFragment"
+            app:destination="@id/updatesFragment" />
     </fragment>
 
 </navigation>
