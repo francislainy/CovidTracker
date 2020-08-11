@@ -176,6 +176,9 @@
         <action
             android:id="@+id/action_thankYouFragment_to_checkInBottomFragment"
             app:destination="@id/checkInBottomFragment" />
+        <action
+            android:id="@+id/action_thankYouFragment_to_notWellSymptomsFragment"
+            app:destination="@id/notWellSymptomsFragment" />
     </fragment>
     <fragment
         android:id="@+id/notWellSymptomsFragment"
@@ -190,6 +193,9 @@
         <action
             android:id="@+id/action_notWellSymptomsFragment_to_updatesFragment"
             app:destination="@id/updatesFragment" />
+        <action
+            android:id="@+id/action_notWellSymptomsFragment_to_thankYouFragment"
+            app:destination="@id/thankYouFragment" />
     </fragment>
 
 </navigation>
