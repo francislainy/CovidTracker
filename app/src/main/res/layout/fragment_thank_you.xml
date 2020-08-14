@@ -33,7 +33,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tvWeAreHappyDescription"
+                android:id="@+id/tvThankYouMessage"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -56,17 +56,17 @@
                 android:text="View my history"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvWeAreHappyDescription" />
+                app:layout_constraintTop_toBottomOf="@+id/tvThankYouMessage" />
 
             <TextView
-                android:id="@+id/tvVisitHseDescription"
+                android:id="@+id/tvAdvice"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Visit hse.ie to read more about how to protect yourself and others from coronavirus."
                 android:textColor="@color/text"
-                app:layout_constraintEnd_toEndOf="@id/tvWeAreHappyDescription"
-                app:layout_constraintStart_toStartOf="@+id/tvWeAreHappyDescription"
+                app:layout_constraintEnd_toEndOf="@id/tvThankYouMessage"
+                app:layout_constraintStart_toStartOf="@+id/tvThankYouMessage"
                 app:layout_constraintTop_toBottomOf="@id/btnViewMyHistory" />
 
             <Button
@@ -82,7 +82,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvVisitHseDescription" />
+                app:layout_constraintTop_toBottomOf="@+id/tvAdvice" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -46,7 +46,7 @@ class HowYouFeelingFragment : Fragment(R.layout.fragment_how_you_feeling) {
         when (it) {
             btnImGood -> {
                 myDataList.status = "Good"
-
+                navController!!.navigate(R.id.action_howYouFeelingFragment_to_checkInBottomFragment)
             }
             btnImNotWell -> {
                 myDataList.status = "Bad"

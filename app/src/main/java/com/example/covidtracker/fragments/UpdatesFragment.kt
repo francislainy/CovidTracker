@@ -309,50 +309,50 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 }
 
 
-private class MyValueFormatter2 :
-    ValueFormatter() {
-    override fun getFormattedValue(
-        value: Float,
-        entry: Entry,
-        dataSetIndex: Int,
-        viewPortHandler: ViewPortHandler
-    ): String {
-        // write your logic here
-        return if (value > 0) super.getFormattedValue(value) else ""
-    }
-}
-
-private class MyValueFormatter(values: Array<String>) :
-    IndexAxisValueFormatter(values) {
-
-    override fun getFormattedValue(
-        value: Float,
-        entry: Entry?,
-        dataSetIndex: Int,
-        viewPortHandler: ViewPortHandler?
-    ): String? {
-        for (i in 0 until values.size) {
-            if (values.get(i).equals(value)) {
-                return values.get(i)
-            }
-        }
-        return null
-    }
-}
-
-
-class MyAxisValueFormatter(values: Array<String>) : IndexAxisValueFormatter(values) {
-    private val mValues: Array<String> = values
-    override fun getFormattedValue(value: Float, axis: AxisBase): String {
-        return mValues[value.toInt()]
-    }
-}
-
-
-class MyXAxisValuesFormatter(values: Array<String>) : IndexAxisValueFormatter(values) {
-
-    override fun getFormattedValue(value: Float, axis: AxisBase?): String {
-        return values[value.toInt()]
-    }
-
-}
+//private class MyValueFormatter2 :
+//    ValueFormatter() {
+//    override fun getFormattedValue(
+//        value: Float,
+//        entry: Entry,
+//        dataSetIndex: Int,
+//        viewPortHandler: ViewPortHandler
+//    ): String {
+//        // write your logic here
+//        return if (value > 0) super.getFormattedValue(value) else ""
+//    }
+//}
+//
+//private class MyValueFormatter(values: Array<String>) :
+//    IndexAxisValueFormatter(values) {
+//
+//    override fun getFormattedValue(
+//        value: Float,
+//        entry: Entry?,
+//        dataSetIndex: Int,
+//        viewPortHandler: ViewPortHandler?
+//    ): String? {
+//        for (i in 0 until values.size) {
+//            if (values.get(i).equals(value)) {
+//                return values.get(i)
+//            }
+//        }
+//        return null
+//    }
+//}
+//
+//
+//class MyAxisValueFormatter(values: Array<String>) : IndexAxisValueFormatter(values) {
+//    private val mValues: Array<String> = values
+//    override fun getFormattedValue(value: Float, axis: AxisBase): String {
+//        return mValues[value.toInt()]
+//    }
+//}
+//
+//
+//class MyXAxisValuesFormatter(values: Array<String>) : IndexAxisValueFormatter(values) {
+//
+//    override fun getFormattedValue(value: Float, axis: AxisBase?): String {
+//        return values[value.toInt()]
+//    }
+//
+//}

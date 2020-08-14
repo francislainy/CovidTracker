@@ -179,6 +179,14 @@
         <action
             android:id="@+id/action_thankYouFragment_to_notWellSymptomsFragment"
             app:destination="@id/notWellSymptomsFragment" />
+        <argument
+            android:name="thankYouMessage"
+            android:defaultValue="terms"
+            app:argType="string" />
+        <argument
+            android:name="advice"
+            android:defaultValue="terms"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/notWellSymptomsFragment"

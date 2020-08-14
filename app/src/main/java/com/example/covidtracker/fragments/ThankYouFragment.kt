@@ -7,6 +7,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import com.example.covidtracker.R
 import kotlinx.android.synthetic.main.fragment_thank_you.*
 import kotlinx.android.synthetic.main.title_and_progress_bar.*
@@ -21,6 +22,11 @@ class ThankYouFragment : Fragment(R.layout.fragment_thank_you) {
 
         tvHeader.text = "Thank you"
 
+        val args: ThankYouFragmentArgs by navArgs()
+
+        tvThankYouMessage.text = args.thankYouMessage
+        tvAdvice.text = args.advice
+
         btnViewMyHistory.setOnClickListener(onClickButton)
         btnAdviceOnProtection.setOnClickListener(onClickButton)
     }
@@ -29,6 +35,8 @@ class ThankYouFragment : Fragment(R.layout.fragment_thank_you) {
     private val onClickButton = View.OnClickListener {
 
         navController = Navigation.findNavController(requireView())
+
+
 
         when (it) {
 

@@ -2,6 +2,7 @@ package com.example.covidtracker.fragments
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -46,6 +47,7 @@ class NotWellSymptomsFragment : Fragment(R.layout.fragment_not_well_symptoms) {
 
     }
 
+    private var hasSymptoms = false
 
     private val onClickAnswer = View.OnClickListener {
 
@@ -61,18 +63,27 @@ class NotWellSymptomsFragment : Fragment(R.layout.fragment_not_well_symptoms) {
                 }
                 btnYesSymptoms -> {
                     questionsList?.get(index)?.questionAnswer = "Yes"
+                    hasSymptoms = true
                 }
             }
 
         } else {
 
-            // todo: introduce logic for only if one item at least as shown them it shows a thank you page but with different text,
-            // otherwise same page as before.
-
             navController = Navigation.findNavController(requireView())
 
-            navController!!.navigate(R.id.action_notWellSymptomsFragment_to_thankYouFragment)
+            var bundle = if (hasSymptoms) {
+                bundleOf("thankYouMessage" to "Thank you for checking in. Sorry to hear you're not feeing well.\nIf you have symptoms like a runny nose or sore throat, you should behave like you have coronavirus and self-isolate for 14 days to protect other people.\nPhone your GP to discuss your symptoms and whether you need a test for coronavirus.", "advice" to "Visit hse.ie to read more about how to protect yourself and others from coronavirus.")
+            } else {
+                bundleOf("thankYouMessage" to "We’re happy to hear you’re feeling well. Thank you for checking in. Even if you are still well, please come back tomorrow to let us know how you're doing.", "advice" to "Visit hse.ie to read more about how to protect yourself and others from coronavirus.")
+            }
+
+            navController!!.navigate(
+                R.id.action_notWellSymptomsFragment_to_thankYouFragment,
+                bundle
+            )
 
         }
+
+
     }
 }
