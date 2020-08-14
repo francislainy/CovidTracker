@@ -25,8 +25,10 @@
             app:strokeWidth="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clLetUsKnowSymptomsParent"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/ivSymptoms"
@@ -75,6 +77,56 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clCanCheckAgainTomorrowParent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/greyEee"
+                android:visibility="visible">
+
+                <FrameLayout
+                    android:id="@+id/flCheckTomorrow"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:background="@color/blue_green"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/ivCovid"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/covid_green"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </FrameLayout>
+
+
+                <TextView
+                    android:id="@+id/tvCheckTomorrowText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="You can check symptoms again \ntomorrow"
+                    android:textColor="@color/text"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/flCheckTomorrow"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/flCheckTomorrow"
+                    app:layout_constraintTop_toTopOf="@+id/flCheckTomorrow"
+                    app:layout_constraintVertical_bias="0.0" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
         </com.google.android.material.card.MaterialCardView>
 
         <include
@@ -89,9 +141,9 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/rvHistoryContainer"
+            style="@style/materialCardStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/materialCardStyle"
             app:layout_constraintEnd_toEndOf="@id/titleAndProgressBarLayout"
             app:layout_constraintStart_toStartOf="@id/titleAndProgressBarLayout"
             app:layout_constraintTop_toBottomOf="@id/titleAndProgressBarLayout">
@@ -100,8 +152,8 @@
                 android:id="@+id/rvHistory"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"

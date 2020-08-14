@@ -1,5 +1,6 @@
 package com.example.covidtracker.fragments
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -16,6 +17,8 @@ import com.example.covidtracker.adapter_holders.RecyclerHistoryItem
 import com.example.covidtracker.model.MyDataList
 import com.example.covidtracker.utils.Utils
 import com.example.covidtracker.utils.addDecorationSkipLast
+import com.example.covidtracker.utils.gone
+import com.example.covidtracker.utils.visible
 import com.example.covidtracker.view_models.PostViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -46,8 +49,24 @@ class CheckInBottomFragment : Fragment(R.layout.fragment_check_in_bottom) {
 
         navController = Navigation.findNavController(view)
 
-        cardLetUsKnowSymptoms.setOnClickListener {
+        clLetUsKnowSymptomsParent.setOnClickListener {
             navController!!.navigate(R.id.action_checkInBottomFragment_to_howYouFeelingFragment)
+        }
+
+
+        val preference = (activity as MainActivity).getSharedPreferences(
+            resources.getString(R.string.app_name),
+            Context.MODE_PRIVATE
+        )
+        val hasCheckedToday = preference.getBoolean("hasCheckedToday", false)
+
+
+        if (hasCheckedToday) {
+            clCanCheckAgainTomorrowParent.visible()
+            clLetUsKnowSymptomsParent.gone()
+        } else {
+            clCanCheckAgainTomorrowParent.gone()
+            clLetUsKnowSymptomsParent.visible()
         }
 
 

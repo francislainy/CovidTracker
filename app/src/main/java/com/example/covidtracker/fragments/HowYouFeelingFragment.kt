@@ -1,5 +1,6 @@
 package com.example.covidtracker.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -53,6 +54,13 @@ class HowYouFeelingFragment : Fragment(R.layout.fragment_how_you_feeling) {
                 navController!!.navigate(R.id.action_howYouFeelingFragment_to_notWellSymptomsFragment)
             }
         }
+
+        val preference = (activity as MainActivity).getSharedPreferences(
+            resources.getString(R.string.app_name), Context.MODE_PRIVATE
+        )
+        val editor = preference.edit()
+        editor.putBoolean("hasCheckedToday", true)
+        editor.apply()
 
         myDatabase?.dataDAO()?.addData(myDataList)
 

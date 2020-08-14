@@ -32,6 +32,7 @@ import com.github.mikephil.charting.utils.ViewPortHandler
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.covid_spreading_layout.*
+import kotlinx.android.synthetic.main.fragment_check_in_bottom.*
 import kotlinx.android.synthetic.main.fragment_updates.*
 import kotlinx.android.synthetic.main.how_you_feeling_layout.*
 import kotlinx.android.synthetic.main.national_totals_layout.*
@@ -80,6 +81,23 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
         nationalPictureLayout.setOnClickListener {
             navController!!.navigate(R.id.action_updatesFragment_to_casesByCountyFragment)
         }
+
+
+        val preference = (activity as MainActivity).getSharedPreferences(
+            resources.getString(R.string.app_name),
+            Context.MODE_PRIVATE
+        )
+        val hasCheckedToday = preference.getBoolean("hasCheckedToday", false)
+
+        if (hasCheckedToday) {
+            greatToHearLayout.visible()
+            howYouFeelingLayout.gone()
+        } else {
+            greatToHearLayout.gone()
+            howYouFeelingLayout.visible()
+        }
+
+
 
         btnImGood.setOnClickListener(onClickStatusItemOnCard)
         btnImNotWell.setOnClickListener(onClickStatusItemOnCard)
@@ -198,6 +216,12 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
             }
         }
 
+        val preference = (activity as MainActivity).getSharedPreferences(
+            resources.getString(R.string.app_name), Context.MODE_PRIVATE
+        )
+        val editor = preference.edit()
+        editor.putBoolean("hasCheckedToday", true)
+        editor.apply()
 
         myDatabase?.dataDAO()?.addData(myDataList)
     }
