@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_updatesFragment_to_notWellSymptomsFragment"
             app:destination="@id/notWellSymptomsFragment" />
+        <action
+            android:id="@+id/action_updatesFragment_to_checkInBottomFragment"
+            app:destination="@id/checkInBottomFragment" />
     </fragment>
 
     <fragment
@@ -34,6 +37,9 @@
         <action
             android:id="@+id/action_checkInBottomFragment_to_thankYouFragment"
             app:destination="@id/thankYouFragment" />
+        <action
+            android:id="@+id/action_checkInBottomFragment_to_updatesFragment"
+            app:destination="@id/updatesFragment" />
     </fragment>
 
     <fragment

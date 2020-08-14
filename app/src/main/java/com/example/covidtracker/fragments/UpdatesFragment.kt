@@ -34,7 +34,9 @@ import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.covid_spreading_layout.*
 import kotlinx.android.synthetic.main.fragment_check_in_bottom.*
 import kotlinx.android.synthetic.main.fragment_updates.*
+import kotlinx.android.synthetic.main.great_to_hear_layout.*
 import kotlinx.android.synthetic.main.how_you_feeling_layout.*
+import kotlinx.android.synthetic.main.how_you_feeling_layout.ivClose
 import kotlinx.android.synthetic.main.national_totals_layout.*
 import kotlinx.android.synthetic.main.title_and_progress_bar.view.*
 import kotlinx.android.synthetic.main.todays_fight_layout.view.*
@@ -102,6 +104,7 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
         btnImGood.setOnClickListener(onClickStatusItemOnCard)
         btnImNotWell.setOnClickListener(onClickStatusItemOnCard)
         ivClose.setOnClickListener(onClickStatusItemOnCard)
+        tvViewHistory.setOnClickListener(onClickStatusItemOnCard)
 
     }
 
@@ -206,6 +209,11 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
                 howAreYouFeelingLayout.gone()
                 return@run
             }
+            tvViewHistory -> {
+                navController!!.navigate(R.id.action_updatesFragment_to_checkInBottomFragment)
+            }
+
+
             btnImGood -> {
                 myDataList.status = "Good"
                 howAreYouFeelingLayout.gone()
