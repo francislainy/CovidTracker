@@ -50,6 +50,9 @@
         <action
             android:id="@+id/action_contactTracingBottomFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_contactTracingBottomFragment_to_closeContactFragment"
+            app:destination="@id/closeContactFragment" />
     </fragment>
 
     <fragment
@@ -197,7 +200,7 @@
     <fragment
         android:id="@+id/notWellSymptomsFragment"
         android:name="com.example.covidtracker.fragments.NotWellSymptomsFragment"
-        tools:layout="@layout/fragment_not_well_symptoms" >
+        tools:layout="@layout/fragment_not_well_symptoms">
         <action
             android:id="@+id/action_notWellSymptomsFragment_to_howYouFeelingFragment"
             app:destination="@id/howYouFeelingFragment" />
@@ -210,6 +213,14 @@
         <action
             android:id="@+id/action_notWellSymptomsFragment_to_thankYouFragment"
             app:destination="@id/thankYouFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/closeContactFragment"
+        android:name="com.example.covidtracker.fragments.CloseContactFragment"
+        tools:layout="@layout/fragment_close_contact">
+        <action
+            android:id="@+id/action_closeContactFragment_to_contactTracingBottomFragment"
+            app:destination="@id/contactTracingBottomFragment" />
     </fragment>
 
 </navigation>

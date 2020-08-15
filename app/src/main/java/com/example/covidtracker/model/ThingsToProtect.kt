@@ -1,6 +1,6 @@
 package com.example.covidtracker.model
 
-data class ModelTest(
+data class ThingsToProtect(
     val title: String? = null,
     val selected: Boolean? = false
 )

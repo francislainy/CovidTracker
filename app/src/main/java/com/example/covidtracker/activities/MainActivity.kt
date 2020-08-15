@@ -1,8 +1,5 @@
 package com.example.covidtracker.activities
 
-import android.content.ActivityNotFoundException
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -12,12 +9,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.covidtracker.R
+import com.example.covidtracker.utils.Utils.Companion.shareViaWhatsApp
 import com.example.covidtracker.utils.gone
 import com.example.covidtracker.utils.visible
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.snippet_toolbar_plain.*
-import java.util.*
-
 
 class MainActivity : AppCompatActivity() {
     private var navController: NavController? = null
@@ -74,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 
             when (it.itemId) {
                 R.id.share -> {
-                    shareViaWhatsApp()
+                    shareViaWhatsApp(this@MainActivity)
                 }
                 else -> {
                     NavigationUI.onNavDestinationSelected(it, navController!!)
@@ -109,7 +105,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.share -> {
-                    shareViaWhatsApp()
+                    shareViaWhatsApp(this@MainActivity)
                 }
 
             }
@@ -118,26 +114,5 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-    private fun shareViaWhatsApp(): Unit {
-        val whatsAppIntent = Intent(Intent.ACTION_SEND)
-        whatsAppIntent.type = "text/plain"
-        whatsAppIntent.setPackage("com.whatsapp")
-        whatsAppIntent.putExtra(
-            Intent.EXTRA_TEXT,
-            "Application of social rating share with your friend"
-        )
-        try {
-            Objects.requireNonNull(this).startActivity(whatsAppIntent)
-        } catch (ex: ActivityNotFoundException) {
-            startActivity(
-                Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("http://play.google.com/store/apps/details?id=com.whatsapp")
-                )
-            )
-        }
-
-    }
 
 }

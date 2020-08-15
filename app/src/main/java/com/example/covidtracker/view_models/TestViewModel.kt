@@ -26,11 +26,11 @@ class TestViewModel() : ViewModel() {
             "settings" -> {
 
                 list = arrayOf(
-                    ModelTest("Contact Tracing", false),
-                    ModelTest("COVID Check-In", false),
-                    ModelTest("Data Protection Information Notice", true),
-                    ModelTest("App Metrics", false),
-                    ModelTest("Leave", false)
+                    ModelTest("Contact Tracing"),
+                    ModelTest("COVID Check-In"),
+                    ModelTest("Data Protection Information Notice"),
+                    ModelTest("App Metrics"),
+                    ModelTest("Leave")
                 )
             }
 
@@ -140,6 +140,20 @@ class TestViewModel() : ViewModel() {
 
             }
 
+
+            "things_to_protect" -> {
+
+                list = arrayOf(
+                    ModelTest("Stay at home."),
+                    ModelTest("Do not go to work."),
+                    ModelTest("Do not use public transport."),
+                    ModelTest("Do not have visitors at your home."),
+                    ModelTest("Do not visit others, even if you usually care for them."),
+                    ModelTest("Do not go to the shops or pharmacy unless it's absolutely necessary - where possible, order your groceries online or have some family or friends drop them off."),
+                    ModelTest("Keep away from older people, anyone with long-term medical conditions and pregnant women.")
+                )
+
+            }
 
         }
 

@@ -1,5 +1,11 @@
 package com.example.covidtracker.utils
 
+import android.app.Activity
+import android.content.ActivityNotFoundException
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import com.example.covidtracker.activities.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -40,5 +46,29 @@ class Utils {
                 time = date
             }
         }
+
+
+        fun shareViaWhatsApp(activity: MainActivity) {
+            val whatsAppIntent = Intent(Intent.ACTION_SEND)
+            whatsAppIntent.type = "text/plain"
+            whatsAppIntent.setPackage("com.whatsapp")
+            whatsAppIntent.putExtra(
+                Intent.EXTRA_TEXT,
+                "Application of social rating share with your friend"
+            )
+            try {
+                activity.startActivity(whatsAppIntent)
+            } catch (ex: ActivityNotFoundException) {
+                activity.startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("http://play.google.com/store/apps/details?id=com.whatsapp")
+                    )
+                )
+            }
+
+        }
+
     }
+
 }

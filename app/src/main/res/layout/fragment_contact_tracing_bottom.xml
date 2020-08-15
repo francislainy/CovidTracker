@@ -167,7 +167,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvAppRegistrations" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnShare"
                 style="@style/buttonStatus"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

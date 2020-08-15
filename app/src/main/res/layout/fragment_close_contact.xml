@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.CloseContactFragment">
+
+    <include
+        android:id="@+id/titleAndProgressBar"
+        layout="@layout/title_and_progress_bar" />
+
+    <TextView
+        android:id="@+id/tvIntro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="If you have received a notification from the app, or a call from our Contact Tracing team, telling you that you have been in close contact with someone that has tested positive for coronavirus, you may need to be tested."
+        android:textColor="@color/text"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleAndProgressBar" />
+
+    <TextView
+        android:id="@+id/tvEasiestWay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="The easiest way to do this is to request a call back from the Contact Tracing Team when you get the alert. You can also contact HSELIVE on 1850 2 1850 and they will arrange a call back."
+        android:textColor="@color/text"
+        app:layout_constraintEnd_toEndOf="@+id/tvIntro"
+        app:layout_constraintStart_toStartOf="@+id/tvIntro"
+        app:layout_constraintTop_toBottomOf="@id/tvIntro" />
+
+    <TextView
+        android:id="@+id/tvOtherThingsToProtectOthersTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="There are some other things that you should do to protect others."
+        android:textColor="@color/text"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvEasiestWay"
+        app:layout_constraintStart_toStartOf="@+id/tvEasiestWay"
+        app:layout_constraintTop_toBottomOf="@id/tvEasiestWay" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvThingsToProtect"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvOtherThingsToProtectOthersTitle"
+        app:layout_constraintStart_toStartOf="@+id/tvOtherThingsToProtectOthersTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvOtherThingsToProtectOthersTitle"
+        tools:listitem="@layout/rv_things_to_protect_item_row" />
+
+    <TextView
+        android:id="@+id/tvPhoneYourGp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Phone your GP if you develop symptoms"
+        android:textColor="@color/text"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/rvThingsToProtect"
+        app:layout_constraintStart_toStartOf="@+id/rvThingsToProtect"
+        app:layout_constraintTop_toBottomOf="@id/rvThingsToProtect" />
+
+    <TextView
+        android:id="@+id/tvFindOutMore"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Find out more about what you need to do on hse.ie"
+        android:textColor="@color/text"
+        app:layout_constraintEnd_toEndOf="@+id/tvPhoneYourGp"
+        app:layout_constraintStart_toStartOf="@+id/tvPhoneYourGp"
+        app:layout_constraintTop_toBottomOf="@id/tvPhoneYourGp" />
+
+    <Button
+        android:id="@+id/btnGoToHse"
+        style="@style/buttonStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/shadow"
+        android:text="Go to HSE.ie"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvFindOutMore"
+        app:layout_constraintStart_toStartOf="@+id/tvFindOutMore"
+        app:layout_constraintTop_toBottomOf="@id/tvFindOutMore" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
