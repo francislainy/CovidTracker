@@ -10,7 +10,6 @@ private val LOG_TAG = RecyclerThingsToProtectItem::class.java.canonicalName
 
 class RecyclerThingsToProtectItem(
     private val activity: MainActivity,
-    private val itemNumber: String?,
     private val itemDescription: String?
 ) : Item<GroupieViewHolder>() {
 

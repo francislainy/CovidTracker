@@ -35,12 +35,18 @@ class ContactTracingBottomFragment : Fragment(R.layout.fragment_contact_tracing_
 
         btnShare.setOnClickListener { shareViaWhatsApp(activity as MainActivity) }
         closeContactInformationCard.setOnClickListener(onClickCard)
+        uploadIdCard.setOnClickListener(onClickCard)
+
 
     }
 
     private val onClickCard = View.OnClickListener {
 
-        navController!!.navigate(R.id.action_contactTracingBottomFragment_to_closeContactFragment)
+        when (it) {
+            closeContactInformationCard -> navController!!.navigate(R.id.action_contactTracingBottomFragment_to_closeContactFragment)
+            uploadIdCard -> navController!!.navigate(R.id.action_contactTracingBottomFragment_to_uploadIdFragment)
+        }
+
 
     }
 

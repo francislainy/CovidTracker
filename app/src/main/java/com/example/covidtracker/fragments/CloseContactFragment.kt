@@ -50,9 +50,9 @@ class CloseContactFragment : Fragment(R.layout.fragment_close_contact) {
         myViewModel.userMutableLiveData.observe(viewLifecycleOwner, userListUpdateObserver)
 
 
-        btnGoToHse.setOnClickListener{goToHse()}
+        btnGoToHse.setOnClickListener { goToHse() }
     }
-    
+
 
     private fun goToHse() {
         val url = "https://www2.hse.ie/coronavirus/"
@@ -68,7 +68,6 @@ class CloseContactFragment : Fragment(R.layout.fragment_close_contact) {
                 adapter!!.add(
                     RecyclerThingsToProtectItem(
                         activity as MainActivity,
-                        1.toString(),
                         s.title
                     )
                 )

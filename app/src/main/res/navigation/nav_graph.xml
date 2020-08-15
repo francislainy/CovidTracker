@@ -53,6 +53,9 @@
         <action
             android:id="@+id/action_contactTracingBottomFragment_to_closeContactFragment"
             app:destination="@id/closeContactFragment" />
+        <action
+            android:id="@+id/action_contactTracingBottomFragment_to_uploadIdFragment"
+            app:destination="@id/uploadIdFragment" />
     </fragment>
 
     <fragment
@@ -220,6 +223,14 @@
         tools:layout="@layout/fragment_close_contact">
         <action
             android:id="@+id/action_closeContactFragment_to_contactTracingBottomFragment"
+            app:destination="@id/contactTracingBottomFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/uploadIdFragment"
+        android:name="com.example.covidtracker.fragments.UploadIdFragment"
+        tools:layout="@layout/fragment_upload_id">
+        <action
+            android:id="@+id/action_uploadIdFragment_to_contactTracingBottomFragment"
             app:destination="@id/contactTracingBottomFragment" />
     </fragment>
 
