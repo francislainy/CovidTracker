@@ -20,19 +20,14 @@ import com.example.covidtracker.model.Totals
 import com.example.covidtracker.utils.gone
 import com.example.covidtracker.utils.invisible
 import com.example.covidtracker.utils.visible
-import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
-import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
-import com.github.mikephil.charting.utils.ViewPortHandler
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.covid_spreading_layout.*
-import kotlinx.android.synthetic.main.fragment_check_in_bottom.*
 import kotlinx.android.synthetic.main.fragment_updates.*
 import kotlinx.android.synthetic.main.great_to_hear_layout.*
 import kotlinx.android.synthetic.main.how_you_feeling_layout.*
@@ -40,6 +35,9 @@ import kotlinx.android.synthetic.main.how_you_feeling_layout.ivClose
 import kotlinx.android.synthetic.main.national_totals_layout.*
 import kotlinx.android.synthetic.main.title_and_progress_bar.view.*
 import kotlinx.android.synthetic.main.todays_fight_layout.view.*
+import java.util.Date
+import java.time.LocalDate
+import java.time.ZoneId
 
 
 class UpdatesFragment : Fragment(R.layout.fragment_updates) {
@@ -47,10 +45,16 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
     private var navController: NavController? = null
     private var myDatabase: DataRoomDbase? = null
 
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
+
+        val preference = (activity as MainActivity).getSharedPreferences(
+            resources.getString(R.string.app_name), Context.MODE_PRIVATE
+        )
+        val editor = preference.edit()
 
 
         val ll = todaysFightLayout as ConstraintLayout
@@ -85,20 +89,29 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
         }
 
 
-        val preference = (activity as MainActivity).getSharedPreferences(
-            resources.getString(R.string.app_name),
-            Context.MODE_PRIVATE
-        )
-        val hasCheckedToday = preference.getBoolean("hasCheckedToday", false)
+        val dateChecked = preference.getString(getString(R.string.dateCheckedPreference), "today")
 
-        if (hasCheckedToday) {
+        val date = Date()
+        val todaysDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+
+
+        if (dateChecked == todaysDate.toString()) {
+            editor.putBoolean(getString(R.string.hasCheckedPreference), true)
+        } else {
+            editor.putBoolean(getString(R.string.hasCheckedPreference), false)
+        }
+
+        editor.apply()
+
+        val hasChecked = preference.getBoolean(getString(R.string.hasCheckedPreference), false)
+
+        if (hasChecked) {
             greatToHearLayout.visible()
             howYouFeelingLayout.gone()
         } else {
             greatToHearLayout.gone()
             howYouFeelingLayout.visible()
         }
-
 
 
         btnImGood.setOnClickListener(onClickStatusItemOnCard)
@@ -202,7 +215,13 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
 
         myDatabase = DataRoomDbase.getDatabase(activity as MainActivity)
+        val preference = (activity as MainActivity).getSharedPreferences(
+            resources.getString(R.string.app_name), Context.MODE_PRIVATE
+        )
+        val editor = preference.edit()
 
+        val date = Date()
+        val localDate: LocalDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
 
         when (it) {
             ivClose -> {
@@ -217,19 +236,20 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
             btnImGood -> {
                 myDataList.status = "Good"
                 howAreYouFeelingLayout.gone()
+                editor.putBoolean(getString(R.string.hasCheckedPreference), true)
+
+                editor.putString(getString(R.string.dateCheckedPreference), localDate.toString())
+                editor.apply()
             }
             btnImNotWell -> {
                 myDataList.status = "Bad"
+                editor.putBoolean(getString(R.string.hasCheckedPreference), true)
+                editor.putString(getString(R.string.dateCheckedPreference), localDate.toString())
+                editor.apply()
                 navController!!.navigate(R.id.action_updatesFragment_to_notWellSymptomsFragment)
+
             }
         }
-
-        val preference = (activity as MainActivity).getSharedPreferences(
-            resources.getString(R.string.app_name), Context.MODE_PRIVATE
-        )
-        val editor = preference.edit()
-        editor.putBoolean("hasCheckedToday", true)
-        editor.apply()
 
         myDatabase?.dataDAO()?.addData(myDataList)
     }

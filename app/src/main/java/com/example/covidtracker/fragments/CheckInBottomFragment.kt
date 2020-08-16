@@ -58,7 +58,9 @@ class CheckInBottomFragment : Fragment(R.layout.fragment_check_in_bottom) {
             resources.getString(R.string.app_name),
             Context.MODE_PRIVATE
         )
-        val hasCheckedToday = preference.getBoolean("hasCheckedToday", false)
+
+
+        val hasCheckedToday = preference.getBoolean(getString(R.string.hasCheckedPreference), false)
 
 
         if (hasCheckedToday) {

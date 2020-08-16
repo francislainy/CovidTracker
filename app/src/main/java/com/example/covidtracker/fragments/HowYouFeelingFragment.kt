@@ -59,7 +59,7 @@ class HowYouFeelingFragment : Fragment(R.layout.fragment_how_you_feeling) {
             resources.getString(R.string.app_name), Context.MODE_PRIVATE
         )
         val editor = preference.edit()
-        editor.putBoolean("hasCheckedToday", true)
+        editor.putBoolean(getString(R.string.hasCheckedPreference), true)
         editor.apply()
 
         myDatabase?.dataDAO()?.addData(myDataList)

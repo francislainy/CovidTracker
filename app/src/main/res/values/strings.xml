@@ -20,4 +20,6 @@
     <string name="total_deaths_param">total_deaths</string>
     <string name="total_hospitalised_param">total_hospitalised</string>
     <string name="total_required_icu">total_required_icu</string>
+    <string name="hasCheckedPreference">hasChecked</string>
+    <string name="dateCheckedPreference">date</string>
 </resources>
