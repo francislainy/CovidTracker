@@ -114,10 +114,10 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
         }
 
 
-        btnImGood.setOnClickListener(onClickStatusItemOnCard)
-        btnImNotWell.setOnClickListener(onClickStatusItemOnCard)
-        ivClose.setOnClickListener(onClickStatusItemOnCard)
-        tvViewHistory.setOnClickListener(onClickStatusItemOnCard)
+        btnImGood.setOnClickListener(onClickStatusButton)
+        btnImNotWell.setOnClickListener(onClickStatusButton)
+        ivClose.setOnClickListener { howAreYouFeelingLayout.gone() }
+        tvViewHistory.setOnClickListener { navController!!.navigate(R.id.action_updatesFragment_to_checkInBottomFragment) }
 
     }
 
@@ -206,15 +206,8 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private val onClickStatusItemOnCard = View.OnClickListener run@{
+    private val onClickStatusButton = View.OnClickListener run@{
 
-        val myDataList = MyDataList()
-        myDataList.date = java.util.Date().toString()
-        myDataList.hasRepliedToday = true
-        it?.isEnabled = false
-
-
-        myDatabase = DataRoomDbase.getDatabase(activity as MainActivity)
         val preference = (activity as MainActivity).getSharedPreferences(
             resources.getString(R.string.app_name), Context.MODE_PRIVATE
         )
@@ -222,32 +215,28 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
         val date = Date()
         val localDate: LocalDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+        editor.putBoolean(getString(R.string.hasCheckedPreference), true)
+        editor.putString(getString(R.string.dateCheckedPreference), localDate.toString())
+        editor.apply()
+
+
+        val myDataList = MyDataList()
+        myDataList.date = java.util.Date().toString()
+        myDataList.hasRepliedToday = true
+        it?.isEnabled = false
+
+        myDatabase = DataRoomDbase.getDatabase(activity as MainActivity)
 
         when (it) {
-            ivClose -> {
-                howAreYouFeelingLayout.gone()
-                return@run
-            }
-            tvViewHistory -> {
-                navController!!.navigate(R.id.action_updatesFragment_to_checkInBottomFragment)
-            }
-
 
             btnImGood -> {
                 myDataList.status = "Good"
                 howAreYouFeelingLayout.gone()
-                editor.putBoolean(getString(R.string.hasCheckedPreference), true)
-
-                editor.putString(getString(R.string.dateCheckedPreference), localDate.toString())
-                editor.apply()
             }
+
             btnImNotWell -> {
                 myDataList.status = "Bad"
-                editor.putBoolean(getString(R.string.hasCheckedPreference), true)
-                editor.putString(getString(R.string.dateCheckedPreference), localDate.toString())
-                editor.apply()
                 navController!!.navigate(R.id.action_updatesFragment_to_notWellSymptomsFragment)
-
             }
         }
 
