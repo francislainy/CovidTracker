@@ -11,37 +11,9 @@
         android:layout_height="wrap_content"
         tools:context=".fragments.ContactTracingFragment">
 
-        <TextView
-            android:id="@+id/tvHeader"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Contact Tracing"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/pb"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ProgressBar
-            android:id="@+id/pb"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:progress="60"
-            android:progressBackgroundTint="@color/greyCcc"
-            android:progressTint="@color/yellow"
-            android:scaleY="2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.04"
-            app:layout_constraintStart_toStartOf="@+id/tvHeader"
-            app:layout_constraintTop_toBottomOf="@+id/tvHeader" />
+        <include
+            android:id="@+id/titleAndProgressBar"
+            layout="@layout/title_and_progress_bar" />
 
         <TextView
             android:id="@+id/tvStatus"
@@ -50,10 +22,12 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="Status"
+            android:textColor="@color/text"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pb" />
+            app:layout_constraintTop_toBottomOf="@+id/titleAndProgressBar" />
 
         <TextView
             android:id="@+id/tvServiceIsActive"
@@ -63,6 +37,8 @@
             android:layout_marginTop="16dp"
             android:text="Service is currently active"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/text"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -76,6 +52,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:text="To update your permission settings, go to your\n device's app settings"
+            android:textColor="@color/text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -91,6 +68,7 @@
             android:background="@drawable/rectangle_button"
             android:text="Update settings"
             android:textAllCaps="false"
+            android:textColor="@color/shadow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -116,6 +94,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:text="Call Back"
+            android:textColor="@color/text"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -123,12 +103,13 @@
 
         <TextView
             android:id="@+id/tvCallbackDescription"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:minLines="10"
-            android:text="If someone your visiting If someone your visiting If someone your visiting If someone your visitingIf someone your visitingIf someone your visitingIf someone your visitingIf someone your visitingIf someone your visitingIf someone your visitingIf someone your visitingIf someone your visitingIf someone your visitingIf someone your visitingIf someone your visitingIf someone your visitingIf someone your visitingIf someone your visitingIf someone your visitingIf someone your visitingIf someone \n\your visitingIf someone your visiting\nIf someone your visitingIf someone your visitingIf someone your visitingIf someone your visitingIf someone your visitingIf someone your visitingIf someone your visitingIf \n\nsomeone your visitingIf someone your visitingIf someone your visitingIf someone your visiting."
+            android:text="If someone you've been in close contact with tests positive for COVID-19, the app will send you a Close Contact Alert.  The HSE will also phone you if you provide your number below.\n\nThe HSE may also phone if you are identified as a close contact by manual contact tracing. The HSE will give you advice and refer you for testing if appropriate.\n\nThe app will only share your phone number with the HSE if you get a Close Contact Alert. You can enter your number below, or add it later in Settings."
+            android:textColor="@color/text"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -143,6 +124,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:text="Your country code"
+            android:textColor="@color/text"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -168,7 +151,7 @@
             android:layout_marginEnd="16dp"
             android:text="Ireland(+353)"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/shadow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tvYourCountryCodeTitle"
@@ -191,6 +174,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Your phone number (optional)"
+            android:textColor="@color/text"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tvPhoneNumber"
@@ -216,8 +201,9 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/rectangle_button"
-            android:backgroundTint="@color/colorAccent"
+            android:backgroundTint="@color/shadow"
             android:text="Confirm changes"
+            android:textAllCaps="false"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

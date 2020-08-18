@@ -7,24 +7,21 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.covidtracker.R
 import kotlinx.android.synthetic.main.fragment_app_metrics.*
-import kotlinx.android.synthetic.main.fragment_leave.*
 import kotlinx.android.synthetic.main.title_and_progress_bar.*
 
-
-class LeaveFragment : Fragment(R.layout.fragment_leave) {
+class AppMetricsFragment : Fragment(R.layout.fragment_app_metrics) {
 
     private var navController: NavController? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tvHeader.text = "Leave"
+        tvHeader.text = "App Metrics"
 
         navController = Navigation.findNavController(view)
 
-        tvReadPrivacy.setOnClickListener {
-            navController!!.navigate(R.id.action_leaveFragment_to_dataProtectionFragment)
+        tvLinkDataProtection.setOnClickListener {
+            navController!!.navigate(R.id.action_appMetricsFragment_to_dataProtectionFragment)
         }
     }
-
 }

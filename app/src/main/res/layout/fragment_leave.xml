@@ -28,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:textStyle="bold"
         android:text="You can read the Data Protection \nInformation Notice here"
         android:textColor="@color/shadow"
         app:layout_constraintBottom_toBottomOf="@+id/ivLockPrivacy"

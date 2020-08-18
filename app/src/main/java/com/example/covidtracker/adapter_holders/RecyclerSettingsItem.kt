@@ -55,6 +55,9 @@ class RecyclerSettingsItem(
                         "Leave" -> {
                             navController!!.navigate(R.id.action_settingsFragment_to_leaveFragment)
                         }
+                        "App Metrics" -> {
+                            navController!!.navigate(R.id.action_settingsFragment_to_appMetricsFragment)
+                        }
                     }
 
                 }

@@ -89,6 +89,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_notWellSymptomsFragment"
             app:destination="@id/notWellSymptomsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_appMetricsFragment"
+            app:destination="@id/appMetricsFragment" />
     </fragment>
 
     <fragment
@@ -145,8 +148,14 @@
             app:destination="@id/settingsFragment" />
         <argument
             android:name="section"
-            android:defaultValue="terms"
+            android:defaultValue="Data Protection Information Notice"
             app:argType="string" />
+        <action
+            android:id="@+id/action_dataProtectionFragment_to_appMetricsFragment"
+            app:destination="@id/appMetricsFragment" />
+        <action
+            android:id="@+id/action_dataProtectionFragment_to_leaveFragment"
+            app:destination="@id/leaveFragment" />
     </fragment>
 
     <fragment
@@ -157,6 +166,9 @@
         <action
             android:id="@+id/action_leaveFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_leaveFragment_to_dataProtectionFragment"
+            app:destination="@id/dataProtectionFragment" />
     </fragment>
     <fragment
         android:id="@+id/howYouFeelingFragment"
@@ -232,6 +244,17 @@
         <action
             android:id="@+id/action_uploadIdFragment_to_contactTracingBottomFragment"
             app:destination="@id/contactTracingBottomFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appMetricsFragment"
+        android:name="com.example.covidtracker.fragments.AppMetricsFragment"
+        tools:layout="@layout/fragment_app_metrics">
+        <action
+            android:id="@+id/action_appMetricsFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_appMetricsFragment_to_dataProtectionFragment"
+            app:destination="@id/dataProtectionFragment" />
     </fragment>
 
 </navigation>

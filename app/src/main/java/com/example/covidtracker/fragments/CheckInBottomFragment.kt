@@ -60,10 +60,10 @@ class CheckInBottomFragment : Fragment(R.layout.fragment_check_in_bottom) {
         )
 
 
-        val hasCheckedToday = preference.getBoolean(getString(R.string.hasCheckedPreference), false)
+        val hasChecked = preference.getBoolean(getString(R.string.hasCheckedPreference), false)
 
 
-        if (hasCheckedToday) {
+        if (hasChecked) {
             clCanCheckAgainTomorrowParent.visible()
             clLetUsKnowSymptomsParent.gone()
         } else {
