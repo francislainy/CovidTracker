@@ -62,7 +62,6 @@ class MainActivity : AppCompatActivity() {
                     bottomNav.gone()
                 }
             }
-
         }
 
 

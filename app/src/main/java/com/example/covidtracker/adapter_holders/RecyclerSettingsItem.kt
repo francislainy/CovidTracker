@@ -37,16 +37,19 @@ class RecyclerSettingsItem(
                     when (settingItem) {
                         "Contact Tracing" -> navController!!.navigate(R.id.action_settingsFragment_to_contactTracingFragment)
                         "COVID Check-In" -> navController!!.navigate(R.id.action_settingsFragment_to_covidCheckInFragment)
-//                        "Data Protection Information Notice" -> navController!!.navigate(R.id.action_settingsFragment_to_dataProtectionFragment)
                         "Data Protection Information Notice" -> {
-                            val bundle = bundleOf("section" to "Data Protection Information Notice")
+                            val bundle = bundleOf(
+                                "section" to "Data Protection Information Notice",
+                                "state" to "settings"
+                            )
                             navController!!.navigate(
                                 R.id.action_settingsFragment_to_dataProtectionFragment,
                                 bundle
                             )
                         }
                         "Terms & Conditions" -> {
-                            val bundle = bundleOf("section" to "Terms & Conditions")
+                            val bundle =
+                                bundleOf("section" to "Terms & Conditions", "state" to "settings")
                             navController!!.navigate(
                                 R.id.action_settingsFragment_to_dataProtectionFragment,
                                 bundle
@@ -56,7 +59,11 @@ class RecyclerSettingsItem(
                             navController!!.navigate(R.id.action_settingsFragment_to_leaveFragment)
                         }
                         "App Metrics" -> {
-                            navController!!.navigate(R.id.action_settingsFragment_to_appMetricsFragment)
+                            val bundle = bundleOf("state" to "settings")
+                            navController!!.navigate(
+                                R.id.action_settingsFragment_to_appMetricsFragment,
+                                bundle
+                            )
                         }
                     }
 

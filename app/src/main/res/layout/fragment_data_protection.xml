@@ -6,10 +6,17 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".fragments.DataProtectionFragment">
+
+        <include
+            android:id="@+id/snippedToolbar"
+            layout="@layout/snippet_toolbar_plain"
+            app:layout_constraintBottom_toTopOf="@id/titleAndProgressBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <include
             android:id="@+id/titleAndProgressBar"
@@ -18,9 +25,11 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/snippedToolbar" />
+
 
         <TextView
+            android:textColor="@color/text"
             android:id="@+id/tvContent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -28,12 +37,86 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/titleAndProgressBar"
             app:layout_constraintVertical_bias="0.0"
             tools:text="Lorem ipsum" />
+
+        <ImageView
+            android:id="@+id/ivLockPrivacy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/privacy"
+            app:layout_constraintStart_toStartOf="@+id/tvContent"
+            app:layout_constraintTop_toBottomOf="@id/tvContent" />
+
+        <TextView
+            android:id="@+id/tvLinkDataProtection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="You can read the Data Protection Information Notice here"
+            android:textColor="@color/shadow"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ivLockPrivacy"
+            app:layout_constraintEnd_toEndOf="@+id/tvContent"
+            app:layout_constraintStart_toEndOf="@id/ivLockPrivacy"
+            app:layout_constraintTop_toTopOf="@id/ivLockPrivacy" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clConsent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLinkDataProtection">
+
+            <FrameLayout
+                android:id="@+id/frVerticalView"
+                android:layout_width="4dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:background="@color/shadow"
+                app:layout_constraintBottom_toBottomOf="@+id/tvIfYouChangeYourNMind"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvIfYouChangeYourNMind" />
+
+            <TextView
+                android:id="@+id/tvIfYouChangeYourNMind"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="You can view this notice at any time in Settings. If you do not want to continue, close and delete the app. If you consent, tap Continue to proceed"
+                android:textColor="@color/text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/frVerticalView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btnContinue"
+                style="@style/buttonStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/shadow"
+                android:text="Continue"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvIfYouChangeYourNMind" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

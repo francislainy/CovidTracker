@@ -7,11 +7,21 @@
     tools:context=".fragments.AppMetricsFragment">
 
     <include
-        android:id="@+id/titleAndProgressBar"
-        layout="@layout/title_and_progress_bar"
+        android:id="@+id/snippedToolbar"
+        layout="@layout/snippet_toolbar_plain"
+        app:layout_constraintBottom_toTopOf="@id/titleAndProgressBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/titleAndProgressBar"
+        layout="@layout/title_and_progress_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/snippedToolbar" />
 
     <TextView
         android:id="@+id/tvMetricsDescription"
@@ -21,6 +31,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="The HSE would like to understand your use of the App for the purpose of improving it.\n\nThe app will collect anonymous metrics about how you use the app and the effectiveness of Contact Tracing processes.\n\nThis information is gathered by the HSE directly and does not use any third parties to gather metrics. **This information is only gathered with your consent and cannot be used to identify you"
+        android:textColor="@color/text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleAndProgressBar" />
@@ -39,9 +50,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:textStyle="bold"
         android:text="You can read the Data Protection Information Notice here"
         android:textColor="@color/shadow"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/ivLockPrivacy"
         app:layout_constraintEnd_toEndOf="@+id/tvMetricsDescription"
         app:layout_constraintStart_toEndOf="@id/ivLockPrivacy"
@@ -59,15 +70,78 @@
         app:layout_constraintTop_toBottomOf="@id/tvLinkDataProtection" />
 
     <Switch
-        android:trackTintMode="src_over"
-        android:thumbTint="@color/white"
-        android:trackTint="@color/shadow"
-        android:checked="true"
+        android:id="@+id/switchStatistics"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:checked="true"
+        android:thumbTint="@color/white"
+        android:trackTint="@color/shadow"
+        android:trackTintMode="src_over"
         app:layout_constraintStart_toEndOf="@id/tvShareAppStatistics"
         app:layout_constraintTop_toTopOf="@id/tvShareAppStatistics" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clConsent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/switchStatistics">
+
+        <FrameLayout
+            android:id="@+id/frVerticalView"
+            android:layout_width="4dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/shadow"
+            app:layout_constraintBottom_toBottomOf="@+id/tvIfYouChangeYourNMind"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvIfYouChangeYourNMind" />
+
+        <TextView
+            android:id="@+id/tvIfYouChangeYourNMind"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="If you change your mind, you can change these permissions in Settings at any time"
+            android:textColor="@color/text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/frVerticalView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnConsent"
+            style="@style/buttonStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/shadow"
+            android:text="Yes, I consent"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/btnDoNotConsent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvIfYouChangeYourNMind" />
+
+        <Button
+            android:id="@+id/btnDoNotConsent"
+            style="@style/buttonStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="No thanks"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btnConsent"
+            app:layout_constraintStart_toStartOf="@+id/btnConsent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

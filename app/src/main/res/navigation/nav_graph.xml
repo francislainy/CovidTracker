@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/updatesFragment">
+    app:startDestination="@id/mustBeOlder16Fragment">
 
     <fragment
         android:id="@+id/updatesFragment"
@@ -21,6 +21,15 @@
         <action
             android:id="@+id/action_updatesFragment_to_checkInBottomFragment"
             app:destination="@id/checkInBottomFragment" />
+        <action
+            android:id="@+id/action_updatesFragment_to_mustBeOlder16Fragment"
+            app:destination="@id/mustBeOlder16Fragment" />
+        <action
+            android:id="@+id/action_updatesFragment_to_dataProtectionStartFragment"
+            app:destination="@id/dataProtectionFragment" />
+        <action
+            android:id="@+id/action_updatesFragment_to_appMetricsFragment"
+            app:destination="@id/appMetricsFragment" />
     </fragment>
 
     <fragment
@@ -146,16 +155,23 @@
         <action
             android:id="@+id/action_dataProtectionFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
-        <argument
-            android:name="section"
-            android:defaultValue="Data Protection Information Notice"
-            app:argType="string" />
         <action
             android:id="@+id/action_dataProtectionFragment_to_appMetricsFragment"
             app:destination="@id/appMetricsFragment" />
         <action
             android:id="@+id/action_dataProtectionFragment_to_leaveFragment"
             app:destination="@id/leaveFragment" />
+        <argument
+            android:name="section"
+            android:defaultValue="Data Protection Information Notice"
+            app:argType="string" />
+        <argument
+            android:name="state"
+            android:defaultValue="start"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_dataProtectionFragment_to_getStartedFragment"
+            app:destination="@id/getStartedFragment" />
     </fragment>
 
     <fragment
@@ -254,6 +270,41 @@
             app:destination="@id/settingsFragment" />
         <action
             android:id="@+id/action_appMetricsFragment_to_dataProtectionFragment"
+            app:destination="@id/dataProtectionFragment" />
+        <action
+            android:id="@+id/action_appMetricsFragment_to_updatesFragment"
+            app:destination="@id/updatesFragment" />
+        <action
+            android:id="@+id/action_appMetricsFragment_to_dataProtectionStartFragment"
+            app:destination="@id/dataProtectionFragment" />
+        <argument
+            android:name="state"
+            android:defaultValue="start"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/mustBeOlder16Fragment"
+        android:name="com.example.covidtracker.fragments.MustBeOlder16Fragment"
+        tools:layout="@layout/fragment_must_be_older16">
+        <action
+            android:id="@+id/action_mustBeOlder16Fragment_to_updatesFragment"
+            app:destination="@id/updatesFragment" />
+        <action
+            android:id="@+id/action_mustBeOlder16Fragment_to_getStartedFragment"
+            app:destination="@id/getStartedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/getStartedFragment"
+        android:name="com.example.covidtracker.fragments.GetStartedFragment"
+        tools:layout="@layout/fragment_get_started">
+        <action
+            android:id="@+id/action_getStartedFragment_to_mustBeOlder16Fragment"
+            app:destination="@id/mustBeOlder16Fragment" />
+        <action
+            android:id="@+id/action_getStartedFragment_to_dataProtectionStartFragment"
+            app:destination="@id/dataProtectionFragment" />
+        <action
+            android:id="@+id/action_getStartedFragment_to_dataProtectionFragment"
             app:destination="@id/dataProtectionFragment" />
     </fragment>
 
