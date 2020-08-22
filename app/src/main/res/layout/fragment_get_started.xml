@@ -4,14 +4,149 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".fragments.GetStartedFragment">
+
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="16dp"
+        android:scaleType="fitEnd"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toStartOf="@+id/ivPeoplePhone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivPeoplePhone" />
+
+    <TextView
+        android:id="@+id/tvWithCovid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="With COVID Tracker you can do 3 things to help fight COVID-19."
+        android:textColor="@color/text"
+        app:layout_constraintEnd_toStartOf="@id/ivPeoplePhone"
+        app:layout_constraintStart_toStartOf="@+id/ivLogo"
+        app:layout_constraintTop_toBottomOf="@id/ivLogo" />
+
+    <ImageView
+        android:id="@+id/ivPeoplePhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/people_walking_phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvContactTracing"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Contact Tracing"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivPeoplePhone" />
+
+    <TextView
+        android:id="@+id/tvContactTracingDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Help contact tracing, protecting your privacy."
+        android:textColor="@color/text"
+        app:layout_constraintEnd_toEndOf="@+id/tvContactTracing"
+        app:layout_constraintStart_toStartOf="@+id/tvContactTracing"
+        app:layout_constraintTop_toBottomOf="@id/tvContactTracing" />
+
+
+    <TextView
+        android:id="@+id/tvCovidCheckIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="COVID Check-In"
+        android:fontFamily="@font/lato_bold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/text"
+        app:layout_constraintEnd_toEndOf="@id/tvContactTracing"
+        app:layout_constraintStart_toStartOf="@+id/tvContactTracing"
+        app:layout_constraintTop_toBottomOf="@id/tvContactTracingDescription" />
+
+    <TextView
+        android:id="@+id/tvCovidCheckInDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Check your symptoms every day."
+        android:textColor="@color/text"
+        app:layout_constraintEnd_toEndOf="@+id/tvContactTracing"
+        app:layout_constraintStart_toStartOf="@+id/tvContactTracing"
+        app:layout_constraintTop_toBottomOf="@id/tvCovidCheckIn" />
+
+
+    <TextView
+        android:id="@+id/tvUpdates"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Updates"
+        android:fontFamily="@font/lato_bold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/text"
+        app:layout_constraintEnd_toEndOf="@id/tvContactTracing"
+        app:layout_constraintStart_toStartOf="@+id/tvContactTracing"
+        app:layout_constraintTop_toBottomOf="@id/tvCovidCheckInDescription" />
+
+    <TextView
+        android:id="@+id/tvUpdatesDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Keep up to date on the fight against COVID-19."
+        android:textColor="@color/text"
+        app:layout_constraintEnd_toEndOf="@+id/tvContactTracing"
+        app:layout_constraintStart_toStartOf="@+id/tvContactTracing"
+        app:layout_constraintTop_toBottomOf="@id/tvUpdates" />
+
+    <TextView
+        android:id="@+id/tvIfYouGetStarted"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="If you tap Get Started, you are accepting the \nTerms &amp; Conditions"
+        android:textColor="@color/text"
+        android:textColorLink="@color/shadow"
+        app:layout_constraintEnd_toEndOf="@+id/tvUpdatesDescription"
+        app:layout_constraintStart_toStartOf="@+id/tvContactTracing"
+        app:layout_constraintTop_toBottomOf="@id/tvUpdatesDescription" />
+
 
     <Button
         android:id="@+id/btnGetStarted"
-        android:layout_width="wrap_content"
+        style="@style/buttonStatus"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/shadow"
         android:text="Get Started"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvIfYouGetStarted"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

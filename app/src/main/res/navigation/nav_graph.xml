@@ -172,6 +172,9 @@
         <action
             android:id="@+id/action_dataProtectionFragment_to_getStartedFragment"
             app:destination="@id/getStartedFragment" />
+        <action
+            android:id="@+id/action_dataProtectionFragment_to_getStartedFragment2"
+            app:destination="@id/getStartedFragment" />
     </fragment>
 
     <fragment
@@ -292,6 +295,9 @@
         <action
             android:id="@+id/action_mustBeOlder16Fragment_to_getStartedFragment"
             app:destination="@id/getStartedFragment" />
+        <action
+            android:id="@+id/action_mustBeOlder16Fragment_to_under16Fragment"
+            app:destination="@id/under16Fragment" />
     </fragment>
     <fragment
         android:id="@+id/getStartedFragment"
@@ -301,11 +307,16 @@
             android:id="@+id/action_getStartedFragment_to_mustBeOlder16Fragment"
             app:destination="@id/mustBeOlder16Fragment" />
         <action
-            android:id="@+id/action_getStartedFragment_to_dataProtectionStartFragment"
-            app:destination="@id/dataProtectionFragment" />
-        <action
             android:id="@+id/action_getStartedFragment_to_dataProtectionFragment"
             app:destination="@id/dataProtectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/under16Fragment"
+        android:name="com.example.covidtracker.fragments.Under16Fragment"
+        tools:layout="@layout/fragment_under16" >
+<!--        <action-->
+<!--            android:id="@+id/action_under16Fragment_to_mustBeOlder16Fragment"-->
+<!--            app:destination="@id/mustBeOlder16Fragment" />-->
     </fragment>
 
 </navigation>

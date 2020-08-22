@@ -23,6 +23,10 @@ class MustBeOlder16Fragment : Fragment(R.layout.fragment_must_be_older16) {
             navController!!.navigate(R.id.action_mustBeOlder16Fragment_to_getStartedFragment)
         }
 
+        btnBelow16.setOnClickListener {
+            navController!!.navigate(R.id.action_mustBeOlder16Fragment_to_under16Fragment)
+        }
+
     }
 
     override fun onResume() {

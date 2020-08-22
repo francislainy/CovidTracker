@@ -4,23 +4,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".fragments.MustBeOlder16Fragment">
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@+id/ivCovid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+
+    <ImageView
+        android:id="@+id/ivCovid"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/black"
+        android:src="@drawable/covid_white"
+        app:layout_constraintBottom_toTopOf="@+id/tvYouMustBeOlder16Description"
+        app:layout_constraintEnd_toStartOf="@+id/tvText"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/ivLogo"
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
+
+
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:paddingStart="16dp"
+        android:text="Coronavirus \nCOVID-19 \nPublic Health \nAdvice"
+        android:textColor="@color/text"
+        app:layout_constraintBottom_toBottomOf="@+id/ivCovid"
+        app:layout_constraintEnd_toEndOf="@+id/ivLogo"
+        app:layout_constraintStart_toEndOf="@+id/ivCovid"
+        app:layout_constraintTop_toTopOf="@+id/ivCovid" />
+
+    <TextView
+        android:id="@+id/tvYouMustBeOlder16Description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="You must be 16 or older to use this app"
+        android:textColor="@color/text"
+        app:layout_constraintBottom_toTopOf="@+id/btnAbove16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnAbove16"
-        android:layout_width="wrap_content"
+        style="@style/buttonStatus"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/shadow"
         android:text="I am 16 or older"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/btnBelow16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnBelow16"
-        android:layout_width="wrap_content"
+        style="@style/buttonStatus"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="I am younger than 16"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnAbove16" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnAbove16"
+        app:layout_constraintStart_toStartOf="@+id/btnAbove16"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
