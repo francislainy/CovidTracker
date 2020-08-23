@@ -42,6 +42,14 @@ class AppMetricsFragment : Fragment(R.layout.fragment_app_metrics) {
         btnConsent.setOnClickListener {
             navController!!.navigate(R.id.action_appMetricsFragment_to_updatesFragment)
         }
+
+        val bundle = bundleOf("section" to "Data Protection Information Notice")
+        tvLinkDataProtection.setOnClickListener {
+            navController!!.navigate(
+                R.id.action_appMetricsFragment_to_dataProtectionFragment,
+                bundle
+            )
+        }
     }
 
 

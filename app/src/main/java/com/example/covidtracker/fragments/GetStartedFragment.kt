@@ -32,7 +32,10 @@ class GetStartedFragment : Fragment(R.layout.fragment_get_started) {
             override fun onClick(textView: View) {
                 val bundle =
                     bundleOf("section" to "Terms & Conditions")
-                navController!!.navigate(R.id.action_getStartedFragment_to_dataProtectionFragment, bundle)
+                navController!!.navigate(
+                    R.id.action_getStartedFragment_to_dataProtectionFragment,
+                    bundle
+                )
             }
 
             override fun updateDrawState(ds: TextPaint) {
@@ -52,11 +55,14 @@ class GetStartedFragment : Fragment(R.layout.fragment_get_started) {
             bundleOf("section" to "Your data", "state" to "start")
 
         btnGetStarted.setOnClickListener {
-            navController!!.navigate(R.id.action_getStartedFragment_to_dataProtectionFragment, bundle)
+            navController!!.navigate(
+                R.id.action_getStartedFragment_to_dataProtectionFragment,
+                bundle
+            )
         }
 
-
     }
+
 
     override fun onResume() {
         super.onResume()

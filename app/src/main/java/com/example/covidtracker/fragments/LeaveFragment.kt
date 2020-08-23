@@ -2,6 +2,9 @@ package com.example.covidtracker.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -21,9 +24,26 @@ class LeaveFragment : Fragment(R.layout.fragment_leave) {
         tvHeader.text = "Leave"
 
         navController = Navigation.findNavController(view)
+        val bundle = bundleOf("state" to "leave")
 
         tvReadPrivacy.setOnClickListener {
-            navController!!.navigate(R.id.action_leaveFragment_to_dataProtectionFragment)
+            navController!!.navigate(R.id.action_leaveFragment_to_dataProtectionFragment, bundle)
+        }
+
+        btnLeave.setOnClickListener {
+            val builder = AlertDialog.Builder(requireActivity(), R.style.AlertDialogCustom)
+            builder
+                .setTitle("Leave")
+                .setMessage("Are you sure you want to leave?")
+                .setCancelable(false)
+                .setPositiveButton("CONFIRM") { dialog, id ->
+                    navController!!.navigate(R.id.action_leaveFragment_to_mustBeOlder16Fragment, bundle)
+                }
+                .setNegativeButton("CANCEL") { dialog, id ->
+                    dialog.dismiss()
+                }
+            val alert = builder.create()
+            alert.show()
         }
     }
 

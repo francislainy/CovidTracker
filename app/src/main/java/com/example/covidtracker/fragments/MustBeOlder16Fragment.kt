@@ -34,6 +34,11 @@ class MustBeOlder16Fragment : Fragment(R.layout.fragment_must_be_older16) {
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
     }
 
+    override fun onStop() {
+        super.onStop()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+    }
+
 }
 
 

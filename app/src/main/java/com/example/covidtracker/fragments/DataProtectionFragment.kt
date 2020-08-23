@@ -26,6 +26,7 @@ import kotlinx.android.synthetic.main.fragment_data_protection.clConsent
 import kotlinx.android.synthetic.main.fragment_data_protection.ivLockPrivacy
 import kotlinx.android.synthetic.main.fragment_data_protection.snippedToolbar
 import kotlinx.android.synthetic.main.fragment_data_protection.tvLinkDataProtection
+import kotlinx.android.synthetic.main.fragment_leave.*
 import kotlinx.android.synthetic.main.snippet_toolbar_plain.*
 import kotlinx.android.synthetic.main.title_and_progress_bar.*
 
@@ -33,23 +34,6 @@ class DataProtectionFragment : Fragment(R.layout.fragment_data_protection) {
 
     private var navController: NavController? = null
 
-    override fun onResume() {
-        super.onResume()
-
-        val args: AppMetricsFragmentArgs by navArgs()
-
-        if (args.state == "start") {
-
-            (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
-            snippedToolbar.visible()
-            ivSettingsCog.gone()
-            tvSettings.gone()
-
-        } else {
-            (activity as AppCompatActivity?)!!.supportActionBar!!.show()
-            snippedToolbar.gone()
-        }
-    }
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,6 +47,7 @@ class DataProtectionFragment : Fragment(R.layout.fragment_data_protection) {
         navController = Navigation.findNavController(view)
 
         val bundle = bundleOf("state" to "start")
+        val bundle2 = bundleOf("section" to "Data Protection Information Notice")
 
 
         if (args.state == "start") {
@@ -88,6 +73,15 @@ class DataProtectionFragment : Fragment(R.layout.fragment_data_protection) {
             )
         }
 
+        tvLinkDataProtection.setOnClickListener {
+            navController!!.navigate(
+                R.id.action_dataProtectionFragment_self,
+                bundle2
+            )
+        }
+
+
+        //todo: delete continue button when not applicable
     }
 
 
@@ -133,6 +127,27 @@ class DataProtectionFragment : Fragment(R.layout.fragment_data_protection) {
             Html.FROM_HTML_MODE_COMPACT
         )
     }
+
+
+    override fun onResume() {
+        super.onResume()
+
+        val args: AppMetricsFragmentArgs by navArgs()
+
+        if (args.state == "start") {
+
+            (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+            snippedToolbar.visible()
+            ivSettingsCog.gone()
+            tvSettings.gone()
+
+        } else {
+            (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+            snippedToolbar.gone()
+            clConsent.gone()
+        }
+    }
+
 
 
     companion object {
