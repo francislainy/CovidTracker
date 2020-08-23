@@ -22,4 +22,5 @@
     <string name="total_required_icu">total_required_icu</string>
     <string name="hasCheckedPreference">hasChecked</string>
     <string name="dateCheckedPreference">date</string>
+    <string name="isLoggedIn">isLoggedIn</string>
 </resources>

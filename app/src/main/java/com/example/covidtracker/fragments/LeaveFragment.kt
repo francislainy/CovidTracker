@@ -1,5 +1,6 @@
 package com.example.covidtracker.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.covidtracker.R
+import com.example.covidtracker.activities.MainActivity
 import kotlinx.android.synthetic.main.fragment_app_metrics.*
 import kotlinx.android.synthetic.main.fragment_leave.*
 import kotlinx.android.synthetic.main.title_and_progress_bar.*
@@ -37,6 +39,12 @@ class LeaveFragment : Fragment(R.layout.fragment_leave) {
                 .setMessage("Are you sure you want to leave?")
                 .setCancelable(false)
                 .setPositiveButton("CONFIRM") { dialog, id ->
+                    val preference = (activity as MainActivity).getSharedPreferences(
+                        resources.getString(R.string.app_name), Context.MODE_PRIVATE
+                    )
+                    val editor = preference.edit()
+                    editor.putBoolean(getString(R.string.isLoggedIn), false)
+                    editor.apply()
                     navController!!.navigate(R.id.action_leaveFragment_to_mustBeOlder16Fragment, bundle)
                 }
                 .setNegativeButton("CANCEL") { dialog, id ->

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mustBeOlder16Fragment">
+    app:startDestination="@id/entryFragment">
 
     <fragment
         android:id="@+id/updatesFragment"
@@ -191,7 +191,7 @@
         <action
             android:id="@+id/action_leaveFragment_to_mustBeOlder16Fragment"
             app:popUpToInclusive="true"
-            app:popUpTo="@id/mustBeOlder16Fragment"
+            app:popUpTo="@id/entryFragment"
             app:destination="@id/mustBeOlder16Fragment" />
     </fragment>
     <fragment
@@ -316,5 +316,18 @@
         android:id="@+id/under16Fragment"
         android:name="com.example.covidtracker.fragments.Under16Fragment"
         tools:layout="@layout/fragment_under16"/>
+    <fragment
+        android:id="@+id/entryFragment"
+        android:name="com.example.covidtracker.fragments.EntryFragment"
+        android:label="EntryFragment" >
+        <action
+            android:id="@+id/action_entryFragment_to_mustBeOlder16Fragment"
+            app:popUpTo="@id/entryFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/mustBeOlder16Fragment" />
+        <action
+            android:id="@+id/action_entryFragment_to_updatesFragment"
+            app:destination="@id/updatesFragment" />
+    </fragment>
 
 </navigation>

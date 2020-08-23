@@ -1,5 +1,6 @@
 package com.example.covidtracker.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.example.covidtracker.R
+import com.example.covidtracker.activities.MainActivity
 import com.example.covidtracker.utils.gone
 import com.example.covidtracker.utils.visible
 import kotlinx.android.synthetic.main.fragment_app_metrics.*
@@ -23,6 +25,7 @@ class AppMetricsFragment : Fragment(R.layout.fragment_app_metrics) {
         super.onViewCreated(view, savedInstanceState)
 
         tvHeader.text = "App Metrics"
+
 
         navController = Navigation.findNavController(view)
 
@@ -40,6 +43,9 @@ class AppMetricsFragment : Fragment(R.layout.fragment_app_metrics) {
 
 
         btnConsent.setOnClickListener {
+            navController!!.navigate(R.id.action_appMetricsFragment_to_updatesFragment)
+        }
+        btnDoNotConsent.setOnClickListener { // todo: set pref informing that the user has not consented to the terms, otherwise identical flow. 23/08/20
             navController!!.navigate(R.id.action_appMetricsFragment_to_updatesFragment)
         }
 

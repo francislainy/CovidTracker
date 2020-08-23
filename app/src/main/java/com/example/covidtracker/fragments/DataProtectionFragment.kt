@@ -1,5 +1,6 @@
 package com.example.covidtracker.fragments
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
@@ -13,6 +14,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.example.covidtracker.R
+import com.example.covidtracker.activities.MainActivity
 import com.example.covidtracker.api.GetResponseAPI
 import com.example.covidtracker.model.APIError
 import com.example.covidtracker.model.CovidGeneral
@@ -67,6 +69,15 @@ class DataProtectionFragment : Fragment(R.layout.fragment_data_protection) {
         }
 
         btnContinue.setOnClickListener {
+
+            val preference = (activity as MainActivity).getSharedPreferences(
+                resources.getString(R.string.app_name), Context.MODE_PRIVATE
+            )
+            val editor = preference.edit()
+            editor.putBoolean(getString(R.string.isLoggedIn), true)
+            editor.apply()
+
+
             navController!!.navigate(
                 R.id.action_dataProtectionFragment_to_appMetricsFragment,
                 bundle
