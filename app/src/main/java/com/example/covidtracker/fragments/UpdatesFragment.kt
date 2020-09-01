@@ -19,6 +19,7 @@ import com.example.covidtracker.api.GetResponseAPI
 import com.example.covidtracker.db.DataRoomDbase
 import com.example.covidtracker.model.APIError
 import com.example.covidtracker.model.MyDataList
+import com.example.covidtracker.model.TodayTotals
 import com.example.covidtracker.model.Totals
 import com.example.covidtracker.utils.gone
 import com.example.covidtracker.utils.invisible
@@ -37,6 +38,7 @@ import kotlinx.android.synthetic.main.how_you_feeling_layout.*
 import kotlinx.android.synthetic.main.how_you_feeling_layout.ivClose
 import kotlinx.android.synthetic.main.national_totals_layout.*
 import kotlinx.android.synthetic.main.title_and_progress_bar.view.*
+import kotlinx.android.synthetic.main.todays_fight_figures.*
 import kotlinx.android.synthetic.main.todays_fight_layout.view.*
 import java.util.Date
 import java.time.LocalDate
@@ -185,6 +187,17 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
 
     private fun retrieveTotals() {
 
+
+        /**
+         * Today totals
+         */
+        getResponseApi(
+
+            "totalCheckInToday",
+            fullUrl = "https://hidden-dusk-75987.herokuapp.com/api/v1/covidTracker/getTotalToday"
+        )
+
+
         val baseUrl =
             "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19StatisticsProfileHPSCIrelandView/FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returnGeometry=false&outStatistics=%5B%7B%22onStatisticField%22%3A%22"
         val appended = "%22%2C%22statisticType%22%3A%22max%22%7D%5D"
@@ -266,6 +279,20 @@ class UpdatesFragment : Fragment(R.layout.fragment_updates) {
                     var attributes = totals.features?.get(0)?.attributes
 
                     when (section) {
+
+                        "totalCheckInToday" -> {
+
+                            val totals: TodayTotals =
+                                gson.fromJson(jo, TodayTotals::class.java)
+
+                            val s = String.format(
+                                "%,d",
+                                totals.todayTotals.totalCheckIn.toString().toLong()
+                            )
+                            tvTotalCheckInToday.text =  s
+                            tvPercentFeelingGood.text =  totals.todayTotals.totalFeelingGoodPercentage.toString() + "%"
+                            tvPercentFeelingSymptoms.text =  totals.todayTotals.totalSomeSymptomsPercentage.toString() + "%"
+                        }
 
                         getString(R.string.confirmed_cases_param) -> {
                             val s = String.format(

@@ -31,7 +31,7 @@
         </FrameLayout>
 
         <TextView
-            android:id="@+id/tvNationalPicture"
+            android:id="@+id/tvTotalCheckInToday"
             style="@style/textTotalsStyle"
             android:layout_marginStart="16dp"
             android:text="5,853"
@@ -49,8 +49,8 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/flCheckIn"
-            app:layout_constraintStart_toStartOf="@+id/tvNationalPicture"
-            app:layout_constraintTop_toBottomOf="@+id/tvNationalPicture" />
+            app:layout_constraintStart_toStartOf="@+id/tvTotalCheckInToday"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalCheckInToday" />
 
         <ProgressBar
             android:id="@+id/pbFeelingGood"
