@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/materialCardStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -34,7 +35,7 @@
             android:id="@+id/tvTotalCheckInToday"
             style="@style/textTotalsStyle"
             android:layout_marginStart="16dp"
-            android:text="5,853"
+            tools:text="5,853"
             app:layout_constraintBottom_toBottomOf="@+id/flCheckIn"
             app:layout_constraintStart_toEndOf="@+id/flCheckIn"
             app:layout_constraintTop_toTopOf="@+id/flCheckIn"
@@ -70,7 +71,7 @@
             android:id="@+id/tvPercentFeelingGood"
             style="@style/textTotalsStyle"
             android:layout_marginStart="16dp"
-            android:text="98%"
+            tools:text="98%"
             app:layout_constraintBottom_toBottomOf="@+id/pbFeelingGood"
             app:layout_constraintStart_toEndOf="@+id/pbFeelingGood"
             app:layout_constraintTop_toTopOf="@+id/pbFeelingGood" />
@@ -106,7 +107,7 @@
             android:id="@+id/tvPercentFeelingSymptoms"
             style="@style/textTotalsStyle"
             android:layout_marginStart="16dp"
-            android:text="2%"
+            tools:text="2%"
             app:layout_constraintBottom_toBottomOf="@+id/pbFeelingSymptoms"
             app:layout_constraintStart_toEndOf="@+id/pbFeelingSymptoms"
             app:layout_constraintTop_toTopOf="@+id/pbFeelingSymptoms" />
