@@ -16,7 +16,7 @@ public interface MyDao {
     @Insert
     void addData(MyDataList mydatalist);
 
-    @Query("select * from mydatalist")
+    @Query("select * from mydatalist order by id DESC")
     LiveData<List<MyDataList>> getMyData();
 
     @Query("delete from mydatalist")

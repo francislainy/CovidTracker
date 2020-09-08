@@ -34,8 +34,11 @@ class Under16Fragment : Fragment(R.layout.fragment_under16) {
                     requireActivity().finish()
                 }
             }
+
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+
     }
+
 
     override fun onResume() {
         super.onResume()
@@ -46,5 +49,6 @@ class Under16Fragment : Fragment(R.layout.fragment_under16) {
         tvSettings.gone()
 
     }
+
 
 }
