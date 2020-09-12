@@ -9,10 +9,14 @@ import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.covidtracker.R
 import com.example.covidtracker.activities.MainActivity
+import com.example.covidtracker.model.ModelDialogOption
+import com.example.covidtracker.view_models.MainViewModel
 import kotlinx.android.synthetic.main.fragment_covid_check_in.*
 import kotlinx.android.synthetic.main.title_and_progress_bar.*
 
@@ -20,6 +24,10 @@ import kotlinx.android.synthetic.main.title_and_progress_bar.*
 class CovidCheckInFragment : Fragment(R.layout.fragment_covid_check_in) {
 
     var navController: NavController? = null
+    private val model: MainViewModel by viewModels(
+        { requireParentFragment() }
+    )
+
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,6 +46,19 @@ class CovidCheckInFragment : Fragment(R.layout.fragment_covid_check_in) {
         rbFemale.setOnClickListener(onClickRb)
         rbMale.setOnClickListener(onClickRb)
         rbPreferNotToSay.setOnClickListener(onClickRb)
+
+        model.userMutableLiveData.observe(viewLifecycleOwner, Observer<Any?> { list ->
+            if (list != null)
+
+                (list as Iterable<*>).map {
+
+                    if ((it as ModelDialogOption).selected == true) {
+                        etYourAge.text = it.title
+                    }
+
+                }
+
+        })
 
     }
 
@@ -86,8 +107,4 @@ class CovidCheckInFragment : Fragment(R.layout.fragment_covid_check_in) {
         }
     }
 
-
-    companion object {
-
-    }
 }

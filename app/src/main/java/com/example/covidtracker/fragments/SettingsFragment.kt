@@ -10,13 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.covidtracker.R
 import com.example.covidtracker.activities.MainActivity
 import com.example.covidtracker.adapter_holders.RecyclerSettingsItem
-import com.example.covidtracker.utils.addDecoration
 import com.example.covidtracker.utils.addDecorationSkipLast
 import com.example.covidtracker.view_models.HomeViewModel
 import com.example.covidtracker.view_models.MyViewModelFactory
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
-import kotlinx.android.synthetic.main.fragment_cases_by_county.*
 import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.title_and_progress_bar.*
 

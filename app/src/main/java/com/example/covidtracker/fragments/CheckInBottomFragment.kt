@@ -23,7 +23,6 @@ import com.example.covidtracker.view_models.PostViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_check_in_bottom.*
-import kotlinx.android.synthetic.main.fragment_updates.*
 import kotlinx.android.synthetic.main.title_and_progress_bar.*
 import java.text.SimpleDateFormat
 

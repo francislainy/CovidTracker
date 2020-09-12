@@ -15,6 +15,7 @@ import com.example.covidtracker.utils.visible
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.snippet_toolbar_plain.*
 
+
 class MainActivity : AppCompatActivity() {
     private var navController: NavController? = null
 

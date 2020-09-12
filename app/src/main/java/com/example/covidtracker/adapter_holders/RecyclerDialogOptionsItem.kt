@@ -1,8 +1,8 @@
 package com.example.covidtracker.adapter_holders
 
 import com.example.covidtracker.R
-import com.example.covidtracker.activities.MainActivity
 import com.example.covidtracker.fragments.MyDialogFragment
+import com.example.covidtracker.model.ModelDialogOption
 import com.example.covidtracker.utils.invisible
 import com.example.covidtracker.utils.visible
 import com.xwray.groupie.GroupieViewHolder
@@ -14,8 +14,7 @@ private val LOG_TAG = RecyclerDialogOptionsItem::class.java.canonicalName
 
 class RecyclerDialogOptionsItem(
     private val fragment: MyDialogFragment,
-    private val title: String?,
-    private var selected: Boolean,
+    private val modelDialogOption: ModelDialogOption,
     private val adapterListener: AdapterListener
 ) : Item<GroupieViewHolder>() {
 
@@ -30,18 +29,21 @@ class RecyclerDialogOptionsItem(
 
             with(viewHolder.itemView) {
 
-                tvTitle.text = title
+                tvTitle.text = modelDialogOption.title
 
                 clickListener = adapterListener
 
-                if (fragment.selected_position == position) {
+                if (fragment.selectedPosition == position) {
                     ivChecked.visible()
+                    modelDialogOption.selected = true
 
                 } else {
                     ivChecked.invisible()
+                    modelDialogOption.selected = false
                 }
 
                 itemView.setOnClickListener {
+
                     clickListener?.onClickItem(adapterPosition)
 
                 }

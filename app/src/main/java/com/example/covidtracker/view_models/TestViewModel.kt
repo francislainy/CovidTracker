@@ -1,22 +1,20 @@
 package com.example.covidtracker.view_models
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.covidtracker.model.ModelTest
+import com.example.covidtracker.model.ModelDialogOption
 
 class TestViewModel() : ViewModel() {
 
     var param: String? = null
     val headline = MutableLiveData<String>()
-    private var list: Array<ModelTest>? = null
-    val userMutableLiveData: MutableLiveData<Array<ModelTest>?> = MutableLiveData()
+    private var list: Array<ModelDialogOption>? = null
+    val userMutableLiveData: MutableLiveData<Array<ModelDialogOption>?> = MutableLiveData()
 
     constructor(param: String) : this() {
         this.param = param
         populateList()
-        userMutableLiveData.value = list
+        userMutableLiveData.value = list!!
     }
 
     private fun populateList() {
@@ -26,11 +24,11 @@ class TestViewModel() : ViewModel() {
             "settings" -> {
 
                 list = arrayOf(
-                    ModelTest("Contact Tracing"),
-                    ModelTest("COVID Check-In"),
-                    ModelTest("Data Protection Information Notice"),
-                    ModelTest("App Metrics"),
-                    ModelTest("Leave")
+                    ModelDialogOption("Contact Tracing"),
+                    ModelDialogOption("COVID Check-In"),
+                    ModelDialogOption("Data Protection Information Notice"),
+                    ModelDialogOption("App Metrics"),
+                    ModelDialogOption("Leave")
                 )
             }
 
@@ -38,10 +36,10 @@ class TestViewModel() : ViewModel() {
             "Choose your age range" -> {
 
                 list = arrayOf(
-                    ModelTest("Prefer not to say", false),
-                    ModelTest("16-39", false),
-                    ModelTest("40-59", true),
-                    ModelTest("60+", false)
+                    ModelDialogOption("Prefer not to say", false),
+                    ModelDialogOption("16-39", false),
+                    ModelDialogOption("40-59", true),
+                    ModelDialogOption("60+", false)
                 )
             }
 
@@ -49,30 +47,30 @@ class TestViewModel() : ViewModel() {
             "Choose your county" -> {
 
                 list = arrayOf(
-                    ModelTest("Prefer not to say", false),
-                    ModelTest("Carlow", false),
-                    ModelTest("Carlow", true),
-                    ModelTest("Clare", false),
-                    ModelTest("Cork", false),
-                    ModelTest("Donegal", false),
-                    ModelTest("Galway", false),
-                    ModelTest("Kerry", false),
-                    ModelTest("Kildare", false),
-                    ModelTest("Kilkenny", false),
-                    ModelTest("Laois", false),
-                    ModelTest("Leitrim", false),
-                    ModelTest("Limerick", false),
-                    ModelTest("Longford", false),
-                    ModelTest("Mayo", false),
-                    ModelTest("Meath", false),
-                    ModelTest("Monaghan", false),
-                    ModelTest("Offaly", false),
-                    ModelTest("Roscommon", false),
-                    ModelTest("Sligo", false),
-                    ModelTest("Tipperary", false),
-                    ModelTest("Westmeath", false),
-                    ModelTest("Wexford", false),
-                    ModelTest("Wicklow", false)
+                    ModelDialogOption("Prefer not to say", false),
+                    ModelDialogOption("Carlow", false),
+                    ModelDialogOption("Carlow", true),
+                    ModelDialogOption("Clare", false),
+                    ModelDialogOption("Cork", false),
+                    ModelDialogOption("Donegal", false),
+                    ModelDialogOption("Galway", false),
+                    ModelDialogOption("Kerry", false),
+                    ModelDialogOption("Kildare", false),
+                    ModelDialogOption("Kilkenny", false),
+                    ModelDialogOption("Laois", false),
+                    ModelDialogOption("Leitrim", false),
+                    ModelDialogOption("Limerick", false),
+                    ModelDialogOption("Longford", false),
+                    ModelDialogOption("Mayo", false),
+                    ModelDialogOption("Meath", false),
+                    ModelDialogOption("Monaghan", false),
+                    ModelDialogOption("Offaly", false),
+                    ModelDialogOption("Roscommon", false),
+                    ModelDialogOption("Sligo", false),
+                    ModelDialogOption("Tipperary", false),
+                    ModelDialogOption("Westmeath", false),
+                    ModelDialogOption("Wexford", false),
+                    ModelDialogOption("Wicklow", false)
                 )
             }
 
@@ -80,62 +78,62 @@ class TestViewModel() : ViewModel() {
             "Choose your locality" -> {
 
                 list = arrayOf(
-                    ModelTest("Prefer not to say", false),
-                    ModelTest("Ashbourne", false),
-                    ModelTest("Balbriggan", false),
-                    ModelTest("Ballyboghil", false),
-                    ModelTest("Ballyouster", false),
-                    ModelTest("Balrothery", false),
-                    ModelTest("Brittas", false),
-                    ModelTest("Clonee Village", false),
-                    ModelTest("Donabate", false),
-                    ModelTest("Dublin 1", false),
-                    ModelTest("Dublin 2", false),
-                    ModelTest("Dublin 3", false),
-                    ModelTest("Dublin 4", false),
-                    ModelTest("Dublin 5", false),
-                    ModelTest("Dublin 6", false),
-                    ModelTest("Dublin 6W", false),
-                    ModelTest("Dublin 7", false),
-                    ModelTest("Dublin 8", false),
-                    ModelTest("Dublin 9", false),
-                    ModelTest("Dublin 10", false),
-                    ModelTest("Dublin 11", false),
-                    ModelTest("Dublin 12", false),
-                    ModelTest("Dublin 13", false),
-                    ModelTest("Dublin 14", false),
-                    ModelTest("Dublin 15", false),
-                    ModelTest("Dublin 16", false),
-                    ModelTest("Dublin 17", false),
-                    ModelTest("Dublin 18", false),
-                    ModelTest("Dublin 19", false),
-                    ModelTest("Dublin 20", false),
-                    ModelTest("Dublin 21", false),
-                    ModelTest("Dublin 22", false),
-                    ModelTest("Dublin 23", false),
-                    ModelTest("Dublin 24", false),
-                    ModelTest("Garristown", false),
-                    ModelTest("Glencullen", false),
-                    ModelTest("Gormanston", false),
-                    ModelTest("Kinsaley", false),
-                    ModelTest("Kinsealy-Drinan", false),
-                    ModelTest("Leixlip", false),
-                    ModelTest("Loughshinny", false),
-                    ModelTest("Malahide", false),
-                    ModelTest("Naul", false),
-                    ModelTest("Newcastle", false),
-                    ModelTest("North Country Dublin", false),
-                    ModelTest("Oldtown", false),
-                    ModelTest("Portmarnock", false),
-                    ModelTest("Portrane", false),
-                    ModelTest("Rathcole", false),
-                    ModelTest("Rivermeade", false),
-                    ModelTest("Rush", false),
-                    ModelTest("Saggart", false),
-                    ModelTest("Skerries", false),
-                    ModelTest("South Country Dublin", false),
-                    ModelTest("Stamullen", false),
-                    ModelTest("Swords", false)
+                    ModelDialogOption("Prefer not to say", false),
+                    ModelDialogOption("Ashbourne", false),
+                    ModelDialogOption("Balbriggan", false),
+                    ModelDialogOption("Ballyboghil", false),
+                    ModelDialogOption("Ballyouster", false),
+                    ModelDialogOption("Balrothery", false),
+                    ModelDialogOption("Brittas", false),
+                    ModelDialogOption("Clonee Village", false),
+                    ModelDialogOption("Donabate", false),
+                    ModelDialogOption("Dublin 1", false),
+                    ModelDialogOption("Dublin 2", false),
+                    ModelDialogOption("Dublin 3", false),
+                    ModelDialogOption("Dublin 4", false),
+                    ModelDialogOption("Dublin 5", false),
+                    ModelDialogOption("Dublin 6", false),
+                    ModelDialogOption("Dublin 6W", false),
+                    ModelDialogOption("Dublin 7", false),
+                    ModelDialogOption("Dublin 8", false),
+                    ModelDialogOption("Dublin 9", false),
+                    ModelDialogOption("Dublin 10", false),
+                    ModelDialogOption("Dublin 11", false),
+                    ModelDialogOption("Dublin 12", false),
+                    ModelDialogOption("Dublin 13", false),
+                    ModelDialogOption("Dublin 14", false),
+                    ModelDialogOption("Dublin 15", false),
+                    ModelDialogOption("Dublin 16", false),
+                    ModelDialogOption("Dublin 17", false),
+                    ModelDialogOption("Dublin 18", false),
+                    ModelDialogOption("Dublin 19", false),
+                    ModelDialogOption("Dublin 20", false),
+                    ModelDialogOption("Dublin 21", false),
+                    ModelDialogOption("Dublin 22", false),
+                    ModelDialogOption("Dublin 23", false),
+                    ModelDialogOption("Dublin 24", false),
+                    ModelDialogOption("Garristown", false),
+                    ModelDialogOption("Glencullen", false),
+                    ModelDialogOption("Gormanston", false),
+                    ModelDialogOption("Kinsaley", false),
+                    ModelDialogOption("Kinsealy-Drinan", false),
+                    ModelDialogOption("Leixlip", false),
+                    ModelDialogOption("Loughshinny", false),
+                    ModelDialogOption("Malahide", false),
+                    ModelDialogOption("Naul", false),
+                    ModelDialogOption("Newcastle", false),
+                    ModelDialogOption("North Country Dublin", false),
+                    ModelDialogOption("Oldtown", false),
+                    ModelDialogOption("Portmarnock", false),
+                    ModelDialogOption("Portrane", false),
+                    ModelDialogOption("Rathcole", false),
+                    ModelDialogOption("Rivermeade", false),
+                    ModelDialogOption("Rush", false),
+                    ModelDialogOption("Saggart", false),
+                    ModelDialogOption("Skerries", false),
+                    ModelDialogOption("South Country Dublin", false),
+                    ModelDialogOption("Stamullen", false),
+                    ModelDialogOption("Swords", false)
                 )
 
             }
@@ -144,13 +142,13 @@ class TestViewModel() : ViewModel() {
             "things_to_protect" -> {
 
                 list = arrayOf(
-                    ModelTest("Stay at home."),
-                    ModelTest("Do not go to work."),
-                    ModelTest("Do not use public transport."),
-                    ModelTest("Do not have visitors at your home."),
-                    ModelTest("Do not visit others, even if you usually care for them."),
-                    ModelTest("Do not go to the shops or pharmacy unless it's absolutely necessary - where possible, order your groceries online or have some family or friends drop them off."),
-                    ModelTest("Keep away from older people, anyone with long-term medical conditions and pregnant women.")
+                    ModelDialogOption("Stay at home."),
+                    ModelDialogOption("Do not go to work."),
+                    ModelDialogOption("Do not use public transport."),
+                    ModelDialogOption("Do not have visitors at your home."),
+                    ModelDialogOption("Do not visit others, even if you usually care for them."),
+                    ModelDialogOption("Do not go to the shops or pharmacy unless it's absolutely necessary - where possible, order your groceries online or have some family or friends drop them off."),
+                    ModelDialogOption("Keep away from older people, anyone with long-term medical conditions and pregnant women.")
                 )
 
             }
