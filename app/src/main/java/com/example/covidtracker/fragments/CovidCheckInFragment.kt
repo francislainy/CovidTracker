@@ -54,11 +54,15 @@ class CovidCheckInFragment : Fragment(R.layout.fragment_covid_check_in) {
 
                     if ((it as ModelDialogOption).selected == true) {
                         etYourAge.text = it.title
+
                     }
 
                 }
 
         })
+
+        model.updateList()
+
 
     }
 

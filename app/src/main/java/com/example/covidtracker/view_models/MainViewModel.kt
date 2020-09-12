@@ -15,6 +15,22 @@ class MainViewModel : ViewModel() {
         userMutableLiveData.value = list!!
     }
 
+    val selected = MutableLiveData<ModelDialogOption>()
+
+    fun select(item:  ModelDialogOption) {
+        selected.value = item
+    }
+
+
+    fun updateList() {
+
+        list!!.add(ModelDialogOption("HHH", false))
+        list!!.add(ModelDialogOption("1HH", false))
+        list!!.add(ModelDialogOption("asdf", true))
+        list!!.add(ModelDialogOption("asdf+", false))
+        userMutableLiveData.value = list!!
+    }
+
     private fun populateList() {
 
         list = ArrayList()
@@ -23,6 +39,7 @@ class MainViewModel : ViewModel() {
         list!!.add(ModelDialogOption("16-39", false))
         list!!.add(ModelDialogOption("40-59", true))
         list!!.add(ModelDialogOption("60+", false))
+
     }
 
 }
