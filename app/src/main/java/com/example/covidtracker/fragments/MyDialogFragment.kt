@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.covidtracker.R
@@ -21,9 +20,7 @@ import kotlinx.android.synthetic.main.fragment_dialog.*
 
 class MyDialogFragment : DialogFragment(), RecyclerDialogOptionsItem.AdapterListener {
 
-    private val viewModel: MainViewModel by activityViewModels(
-
-    )
+    private val model: MainViewModel by activityViewModels()
 
     private lateinit var adapter: GroupAdapter<GroupieViewHolder>
     var selectedPosition = -1
@@ -42,6 +39,8 @@ class MyDialogFragment : DialogFragment(), RecyclerDialogOptionsItem.AdapterList
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        tvChoose.text = arguments?.getString("headerText")
+
         rvOptions.layoutManager = LinearLayoutManager(activity)
         adapter = GroupAdapter()
         rvOptions.adapter = adapter
@@ -58,12 +57,12 @@ class MyDialogFragment : DialogFragment(), RecyclerDialogOptionsItem.AdapterList
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        viewModel.flushItems()
+        model.flushItems()
     }
 
     private fun initViewModel() {
 
-        viewModel.userMutableLiveData.observe(this, Observer { list ->
+        model.userMutableLiveData.observe(this, Observer { list ->
             for (i in list!!) {
                 adapter.add(
                     RecyclerDialogOptionsItem(
@@ -83,6 +82,8 @@ class MyDialogFragment : DialogFragment(), RecyclerDialogOptionsItem.AdapterList
 
         selectedPosition = position
         adapter.notifyDataSetChanged()
+
+        model.updateItem(position)
 
         Log.i("clicked", "position: $position")
     }

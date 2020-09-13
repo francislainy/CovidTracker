@@ -7,6 +7,7 @@ import com.example.covidtracker.model.ModelDialogOption
 class MainViewModel : ViewModel() {
 
     private var list: ArrayList<ModelDialogOption>? = null
+    private var param: String? = null
 
     val userMutableLiveData: MutableLiveData<ArrayList<ModelDialogOption>?> = MutableLiveData()
 
@@ -15,25 +16,64 @@ class MainViewModel : ViewModel() {
         userMutableLiveData.value = list!!
     }
 
-    fun updateItem(position:Int){
+    private fun populateList() {
+
+        list = ArrayList()
+
+//        list!!.add(ModelDialogOption("Prefer not to say", false))
+//        list!!.add(ModelDialogOption("16-39", false))
+//        list!!.add(ModelDialogOption("40-59", true))
+//        list!!.add(ModelDialogOption("60+", false))
+
+    }
+
+    fun getParam(): String? {
+        return param;
+    }
+
+    fun updateItem(position: Int) {
         val itemToUpdate = list!!.get(position)
         itemToUpdate.selected = !itemToUpdate.selected!!
         list!![position] = itemToUpdate
     }
 
-    fun flushItems(){
+    fun flushItems() {
         userMutableLiveData.value = list!!
     }
 
-    private fun populateList() {
+    fun updateList(param: String) {
+
+        this.param = param
 
         list = ArrayList()
+        when (param) {
 
-        list!!.add(ModelDialogOption("Prefer not to say", false))
-        list!!.add(ModelDialogOption("16-39", false))
-        list!!.add(ModelDialogOption("40-59", true))
-        list!!.add(ModelDialogOption("60+", false))
+            "Choose your age range" -> {
 
+                list!!.add(ModelDialogOption("Prefer not to say", false))
+                list!!.add(ModelDialogOption("16-39", false))
+                list!!.add(ModelDialogOption("40-59", false))
+                list!!.add(ModelDialogOption("60+", false))
+
+            }
+
+            "Choose your county" -> {
+
+                list!!.add(ModelDialogOption("Prefer not to say", false))
+                list!!.add(ModelDialogOption("County1", false))
+                list!!.add(ModelDialogOption("County2", false))
+                list!!.add(ModelDialogOption("County3", false))
+
+            }
+            "Choose your locality" -> {
+                list!!.add(ModelDialogOption("Prefer not to say", false))
+                list!!.add(ModelDialogOption("Locality1", false))
+                list!!.add(ModelDialogOption("Locality2", false))
+                list!!.add(ModelDialogOption("Locality3", false))
+            }
+        }
+        flushItems()
     }
+
 
 }

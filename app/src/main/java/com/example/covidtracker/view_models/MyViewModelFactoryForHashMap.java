@@ -17,6 +17,6 @@ public class MyViewModelFactoryForHashMap implements ViewModelProvider.Factory {
     @NotNull
     @Override
     public <T extends ViewModel> T create(@NotNull Class<T> modelClass) {
-        return (T) new TestViewModel(param);
+        return (T) new MainViewModel();
     }
 }

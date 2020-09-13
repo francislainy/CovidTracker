@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.core.content.ContextCompat
@@ -24,9 +25,8 @@ import kotlinx.android.synthetic.main.title_and_progress_bar.*
 class CovidCheckInFragment : Fragment(R.layout.fragment_covid_check_in) {
 
     var navController: NavController? = null
-    private val model: MainViewModel by activityViewModels(
-//        { requireParentFragment() }
-    )
+    private val model: MainViewModel by activityViewModels()
+    private var tartTextView: TextView? = null
 
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -47,13 +47,35 @@ class CovidCheckInFragment : Fragment(R.layout.fragment_covid_check_in) {
         rbMale.setOnClickListener(onClickRb)
         rbPreferNotToSay.setOnClickListener(onClickRb)
 
-        model.userMutableLiveData.observe(viewLifecycleOwner, Observer<Any?> { list ->
-            if (list != null)
 
-                (list as Iterable<*>).map {
+        model.userMutableLiveData.observe(viewLifecycleOwner, Observer {
+//            it?.let {
+////                it.filter {
+////                    it.selected == true
+////                }.map {
+////                    tartTextView?.text = it.title
+////                }
+////            }
+
+            if (it != null)
+
+                (it as Iterable<*>).map {
 
                     if ((it as ModelDialogOption).selected == true) {
-                        etYourAge.text = it.title
+                        tartTextView?.text = it.title
+                        var param = model.getParam()
+
+                        if(param != null) {
+
+                            when(param) {
+
+                               "Choose your age range" -> etYourAge.text = it.title
+                               "Choose your county" ->  etYourCounty.text = it.title
+                               "Choose your locality" -> etYourLocality.text = it.title
+
+                            }
+
+                        }
 
                     }
 
@@ -69,9 +91,21 @@ class CovidCheckInFragment : Fragment(R.layout.fragment_covid_check_in) {
         val destination: Int = R.id.action_covidCheckInFragment_to_my_dialog_fragment
 
         val message: String? = when (it.id) {
-            R.id.etYourAge -> "Choose your age range"
-            R.id.etYourCounty -> "Choose your county"
-            R.id.etYourLocality -> "Choose your locality"
+            R.id.etYourAge -> {
+                tartTextView = etYourAge
+                model.updateList("Choose your age range")
+                "Choose your age range"
+            }
+            R.id.etYourCounty -> {
+                tartTextView = etYourCounty
+                model.updateList("Choose your county")
+                "Choose your county"
+            }
+            R.id.etYourLocality -> {
+                tartTextView = etYourLocality
+                model.updateList("Choose your locality")
+                "Choose your locality"
+            }
             else -> {
                 ""
             }
