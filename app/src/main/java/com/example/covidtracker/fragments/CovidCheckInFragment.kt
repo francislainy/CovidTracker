@@ -16,7 +16,6 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.covidtracker.R
 import com.example.covidtracker.activities.MainActivity
-import com.example.covidtracker.model.ModelDialogOption
 import com.example.covidtracker.view_models.MainViewModel
 import kotlinx.android.synthetic.main.fragment_covid_check_in.*
 import kotlinx.android.synthetic.main.title_and_progress_bar.*
@@ -26,7 +25,7 @@ class CovidCheckInFragment : Fragment(R.layout.fragment_covid_check_in) {
 
     var navController: NavController? = null
     private val model: MainViewModel by activityViewModels()
-    private var tartTextView: TextView? = null
+    private var targetTextView: TextView? = null
 
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -53,7 +52,7 @@ class CovidCheckInFragment : Fragment(R.layout.fragment_covid_check_in) {
                 it.filter {
                     it.selected == true
                 }.map {
-                    tartTextView?.text = it.title
+                    targetTextView?.text = it.title
                 }
             }
 
@@ -69,17 +68,17 @@ class CovidCheckInFragment : Fragment(R.layout.fragment_covid_check_in) {
 
         val message: String? = when (it.id) {
             R.id.etYourAge -> {
-                tartTextView = etYourAge
+                targetTextView = etYourAge
                 model.updateList("Choose your age range")
                 "Choose your age range"
             }
             R.id.etYourCounty -> {
-                tartTextView = etYourCounty
+                targetTextView = etYourCounty
                 model.updateList("Choose your county")
                 "Choose your county"
             }
             R.id.etYourLocality -> {
-                tartTextView = etYourLocality
+                targetTextView = etYourLocality
                 model.updateList("Choose your locality")
                 "Choose your locality"
             }
