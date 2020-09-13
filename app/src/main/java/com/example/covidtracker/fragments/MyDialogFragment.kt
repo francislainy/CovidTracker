@@ -1,11 +1,13 @@
 package com.example.covidtracker.fragments
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,8 +21,8 @@ import kotlinx.android.synthetic.main.fragment_dialog.*
 
 class MyDialogFragment : DialogFragment(), RecyclerDialogOptionsItem.AdapterListener {
 
-    private val viewModel: MainViewModel by viewModels(
-        { requireParentFragment() }
+    private val viewModel: MainViewModel by activityViewModels(
+
     )
 
     private lateinit var adapter: GroupAdapter<GroupieViewHolder>
@@ -54,6 +56,10 @@ class MyDialogFragment : DialogFragment(), RecyclerDialogOptionsItem.AdapterList
         initViewModel()
     }
 
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        viewModel.flushItems()
+    }
 
     private fun initViewModel() {
 

@@ -15,19 +15,13 @@ class MainViewModel : ViewModel() {
         userMutableLiveData.value = list!!
     }
 
-    val selected = MutableLiveData<ModelDialogOption>()
-
-    fun select(item:  ModelDialogOption) {
-        selected.value = item
+    fun updateItem(position:Int){
+        val itemToUpdate = list!!.get(position)
+        itemToUpdate.selected = !itemToUpdate.selected!!
+        list!![position] = itemToUpdate
     }
 
-
-    fun updateList() {
-
-        list!!.add(ModelDialogOption("HHH", false))
-        list!!.add(ModelDialogOption("1HH", false))
-        list!!.add(ModelDialogOption("asdf", true))
-        list!!.add(ModelDialogOption("asdf+", false))
+    fun flushItems(){
         userMutableLiveData.value = list!!
     }
 

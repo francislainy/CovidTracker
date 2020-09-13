@@ -9,7 +9,7 @@ import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -24,8 +24,8 @@ import kotlinx.android.synthetic.main.title_and_progress_bar.*
 class CovidCheckInFragment : Fragment(R.layout.fragment_covid_check_in) {
 
     var navController: NavController? = null
-    private val model: MainViewModel by viewModels(
-        { requireParentFragment() }
+    private val model: MainViewModel by activityViewModels(
+//        { requireParentFragment() }
     )
 
 
@@ -60,9 +60,6 @@ class CovidCheckInFragment : Fragment(R.layout.fragment_covid_check_in) {
                 }
 
         })
-
-        model.updateList()
-
 
     }
 
