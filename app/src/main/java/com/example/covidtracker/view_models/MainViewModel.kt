@@ -11,25 +11,6 @@ class MainViewModel : ViewModel() {
 
     val userMutableLiveData: MutableLiveData<ArrayList<ModelDialogOption>?> = MutableLiveData()
 
-    init {
-        populateList()
-        userMutableLiveData.value = list!!
-    }
-
-    private fun populateList() {
-
-        list = ArrayList()
-
-//        list!!.add(ModelDialogOption("Prefer not to say", false))
-//        list!!.add(ModelDialogOption("16-39", false))
-//        list!!.add(ModelDialogOption("40-59", true))
-//        list!!.add(ModelDialogOption("60+", false))
-
-    }
-
-    fun getParam(): String? {
-        return param;
-    }
 
     fun updateItem(position: Int) {
         val itemToUpdate = list!!.get(position)
@@ -37,13 +18,13 @@ class MainViewModel : ViewModel() {
         list!![position] = itemToUpdate
     }
 
+
     fun flushItems() {
         userMutableLiveData.value = list!!
     }
 
-    fun updateList(param: String) {
 
-        this.param = param
+    fun updateList(param: String) {
 
         list = ArrayList()
         when (param) {

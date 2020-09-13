@@ -49,39 +49,16 @@ class CovidCheckInFragment : Fragment(R.layout.fragment_covid_check_in) {
 
 
         model.userMutableLiveData.observe(viewLifecycleOwner, Observer {
-//            it?.let {
-////                it.filter {
-////                    it.selected == true
-////                }.map {
-////                    tartTextView?.text = it.title
-////                }
-////            }
-
-            if (it != null)
-
-                (it as Iterable<*>).map {
-
-                    if ((it as ModelDialogOption).selected == true) {
-                        tartTextView?.text = it.title
-                        var param = model.getParam()
-
-                        if(param != null) {
-
-                            when(param) {
-
-                               "Choose your age range" -> etYourAge.text = it.title
-                               "Choose your county" ->  etYourCounty.text = it.title
-                               "Choose your locality" -> etYourLocality.text = it.title
-
-                            }
-
-                        }
-
-                    }
-
+            it?.let {
+                it.filter {
+                    it.selected == true
+                }.map {
+                    tartTextView?.text = it.title
                 }
+            }
 
         })
+
 
     }
 
